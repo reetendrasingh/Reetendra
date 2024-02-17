@@ -32,6 +32,24 @@
             margin-left: auto;
             margin-right: auto;
         }
+        article {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: left; /* Align text in article to the left */
+        }
+        article ul {
+            list-style-type: none; /* Remove default list style */
+            padding-left: 0; /* Remove default padding */
+        }
+        article h3 {
+            margin-top: 20px; /* Add margin above the heading */
+        }
+        article h3 + ul {
+            margin-top: 0; /* Remove margin between heading and list */
+        }
+        article li {
+            margin-left: 20px; /* Add margin to align with heading */
+        }
     </style>
 </head>
 <body>
@@ -55,14 +73,13 @@
         <article>
             <h2>RESEARCH VISION & INTERESTS</h2>
             <p>I worked on 2D materials, atomic layer deposition (ALD), chemical vapor deposition (CVD) in my PhD.</p>
-            <p> To establish coherent criteria for screening unfamiliar mechanisms leading to the Insulator-Metal transition in materials and leverage such materials for advanced neuromorphic computing.</p> 
-            </p> Simultaneously, contribute to the development of tools aimed at enhancing our understanding of these mechanisms for neuromorphic computing.</p>
+            <p>To establish coherent criteria for screening unfamiliar mechanisms leading to the Insulator-Metal transition in materials and leverage such materials for advanced neuromorphic computing.</p> 
+            <p>Simultaneously, contribute to the development of tools aimed at enhancing our understanding of these mechanisms for neuromorphic computing.</p>
             <ul>
-                <h3>Thin films growth:</h3> <li>Publication 1</li>
-                <h3>Device fabrications:</h3> <li>Publication 2</li>
-                <h3>Device applications:</h3> <li>Publication 3</li>
+                <li><h3>Thin films growth:</h3> Publication 1</li>
+                <li><h3>Device fabrications:</h3> Publication 2</li>
+                <li><h3>Device applications:</h3> Publication 3</li>
             </ul>
-        
         </article>
     </section>
 

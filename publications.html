@@ -49,10 +49,8 @@
             margin-top: 20px; /* Add margin above the heading */
         }
         article h3:before {
-            content: counter(publication-counter) ". •"; /* Add counter and bullet point before heading */
+            content: counter(publication-counter) ". "; /* Add counter before heading */
             counter-increment: publication-counter; /* Increment the counter */
-            display: inline-block;
-            margin-right: 5px; /* Add spacing between counter, bullet point, and text */
         }
         article h3 + ul {
             margin-top: 0; /* Remove margin between heading and list */

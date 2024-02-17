@@ -59,13 +59,26 @@
         }
 
         .qualifications {
-            float: right; /* Align to the right side */
+            position: absolute; /* Position absolutely */
+            top: 80px; /* Adjust the top position as needed */
+            left: 50%; /* Align to the center */
+            transform: translateX(-50%); /* Center horizontally */
             width: 300px; /* Set width */
-            margin-top: 40px; /* Add margin from the top */
             text-align: left; /* Align text to the left */
+            z-index: 1; /* Ensure it's in front of the photo */
         }
         .qualifications h3 {
             margin-top: 0; /* Remove default margin */
+        }
+        .photo-container {
+            position: relative; /* Set position relative for containing the absolutely positioned element */
+            max-width: 400px; /* Set max-width for the photo container */
+            margin: 0 auto; /* Center the photo container */
+        }
+        .photo-container img {
+            display: block; /* Make the image a block element */
+            width: 100%; /* Set width to fill the container */
+            height: auto; /* Maintain aspect ratio */
         }
     </style>
 </head>
@@ -88,18 +101,19 @@
     
     <section>
         <article>
-            <img src="reetendra_photo.jpg" alt="Reetendra Singh Photo" style="width: 400px; height: 400px;">
+            <div class="photo-container">
+                <img src="reetendra_photo.jpg" alt="Reetendra Singh Photo">
+                <div class="qualifications">
+                    <h3>Academic background</h3>
+                    <p>Bachelor's Degree in Physics</p>
+                    <p>Master's Degree in Materials Science</p>
+                    <p>PhD in Electrical Engineering</p>
+                    <!-- Add more qualifications as needed -->
+                </div>
+            </div>
             <p>Reetendra Singh, PhD</p>
             <h2>Soon I'll update you more about myself!</h2>
         </article>
-        
-        <div class="qualifications">
-            <h3>Academic background</h3>
-            <p>Bachelor's Degree in Physics</p>
-            <p>Master's Degree in Materials Science</p>
-            <p>PhD in Electrical Engineering</p>
-            <!-- Add more qualifications as needed -->
-        </div>
     </section>
 
     <footer>

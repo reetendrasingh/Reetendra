@@ -32,6 +32,32 @@
             margin-left: 20px;
             margin-right: auto;
         }
+        
+        article {
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: left; /* Align text in article to the left */
+            margin-left: 50px; /* Shift to the left */
+        }
+        article ul {
+            list-style-type: none; /* Remove default list style */
+            padding-left: 0; /* Remove default padding */
+        }
+        article h3 {
+            margin-top: 20px; /* Add margin above the heading */
+        }
+        article h3:before {
+            content: "•"; /* Add bullet point before heading */
+            display: inline-block;
+            margin-right: 5px; /* Add spacing between bullet point and text */
+        }
+        article h3 + ul {
+            margin-top: 0; /* Remove margin between heading and list */
+        }
+        article li {
+            margin-left: 20px; /* Add margin to align with heading */
+        }
+        
     </style>
 </head>
 <body>
@@ -50,6 +76,9 @@
         </nav>
     </header>
     <hr> <!-- Horizontal line -->
+    
+    
+    
     <section>
         <article>
             <img src="reetendra_photo.jpg" alt="Reetendra Singh Photo" style="width: 400px; height: 400px;">

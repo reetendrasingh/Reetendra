@@ -51,6 +51,28 @@
         article li {
             margin-left: 20px; /* Add margin to align with heading */
         }
+        form {
+            margin-top: 20px;
+        }
+        form input,
+        form textarea {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -74,6 +96,14 @@
         <article>
             <h2>CONTACT ME</h2>
             <p>You can contact me via Mail Id: reetendra.rajpoot.bhu@gmail.com.</p>
+            <h3>GET IN TOUCH</h3>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <input type="submit" value="Send Message">
+            </form>
         </article>
     </section>
 

@@ -23,23 +23,23 @@
             justify-content: center; /* Align links horizontally */
         }
         nav ul li {
-            margin-right: 20px;
+            margin-right: 10px;
+            font-size: 14px; /* Reduce font size for smaller screens */
         }
         footer {
-            margin-top: 100px;
+            margin-top: 20px;
             text-align: left; /* Align footer text to the left corner */
             max-width: 800px; /* Limit the maximum width */
             margin-left: 20px;
             margin-right: auto;
         }
         
-        
-        
         article {
-            max-width: 1250px;
+            max-width: 800px;
             margin: 40px auto;
             text-align: left; /* Align text in article to the left */
-            margin-left: 50px; /* Shift to the left */
+            margin-left: 5%; /* Shift to the left */
+            margin-right: 5%; /* Shift to the right */
         }
         article ul {
             list-style-type: none; /* Remove default list style */
@@ -49,8 +49,9 @@
             margin-top: 20px; /* Add margin above the heading */
         }
         article h3:before {
-            content: counter(publication-counter) ". "; /* Add counter before heading */
-            counter-increment: publication-counter; /* Increment the counter */
+            content: "•"; /* Add bullet point before heading */
+            display: inline-block;
+            margin-right: 5px; /* Add spacing between bullet point and text */
         }
         article h3 + ul {
             margin-top: 0; /* Remove margin between heading and list */
@@ -59,9 +60,37 @@
             margin-left: 20px; /* Add margin to align with heading */
         }
 
-        /* Reset counter */
-        article {
-            counter-reset: publication-counter;
+        .Academic {
+            width: 90%; /* Adjust width as needed */
+            text-align: left; /* Align text to the left */
+            margin: 20px auto; /* Center the Academic section */
+        }
+        .Academic h2 {
+            margin-top: 10px; /* Remove default margin */
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            header {
+                margin: 10px auto; /* Adjust margin for smaller screens */
+                max-width: 90%; /* Adjust max-width for smaller screens */
+            }
+            nav ul li {
+                margin-right: 5px; /* Adjust margin between navigation links */
+                font-size: 12px; /* Further reduce font size for smaller screens */
+            }
+            footer {
+                margin-top: 10px; /* Adjust margin for smaller screens */
+                max-width: 90%; /* Adjust max-width for smaller screens */
+                margin-left: 10px; /* Adjust margin-left for smaller screens */
+            }
+            article {
+                margin-left: 5%; /* Adjust margin-left for smaller screens */
+                margin-right: 5%; /* Adjust margin-right for smaller screens */
+            }
+            .Academic {
+                width: 90%; /* Adjust width for smaller screens */
+            }
         }
     </style>
 </head>
@@ -72,10 +101,10 @@
         <nav>
             <ul>
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="research.html">RESEARCH VISION & INTERESTS</a></li>
+                <li><a href="research.html">RESEARCH</a></li>
                 <li><a href="cvreetendra.html">CV</a></li>
                 <li><a href="publications.html">PUBLICATIONS</a></li>
-                <li><a href="contact.html">CONTACT ME</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
                 <li><a href="more.html">MORE</a></li>
             </ul>
         </nav>

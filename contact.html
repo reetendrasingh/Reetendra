@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             text-align: center; /* Center align all text */
+            background-color: #f4f4f4; /* Set background color */
         }
         header {
             margin: 20px auto; /* Center the header */
@@ -35,11 +36,15 @@
         }
         
         article {
+            background-color: #fff; /* Set background color */
+            border-radius: 10px; /* Add border radius */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
             max-width: 800px;
             margin: 40px auto;
             text-align: left; /* Align text in article to the left */
             margin-left: 5%; /* Shift to the left */
             margin-right: 5%; /* Shift to the right */
+            padding: 20px; /* Add padding */
         }
         article ul {
             list-style-type: none; /* Remove default list style */
@@ -96,6 +101,30 @@
             form textarea {
                 width: 90%; /* Adjust width of input fields for smaller screens */
             }
+        }
+
+        /* Style for form elements */
+        form input[type="text"],
+        form input[type="email"],
+        form textarea {
+            width: 100%; /* Set width to fill container */
+            padding: 10px; /* Add padding */
+            margin: 10px 0; /* Add margin */
+            border: 1px solid #ccc; /* Add border */
+            border-radius: 5px; /* Add border radius */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+        form input[type="submit"] {
+            background-color: #4CAF50; /* Set background color */
+            color: white; /* Set text color */
+            padding: 15px 20px; /* Add padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add border radius */
+            cursor: pointer; /* Add cursor pointer */
+            transition: background-color 0.3s; /* Add transition for smooth hover effect */
+        }
+        form input[type="submit"]:hover {
+            background-color: #45a049; /* Darken background color on hover */
         }
     </style>
 </head>

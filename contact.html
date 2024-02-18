@@ -91,6 +91,11 @@
             .Academic {
                 width: 90%; /* Adjust width for smaller screens */
             }
+            form input[type="text"],
+            form input[type="email"],
+            form textarea {
+                width: 90%; /* Adjust width of input fields for smaller screens */
+            }
         }
     </style>
 </head>
@@ -122,10 +127,10 @@
             
             <h3>GET IN TOUCH</h3>
             <form action="https://formspree.io/f/xzbnrjqq" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="_replyto" placeholder="Your Email" required>
-                <input type="text" name="_subject" placeholder="Subject" required>
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <input type="text" name="name" placeholder="Your Name" required><br>
+                <input type="email" name="_replyto" placeholder="Your Email" required><br>
+                <input type="text" name="_subject" placeholder="Subject" required><br>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br>
                 <input type="submit" value="Send Message">
             </form>
         </article>

@@ -26,18 +26,6 @@
             margin-right: 10px;
             font-size: 14px; /* Reduce font size for smaller screens */
         }
-        nav ul li a {
-            text-decoration: none; /* Remove underline */
-            padding: 10px 15px; /* Adjust padding for mobile */
-            background-color: #4CAF50; /* Green background color */
-            color: white; /* White text color */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Add border radius */
-            transition: background-color 0.3s ease; /* Smooth transition */
-        }
-        nav ul li a:hover {
-            background-color: #45a049; /* Darker green on hover */
-        }
         footer {
             margin-top: 20px;
             text-align: left; /* Align footer text to the left corner */
@@ -73,8 +61,11 @@
         }
 
         .Academic {
-            width: 90%; /* Adjust width as needed */
-            margin: 20px auto; /* Center the Academic section */
+            width: 45%; /* Adjust width as needed */
+            position: absolute; /* Position absolutely */
+            top: calc(50px + 3cm); /* Adjust top position */
+            right: 5%; /* Align to the right */
+            text-align: left; /* Align text to the left */
         }
         .Academic h2 {
             margin-top: 10px; /* Remove default margin */
@@ -86,15 +77,30 @@
 
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
+            header {
+                margin: 10px auto; /* Adjust margin for smaller screens */
+                max-width: 90%; /* Adjust max-width for smaller screens */
+            }
             nav ul li {
                 margin-right: 5px; /* Adjust margin between navigation links */
                 font-size: 12px; /* Further reduce font size for smaller screens */
             }
-            nav ul li a {
-                padding: 8px 12px; /* Adjust padding for smaller screens */
+            footer {
+                margin-top: 10px; /* Adjust margin for smaller screens */
+                max-width: 90%; /* Adjust max-width for smaller screens */
+                margin-left: 10px; /* Adjust margin-left for smaller screens */
+            }
+            article {
+                margin-left: 5%; /* Adjust margin-left for smaller screens */
+                margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
             .Academic {
                 width: 90%; /* Adjust width for smaller screens */
+                float: none; /* Remove float for smaller screens */
+                position: relative; /* Change position to relative for smaller screens */
+                top: 0; /* Reset top position */
+                right: 0; /* Reset right position */
+                margin-top: 20px; /* Adjust margin-top for smaller screens */
             }
         }
     </style>

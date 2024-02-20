@@ -23,8 +23,21 @@
             justify-content: center; /* Align links horizontally */
         }
         nav ul li {
-            margin-right: 10px;
-            font-size: 14px; /* Reduce font size for smaller screens */
+            margin-right: 8px; /* Adjust margin between navigation links */
+        }
+        nav ul li a {
+            font-size: 13px; /* Adjust font size for navigation links */
+            text-decoration: none; /* Remove underline */
+            padding: 2px 6px; /* Adjust padding */
+            border: 1px solid transparent; /* Add border */
+            border-radius: 5px; /* Add border radius */
+            color: #333; /* Set text color */
+            background-color: #fff; /* Set background color */
+            transition: all 0.3s ease; /* Add transition effect */
+        }
+        nav ul li a:hover {
+            background-color: #333; /* Change background color on hover */
+            color: #fff; /* Change text color on hover */
         }
         footer {
             margin-top: 20px;
@@ -36,7 +49,7 @@
         
         article {
             max-width: 800px;
-            margin: 40px auto;
+            margin: 0 auto;
             text-align: left; /* Align text in article to the left */
             margin-left: 5%; /* Shift to the left */
             margin-right: 5%; /* Shift to the right */
@@ -60,13 +73,27 @@
             margin-left: 20px; /* Add margin to align with heading */
         }
 
-        .Academic {
-            width: 90%; /* Adjust width as needed */
-            text-align: left; /* Align text to the left */
-            margin: 20px auto; /* Center the Academic section */
-        }
-        .Academic h2 {
-            margin-top: 10px; /* Remove default margin */
+       .Academic {
+    width: 45%;
+    position: absolute;
+    top: calc(50px + 6cm);
+    right: 5%;
+    text-align: left;
+    line-height: 1.2; /* Adjust line height */
+    }
+
+      .Academic h2 {
+       margin-top: 10px;
+       }
+
+      /* Add this rule to adjust line height of paragraphs */
+         .Academic p {
+         line-height: 1; /* Adjust line height */
+       }
+
+
+        hr {
+            margin-top: 20px; /* Adjust top margin */
         }
 
         /* Responsive Styles */
@@ -76,8 +103,11 @@
                 max-width: 90%; /* Adjust max-width for smaller screens */
             }
             nav ul li {
-                margin-right: 5px; /* Adjust margin between navigation links */
-                font-size: 12px; /* Further reduce font size for smaller screens */
+                margin-right: 4px; /* Further reduce margin between navigation links */
+            }
+            nav ul li a {
+                font-size: 10px; /* Further reduce font size for navigation links */
+                padding: 2px 4px; /* Further adjust padding */
             }
             footer {
                 margin-top: 10px; /* Adjust margin for smaller screens */
@@ -88,8 +118,14 @@
                 margin-left: 5%; /* Adjust margin-left for smaller screens */
                 margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
+            
             .Academic {
                 width: 90%; /* Adjust width for smaller screens */
+                float: none; /* Remove float for smaller screens */
+                position: relative; /* Change position to relative for smaller screens */
+                top: 0; /* Reset top position */
+                right: 0px; /* Reset right position */
+                margin-top: 20px; /* Adjust margin-top for smaller screens */
             }
         }
     </style>
@@ -110,7 +146,7 @@
         </nav>
     </header>
     <hr> <!-- Horizontal line -->
-    
+       
     <section>
         <article>
             <h2>PROFESSIONAL ACCOMPLISHMENTS <span class="download-resume"><a href="https://drive.google.com/file/d/1gFs2YH5XvFzNW4anO439zdzfiXDHNDDz/view?usp=sharing" download>(download resume)</a></span></h2>

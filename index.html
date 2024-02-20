@@ -119,24 +119,14 @@
                 margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
             
-        
-.Academic {
-    width: 45%;
-    float: right; /* Float the Academic Profile section to the right */
-    margin-top: 0; /* Adjust the top margin */
-    margin-right: 5%; /* Adjust the right margin */
-    text-align: left;
-}
-
-article img {
-    width: 90%; /* Adjust the width of the photo */
-    max-width: 400px; /* Set the maximum width */
-    height: auto; /* Maintain aspect ratio */
-    margin-top: calc(1cm - 4px); /* Adjust margin-top */
-    float: left; /* Float the photo to the left */
-    margin-right: 5%; /* Adjust the right margin */
-}
-
+            .Academic {
+                width: 90%; /* Adjust width for smaller screens */
+                float: none; /* Remove float for smaller screens */
+                position: relative; /* Change position to relative for smaller screens */
+                top: 0; /* Reset top position */
+                right: 0px; /* Reset right position */
+                margin-top: 20px; /* Adjust margin-top for smaller screens */
+            }
         }
     </style>
 </head>
@@ -159,7 +149,7 @@ article img {
     
     <section>
         <article>
-            <img src="reetendra_photo.jpg" alt="Reetendra Singh Photo">
+            <img src="reetendra_photo.jpg" alt="Reetendra Singh Photo" style="width: 90%; max-width: 400px; height: auto; margin-top: calc(1cm + 4px);">
             <p>Reetendra Singh, PhD</p>
             <p>Postdoctoral Fellow at Technion - Israel Institute of Technology, Israel </p>
             <h2>Soon I'll update you more about myself!</h2>

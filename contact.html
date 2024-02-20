@@ -96,34 +96,38 @@
             margin-top: 20px; /* Adjust top margin */
         }
 
-        /* Responsive Styles */
-        @media only screen and (max-width: 768px) {
-            header {
-                margin: 10px auto; /* Adjust margin for smaller screens */
-                max-width: 90%; /* Adjust max-width for smaller screens */
-            }
-            nav ul li {
-                margin-right: 5px; /* Adjust margin between navigation links */
-                font-size: 12px; /* Further reduce font size for smaller screens */
-            }
-            footer {
-                margin-top: 10px; /* Adjust margin for smaller screens */
-                max-width: 90%; /* Adjust max-width for smaller screens */
-                margin-left: 10px; /* Adjust margin-left for smaller screens */
-            }
-            article {
-                margin-left: 5%; /* Adjust margin-left for smaller screens */
-                margin-right: 5%; /* Adjust margin-right for smaller screens */
-            }
-            .Academic {
-                width: 90%; /* Adjust width for smaller screens */
-            }
-            form input[type="text"],
-            form input[type="email"],
-            form textarea {
-                width: 90%; /* Adjust width of input fields for smaller screens */
-            }
-        }
+       /* Responsive Styles */
+       @media only screen and (max-width: 768px) {
+           header {
+               margin: 10px auto; /* Adjust margin for smaller screens */
+               max-width: 90%; /* Adjust max-width for smaller screens */
+           }
+           nav ul li {
+               margin-right: 4px; /* Further reduce margin between navigation links */
+           }
+           nav ul li a {
+               font-size: 10px; /* Further reduce font size for navigation links */
+               padding: 2px 4px; /* Further adjust padding */
+           }
+           footer {
+               margin-top: 10px; /* Adjust margin for smaller screens */
+               max-width: 90%; /* Adjust max-width for smaller screens */
+               margin-left: 10px; /* Adjust margin-left for smaller screens */
+           }
+           article {
+               margin-left: 5%; /* Adjust margin-left for smaller screens */
+               margin-right: 5%; /* Adjust margin-right for smaller screens */
+           }
+           
+           .Academic {
+               width: 90%; /* Adjust width for smaller screens */
+               float: none; /* Remove float for smaller screens */
+               position: relative; /* Change position to relative for smaller screens */
+               top: 0; /* Reset top position */
+               right: 0px; /* Reset right position */
+               margin-top: 20px; /* Adjust margin-top for smaller screens */
+           }
+       }
 
         /* Style for form elements */
         form input[type="text"],

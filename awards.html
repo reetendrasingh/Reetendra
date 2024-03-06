@@ -48,12 +48,11 @@
         }
         
         article {
-            max-width: 800px;
+            max-width: 1500px;
             margin: 0 auto;
             text-align: left; /* Align text in article to the left */
             margin-left: 5%; /* Shift to the left */
             margin-right: 5%; /* Shift to the right */
-            position: relative;
         }
         article ul {
             list-style-type: none; /* Remove default list style */
@@ -128,75 +127,6 @@
                 right: 0px; /* Reset right position */
                 margin-top: 20px; /* Adjust margin-top for smaller screens */
             }
-
-            /* Adjust image dimensions for smaller screens */
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-        }
-
-        /* Adjust image dimensions for larger screens */
-        @media only screen and (min-width: 769px) {
-            img {
-                max-width: 80%; /* Adjust the maximum width for larger screens */
-                height: auto;
-            }
-        }
-
-        /* Full screen view for images */
-        .fullscreen-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-        .fullscreen-image img {
-            max-width: 90%;
-            max-height: 90%;
-            cursor: pointer;
-            position: relative;
-        }
-        .fullscreen-controls {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            z-index: 10000;
-        }
-        .next-previous {
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-            position: relative;
-        }
-        .previous {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .close-fullscreen {
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .photo-description {
-            color: #fff;
-            font-size: 18px;
-            position: absolute;
-            bottom: 60px; /* Adjust this value to move the description up or down */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10000;
         }
     </style>
 </head>
@@ -216,7 +146,7 @@
         </nav>
     </header>
     <hr> <!-- Horizontal line -->
-      
+        
     <section>
         <article>
         <nav>
@@ -226,66 +156,15 @@
                
             </ul>
         </nav>
-        
-            <img src="lab.png" alt="Image 2" class="fullscreen-trigger" data-description="Lab lunch, March 2024">
-            <img src="ram90.png" alt="Image 1" class="fullscreen-trigger" data-description="Ram90 conference, December 2023">
+            <h2>Awards and recognitaions</h2>
+            <p> Best poster 2020.</p>
+            <p> Best poster 2022.</p>
+            
         </article>
     </section>
 
     <footer>
         <p>&copy; 2024 Reetendra Singh</p>
     </footer>
-
-    <!-- Fullscreen image container -->
-    <div class="fullscreen-image">
-        <img class="fullscreen-content" src="">
-        <div class="photo-description"></div>
-        <div class="fullscreen-controls">
-            <span class="previous next-previous">&#10094; Previous</span>
-            <span class="close-fullscreen">Close</span>
-            <span class="next next-previous">Next &#10095;</span>
-        </div>
-    </div>
-
-    <script>
-        // JavaScript to handle full-screen image view
-        const fullscreenImages = document.querySelectorAll('.fullscreen-trigger');
-        const fullscreenContainer = document.querySelector('.fullscreen-image');
-        const fullscreenContent = document.querySelector('.fullscreen-content');
-        const photoDescription = document.querySelector('.photo-description');
-        let currentIndex = 0;
-
-        // Add event listener to each image
-        fullscreenImages.forEach((image, index) => {
-            image.addEventListener('click', function() {
-                currentIndex = index;
-                fullscreenContainer.style.display = 'flex';
-                fullscreenContent.src = this.src;
-                photoDescription.textContent = this.getAttribute('data-description');
-            });
-        });
-
-        // Close full-screen image view
-        const closeFullscreen = document.querySelector('.close-fullscreen');
-        closeFullscreen.addEventListener('click', function() {
-            fullscreenContainer.style.display = 'none';
-        });
-
-        // Next and previous buttons functionality
-        const nextButton = document.querySelector('.next');
-        const previousButton = document.querySelector('.previous');
-
-        nextButton.addEventListener('click', function() {
-            currentIndex = (currentIndex + 1) % fullscreenImages.length;
-            fullscreenContent.src = fullscreenImages[currentIndex].src;
-            photoDescription.textContent = fullscreenImages[currentIndex].getAttribute('data-description');
-        });
-
-        previousButton.addEventListener('click', function() {
-            currentIndex = (currentIndex - 1 + fullscreenImages.length) % fullscreenImages.length;
-            fullscreenContent.src = fullscreenImages[currentIndex].src;
-            photoDescription.textContent = fullscreenImages[currentIndex].getAttribute('data-description');
-        });
-    </script>
 </body>
 </html>

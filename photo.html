@@ -237,10 +237,14 @@
         const fullscreenImages = document.querySelectorAll('.fullscreen-trigger');
         const fullscreenContainer = document.querySelector('.fullscreen-image');
         const fullscreenContent = document.querySelector('.fullscreen-content');
+        let currentImageIndex = 0;
+        let totalImages = 0;
 
         // Add event listener to each image
-        fullscreenImages.forEach(image => {
+        fullscreenImages.forEach((image, index) => {
             image.addEventListener('click', function() {
+                currentImageIndex = index;
+                totalImages = fullscreenImages.length;
                 fullscreenContainer.style.display = 'flex';
                 fullscreenContent.src = this.src;
             });
@@ -257,11 +261,13 @@
         const previousButton = document.querySelector('.previous');
 
         nextButton.addEventListener('click', function() {
-            // Implement logic to show next image
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            fullscreenContent.src = fullscreenImages[currentImageIndex].src;
         });
 
         previousButton.addEventListener('click', function() {
-            // Implement logic to show previous image
+            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            fullscreenContent.src = fullscreenImages[currentImageIndex].src;
         });
     </script>
 </body>

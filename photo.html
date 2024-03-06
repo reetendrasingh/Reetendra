@@ -127,6 +127,20 @@
                 right: 0px; /* Reset right position */
                 margin-top: 20px; /* Adjust margin-top for smaller screens */
             }
+
+            /* Adjust image dimensions for smaller screens */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Adjust image dimensions for larger screens */
+        @media only screen and (min-width: 769px) {
+            img {
+                max-width: 50%;
+                height: auto;
+            }
         }
     </style>
 </head>
@@ -149,9 +163,8 @@
       
     <section>
         <article>
-            <img src="ram90.png" style="max-width: 500px; height: auto;">
-            <img src="lab.png" style="max-width: 500px; height: auto;">
-            
+            <img src="ram90.png" alt="Image 1">
+            <img src="lab.png" alt="Image 2">
         </article>
     </section>
 

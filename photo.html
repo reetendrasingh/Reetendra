@@ -161,6 +161,7 @@
             max-width: 90%;
             max-height: 90%;
             cursor: pointer;
+            position: relative;
         }
         .fullscreen-controls {
             position: absolute;
@@ -177,7 +178,7 @@
             cursor: pointer;
             position: absolute;
             top: 10px;
-            right: 20px;
+            right: 10px;
         }
         .next-previous {
             color: #fff;
@@ -186,12 +187,13 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
+            z-index: 10000;
         }
         .previous {
-            left: 20px;
+            left: 10px;
         }
         .next {
-            right: 20px;
+            right: 10px;
         }
     </style>
 </head>

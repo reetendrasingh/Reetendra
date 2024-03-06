@@ -53,6 +53,7 @@
             text-align: left; /* Align text in article to the left */
             margin-left: 5%; /* Shift to the left */
             margin-right: 5%; /* Shift to the right */
+            position: relative;
         }
         article ul {
             list-style-type: none; /* Remove default list style */
@@ -163,7 +164,8 @@
         }
         .fullscreen-controls {
             position: absolute;
-            top: 10px;
+            top: 0;
+            left: 0;
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -173,13 +175,23 @@
             color: #fff;
             font-size: 24px;
             cursor: pointer;
-            margin-left: 20px;
+            position: absolute;
+            top: 10px;
+            right: 20px;
         }
         .next-previous {
             color: #fff;
             font-size: 24px;
             cursor: pointer;
-            margin-right: 20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .previous {
+            left: 20px;
+        }
+        .next {
+            right: 20px;
         }
     </style>
 </head>
@@ -214,11 +226,11 @@
     <!-- Fullscreen image container -->
     <div class="fullscreen-image">
         <span class="close-fullscreen">&times;</span>
-        <div class="fullscreen-controls">
-            <span class="previous next-previous">&lt;</span>
-            <span class="next next-previous">&gt;</span>
-        </div>
         <img class="fullscreen-content" src="">
+        <div class="fullscreen-controls">
+            <span class="previous next-previous">&#10094;</span>
+            <span class="next next-previous">&#10095;</span>
+        </div>
     </div>
 
     <script>
@@ -226,35 +238,31 @@
         const fullscreenImages = document.querySelectorAll('.fullscreen-trigger');
         const fullscreenContainer = document.querySelector('.fullscreen-image');
         const fullscreenContent = document.querySelector('.fullscreen-content');
-        const closeFullscreen = document.querySelector('.close-fullscreen');
-        const previousButton = document.querySelector('.previous');
-        const nextButton = document.querySelector('.next');
-        let currentImageIndex = 0;
 
         // Add event listener to each image
-        fullscreenImages.forEach((image, index) => {
+        fullscreenImages.forEach(image => {
             image.addEventListener('click', function() {
                 fullscreenContainer.style.display = 'flex';
                 fullscreenContent.src = this.src;
-                currentImageIndex = index;
             });
         });
 
         // Close full-screen image view
+        const closeFullscreen = document.querySelector('.close-fullscreen');
         closeFullscreen.addEventListener('click', function() {
             fullscreenContainer.style.display = 'none';
         });
 
-        // Previous image button
-        previousButton.addEventListener('click', function() {
-            currentImageIndex = (currentImageIndex - 1 + fullscreenImages.length) % fullscreenImages.length;
-            fullscreenContent.src = fullscreenImages[currentImageIndex].src;
+        // Next and previous buttons functionality
+        const nextButton = document.querySelector('.next');
+        const previousButton = document.querySelector('.previous');
+
+        nextButton.addEventListener('click', function() {
+            // Implement logic to show next image
         });
 
-        // Next image button
-        nextButton.addEventListener('click', function() {
-            currentImageIndex = (currentImageIndex + 1) % fullscreenImages.length;
-            fullscreenContent.src = fullscreenImages[currentImageIndex].src;
+        previousButton.addEventListener('click', function() {
+            // Implement logic to show previous image
         });
     </script>
 </body>

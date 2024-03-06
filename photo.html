@@ -189,6 +189,15 @@
             font-size: 24px;
             cursor: pointer;
         }
+        .photo-description {
+            color: #fff;
+            font-size: 18px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000;
+        }
     </style>
 </head>
 <body>
@@ -210,8 +219,8 @@
       
     <section>
         <article>
-            <img src="ram90.png" alt="Image 1" class="fullscreen-trigger">
-            <img src="lab.png" alt="Image 2" class="fullscreen-trigger">
+            <img src="ram90.png" alt="Image 1" class="fullscreen-trigger" data-description="Description of Image 1">
+            <img src="lab.png" alt="Image 2" class="fullscreen-trigger" data-description="Description of Image 2">
         </article>
     </section>
 
@@ -222,6 +231,7 @@
     <!-- Fullscreen image container -->
     <div class="fullscreen-image">
         <img class="fullscreen-content" src="">
+        <div class="photo-description"></div>
         <div class="fullscreen-controls">
             <span class="previous next-previous">&#10094; Previous</span>
             <span class="close-fullscreen">Close</span>
@@ -234,6 +244,7 @@
         const fullscreenImages = document.querySelectorAll('.fullscreen-trigger');
         const fullscreenContainer = document.querySelector('.fullscreen-image');
         const fullscreenContent = document.querySelector('.fullscreen-content');
+        const photoDescription = document.querySelector('.photo-description');
         let currentIndex = 0;
 
         // Add event listener to each image
@@ -242,6 +253,7 @@
                 currentIndex = index;
                 fullscreenContainer.style.display = 'flex';
                 fullscreenContent.src = this.src;
+                photoDescription.textContent = this.getAttribute('data-description');
             });
         });
 
@@ -258,11 +270,13 @@
         nextButton.addEventListener('click', function() {
             currentIndex = (currentIndex + 1) % fullscreenImages.length;
             fullscreenContent.src = fullscreenImages[currentIndex].src;
+            photoDescription.textContent = fullscreenImages[currentIndex].getAttribute('data-description');
         });
 
         previousButton.addEventListener('click', function() {
             currentIndex = (currentIndex - 1 + fullscreenImages.length) % fullscreenImages.length;
             fullscreenContent.src = fullscreenImages[currentIndex].src;
+            photoDescription.textContent = fullscreenImages[currentIndex].getAttribute('data-description');
         });
     </script>
 </body>

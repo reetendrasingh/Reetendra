@@ -198,12 +198,7 @@
             transform: translateX(-50%);
             z-index: 10000;
         }
-
-        /* Increase font size for "Photo Gallery" and "Awards" */
-        nav ul li a[href="photo.html"],
-        nav ul li a[href="awards.html"] {
-            font-size: 16px; /* Increase font size for specific navigation links */
-        }
+        
     </style>
 </head>
 <body>
@@ -222,6 +217,7 @@
         </nav>
     </header>
     <hr> <!-- Horizontal line -->
+      
     <section>
         <article>
         <nav>
@@ -231,21 +227,66 @@
                
             </ul>
         </nav>
-            <h2>Awards and recognitaions</h2>
-            <p> JNCASR Annual “In-House Symposium”, Bangalore, India (Best Poster Presentation-2020) <strong>2022</strong></p>
-            <p> Research Conference on “Chemistry of Materials” JNCASR, India (Best Poster Presentation) <strong>2022</strong></p>
-            <p> Int. Workshop on Advanced Materials (IWAM), Ras Al Khamiah, UAE (Oral Presentation) <strong>2020</strong></p>
-            <p> Smt. And Sri Bapu Narayanaswamy Prize for the <strong>best MS Thesis</strong> in Chemical and Materials Science<strong>2020</strong></p>
-            <p> IIT-Bombay & JNCASR conference ”Chemical Frontiers”, Goa, India (Best Oral Presentation) <strong>2019</strong></p>
-            <p> JNCASR-Sheikh Saqr Laboratory Winter School, Bangalore, India (Best Oral Presentation) <strong>2019</strong></p>
-            <p> Qualified Joint Admission test for Masters (JAM) for MSc., <strong>(All India 110th rank)</strong> organized by Indian Institutes of Technology (IIT) <strong>2017</strong></p>
-            <p> Qualified Undergraduate Entrance Test (UET) for BSc., <strong>(All India 210th rank, Index-220)</strong> organized by Banaras Hindu University <strong>2014</strong></p>
-            
+        
+            <img src="lab.png" alt="Image 2" class="fullscreen-trigger" data-description="Lab lunch, March 2024">
+            <img src="ram90.png" alt="Image 1" class="fullscreen-trigger" data-description="Ram90 conference, December 2023">
         </article>
     </section>
 
     <footer>
         <p>&copy; 2024 Reetendra Singh</p>
     </footer>
+
+    <!-- Fullscreen image container -->
+    <div class="fullscreen-image">
+        <img class="fullscreen-content" src="">
+        <div class="photo-description"></div>
+        <div class="fullscreen-controls">
+            <span class="previous next-previous">&#10094; Previous</span>
+            <span class="close-fullscreen">Close</span>
+            <span class="next next-previous">Next &#10095;</span>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle full-screen image view
+        const fullscreenImages = document.querySelectorAll('.fullscreen-trigger');
+        const fullscreenContainer = document.querySelector('.fullscreen-image');
+        const fullscreenContent = document.querySelector('.fullscreen-content');
+        const photoDescription = document.querySelector('.photo-description');
+        let currentIndex = 0;
+
+        // Add event listener to each image
+        fullscreenImages.forEach((image, index) => {
+            image.addEventListener('click', function() {
+                currentIndex = index;
+                fullscreenContainer.style.display = 'flex';
+                fullscreenContent.src = this.src;
+                photoDescription.textContent = this.getAttribute('data-description');
+            });
+        });
+
+        // Close full-screen image view
+        const closeFullscreen = document.querySelector('.close-fullscreen');
+        closeFullscreen.addEventListener('click', function() {
+            fullscreenContainer.style.display = 'none';
+        });
+
+        // Next and previous buttons functionality
+        const nextButton = document.querySelector('.next');
+        const previousButton = document.querySelector('.previous');
+
+        nextButton.addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % fullscreenImages.length;
+            fullscreenContent.src = fullscreenImages[currentIndex].src;
+            photoDescription.textContent = fullscreenImages[currentIndex].getAttribute('data-description');
+        });
+
+        previousButton.addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + fullscreenImages.length) % fullscreenImages.length;
+            fullscreenContent.src = fullscreenImages[currentIndex].src;
+            photoDescription.textContent = fullscreenImages[currentIndex].getAttribute('data-description');
+        });
+    </script>
 </body>
 </html>

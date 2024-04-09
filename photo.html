@@ -101,12 +101,16 @@
                 margin-left: 5%; /* Adjust margin-left for smaller screens */
                 margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
+
+            .image-container img {
+                max-width: calc(50% - 20px); /* Adjust the width of each image for smaller screens */
+            }
         }
 
         /* Adjust image dimensions for larger screens */
         @media only screen and (min-width: 769px) {
             .image-container img {
-                max-width: calc(25% - 20px); /* Adjust the width of each image */
+                max-width: calc(25% - 20px); /* Adjust the width of each image for larger screens */
             }
         }
 
@@ -196,6 +200,7 @@
       
     <section>
         <article>
+            <h2>Photo Gallery</h2>
             <div class="image-container">
                 <img src="lab.png" alt="Image 2" class="fullscreen-trigger" data-description="Lab lunch (Dr. Yoav, Amir, Inbal, Noy, Chubin, Dr. Shany, Me and Dr. Abhishek), March 2024">
                 <img src="defense.png" alt="Image 3" class="fullscreen-trigger" data-description="PhD Defense (Prof. C. N. R. Rao), June 2023">
@@ -204,6 +209,7 @@
                 <img src="winterschool.png" alt="Image 6" class="fullscreen-trigger" data-description="Winterschool, November 2020">
                 <img src="Bsc.png" alt="Image 5" class="fullscreen-trigger" data-description="BSc degree (100th convocation BHU), November 2018">
             </div>
+            <h2>Awards & Recognitions</h2>
         </article>
     </section>
 

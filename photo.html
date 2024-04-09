@@ -50,48 +50,30 @@
         article {
             max-width: 1000px;
             margin: 0 auto;
-            text-align: left; /* Align text in article to the left */
+            text-align: center; /* Center align the content */
             margin-left: 5%; /* Shift to the left */
             margin-right: 5%; /* Shift to the right */
             position: relative;
         }
-        article ul {
-            list-style-type: none; /* Remove default list style */
-            padding-left: 0; /* Remove default padding */
-        }
-        article h3 {
-            margin-top: 20px; /* Add margin above the heading */
-        }
-        article h3:before {
-            content: "•"; /* Add bullet point before heading */
-            display: inline-block;
-            margin-right: 5px; /* Add spacing between bullet point and text */
-        }
-        article h3 + ul {
-            margin-top: 0; /* Remove margin between heading and list */
-        }
-        article li {
-            margin-left: 20px; /* Add margin to align with heading */
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
-       .Academic {
-            width: 45%;
-            position: absolute;
-            top: calc(50px + 6cm);
-            right: 5%;
-            text-align: left;
-            line-height: 1.2; /* Adjust line height */
+        .image-container img {
+            max-width: calc(33.33% - 20px); /* Adjust the width of each image */
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        .Academic h2 {
-            margin-top: 10px;
+        .image-container img:hover {
+            transform: scale(1.05); /* Increase size on hover */
         }
-
-        /* Add this rule to adjust line height of paragraphs */
-        .Academic p {
-            line-height: 1; /* Adjust line height */
-        }
-
 
         hr {
             margin-top: 20px; /* Adjust top margin */
@@ -119,28 +101,12 @@
                 margin-left: 5%; /* Adjust margin-left for smaller screens */
                 margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
-            
-            .Academic {
-                width: 90%; /* Adjust width for smaller screens */
-                float: none; /* Remove float for smaller screens */
-                position: relative; /* Change position to relative for smaller screens */
-                top: 0; /* Reset top position */
-                right: 0px; /* Reset right position */
-                margin-top: 20px; /* Adjust margin-top for smaller screens */
-            }
-
-            /* Adjust image dimensions for smaller screens */
-            img {
-                max-width: 100%;
-                height: auto;
-            }
         }
 
         /* Adjust image dimensions for larger screens */
         @media only screen and (min-width: 769px) {
-            img {
-                max-width: 80%; /* Adjust the maximum width for larger screens */
-                height: auto;
+            .image-container img {
+                max-width: calc(25% - 20px); /* Adjust the width of each image */
             }
         }
 
@@ -230,20 +196,14 @@
       
     <section>
         <article>
-        <nav>
-            <ul>
-                <h2><li><a href="photo.html">Photo Gallery</a></li></h2>
-                <h2><li><a href="awards.html">Awards & Recognitations</a></li></h2>
-               
-            </ul>
-        </nav>
-        
-            <img src="lab.png" alt="Image 2" class="fullscreen-trigger" data-description="Lab lunch (Dr. Yoav, Amir, Inbal, Noy, Chubin, Dr. Shany, Me and Dr. Abhishek), March 2024">
-            <img src="defense.png" alt="Image 3" class="fullscreen-trigger" data-description="PhD Defense (Prof. C. N. R. Rao), June 2023">
-            <img src="ram90.png" alt="Image 1" class="fullscreen-trigger" data-description="Ram90 conference, December 2023">
-            <img src="nightsci.png" alt="Image 4" class="fullscreen-trigger" data-description="Late night dicussions with JNC friends, October 2022">
-            <img src="winterschool.png" alt="Image 6" class="fullscreen-trigger" data-description="Winterschool, November 2020">
-            <img src="Bsc.png" alt="Image 5" class="fullscreen-trigger" data-description="BSc degree (100th convocation BHU), November 2018">
+            <div class="image-container">
+                <img src="lab.png" alt="Image 2" class="fullscreen-trigger" data-description="Lab lunch (Dr. Yoav, Amir, Inbal, Noy, Chubin, Dr. Shany, Me and Dr. Abhishek), March 2024">
+                <img src="defense.png" alt="Image 3" class="fullscreen-trigger" data-description="PhD Defense (Prof. C. N. R. Rao), June 2023">
+                <img src="ram90.png" alt="Image 1" class="fullscreen-trigger" data-description="Ram90 conference, December 2023">
+                <img src="nightsci.png" alt="Image 4" class="fullscreen-trigger" data-description="Late night dicussions with JNC friends, October 2022">
+                <img src="winterschool.png" alt="Image 6" class="fullscreen-trigger" data-description="Winterschool, November 2020">
+                <img src="Bsc.png" alt="Image 5" class="fullscreen-trigger" data-description="BSc degree (100th convocation BHU), November 2018">
+            </div>
         </article>
     </section>
 

@@ -153,6 +153,14 @@
             background-color: #45a049; /* Darken background color on hover */
         }
     </style>
+    
+    <!-- JavaScript to remove index.html from URL -->
+    <script>
+        if (window.location.pathname.endsWith("index.html")) {
+            window.history.replaceState(null, "", window.location.pathname.replace("index.html", ""));
+        }
+    </script>
+    
 </head>
 <body>
     <header>

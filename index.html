@@ -1,47 +1,190 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects of reetendra – Science × Programming</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Reetendra Singh</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Center align all text */
+        }
+        header {
+            margin: 20px auto; /* Center the header */
+            max-width: 800px; /* Limit the maximum width */
+        }
+        nav ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Align links horizontally */
+        }
+        nav ul li {
+            margin-right: 8px; /* Adjust margin between navigation links */
+        }
+        nav ul li a {
+            font-size: 13px; /* Adjust font size for navigation links */
+            text-decoration: none; /* Remove underline */
+            padding: 2px 6px; /* Adjust padding */
+            border: 1px solid transparent; /* Add border */
+            border-radius: 5px; /* Add border radius */
+            color: #333; /* Set text color */
+            background-color: #fff; /* Set background color */
+            transition: all 0.3s ease; /* Add transition effect */
+        }
+        nav ul li a:hover {
+            background-color: #333; /* Change background color on hover */
+            color: #fff; /* Change text color on hover */
+        }
+        footer {
+            margin-top: 20px;
+            text-align: left; /* Align footer text to the left corner */
+            max-width: 800px; /* Limit the maximum width */
+            margin-left: 20px;
+            margin-right: auto;
+        }
+        
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left; /* Align text in article to the left */
+            margin-left: 5%; /* Shift to the left */
+            margin-right: 5%; /* Shift to the right */
+        }
+        article ul {
+            list-style-type: none; /* Remove default list style */
+            padding-left: 0; /* Remove default padding */
+        }
+        article h3 {
+            margin-top: 20px; /* Add margin above the heading */
+        }
+        article h3:before {
+            content: "•"; /* Add bullet point before heading */
+            display: inline-block;
+            margin-right: 5px; /* Add spacing between bullet point and text */
+        }
+        article h3 + ul {
+            margin-top: 0; /* Remove margin between heading and list */
+        }
+        article li {
+            margin-left: 20px; /* Add margin to align with heading */
+        }
+
+       .Academic {
+    width: 45%;
+    position: absolute;
+    top: calc(50px + 6cm);
+    right: 5%;
+    text-align: left;
+    line-height: 1.2; /* Adjust line height */
+    }
+
+      .Academic h2 {
+       margin-top: 10px;
+       }
+
+      /* Add this rule to adjust line height of paragraphs */
+         .Academic p {
+         line-height: 1; /* Adjust line height */
+       }
+
+
+        hr {
+            margin-top: 20px; /* Adjust top margin */
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            header {
+                margin: 10px auto; /* Adjust margin for smaller screens */
+                max-width: 90%; /* Adjust max-width for smaller screens */
+            }
+            nav ul li {
+                margin-right: 4px; /* Further reduce margin between navigation links */
+            }
+            nav ul li a {
+                font-size: 10px; /* Further reduce font size for navigation links */
+                padding: 2px 4px; /* Further adjust padding */
+            }
+            footer {
+                margin-top: 10px; /* Adjust margin for smaller screens */
+                max-width: 90%; /* Adjust max-width for smaller screens */
+                margin-left: 10px; /* Adjust margin-left for smaller screens */
+            }
+            article {
+                margin-left: 5%; /* Adjust margin-left for smaller screens */
+                margin-right: 5%; /* Adjust margin-right for smaller screens */
+            }
+            
+            .Academic {
+                width: 90%; /* Adjust width for smaller screens */
+                float: none; /* Remove float for smaller screens */
+                position: relative; /* Change position to relative for smaller screens */
+                top: 0; /* Reset top position */
+                right: 0px; /* Reset right position */
+                margin-top: 20px; /* Adjust margin-top for smaller screens */
+            }
+        }
+    </style>
+
+ <!-- JavaScript to remove .html extension from URLs -->
+    <script>
+        if (window.location.pathname.endsWith(".html")) {
+            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
+        }
+    </script>
+
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <a href="/" class="logo">Projects of reetendra</a>
-        <p class="site-description">Science × Programming</p>
-        <nav class="main-navigation">
+    <header>
+        <h1>REETENDRA SINGH</h1>
+        <h2>Postdoctoral Fellow, Technion - Israel Institute of Technology</h2>
+        <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about/">About</a></li>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/research/">RESEARCH</a></li>
+                <li><a href="/cvreetendra/">CV</a></li>
+                <li><a href="/publications/">PUBLICATIONS</a></li>
+                <li><a href="/contact/">CONTACT</a></li>
+                <li><a href="/more/">MORE</a></li>
             </ul>
         </nav>
     </header>
-
-    <!-- Main Content -->
-    <main class="content">
-        <article class="post">
-            <header class="post-header">
-                <h1 class="post-title"><a href="/multivariate-colormaps-for-n-dimensions/">Multivariate colormaps for n dimensions</a></h1>
-            </header>
-            <div class="featured-media">
-                <a href="/multivariate-colormaps-for-n-dimensions/">
-                    <img src="/wp-content/uploads/2024/07/image-36-600x322.png" alt="Multivariate colormaps for n dimensions">
-                </a>
-            </div>
-            <div class="post-content">
-                <p>Much work has been done in the last decade related to 1-dimensional colormaps (see for example <a href="https://arxiv.org/search/cs?searchtype=author&query=Kovesi,+P">Peter Kovesi's paper</a> and <a href="https://www.youtube.com/watch?v=xAoljeRJ3lU">Nathaniel Smith and Stéfan van der Walt's talk</a> (2015)).</p>
-                <p>This post follows my previous post on <a href="/designing-2D-colormaps">2D colormaps</a>, and many of the design principles will be the same. However, with n ≥ 3, it quickly becomes unfeasible to create a full lookup table. With n = 3 channels and 256 values in each channel, the lookup table would be a matrix of 256^3 elements, likely much larger than the image the colormap is applied to. Instead, n independent 1D lookup tables are created, and the resulting colors are then combined.</p>
-                <a href="/multivariate-colormaps-for-n-dimensions/#more-159" class="more-link">Continue reading →</a>
-            </div>
+    <hr> <!-- Horizontal line -->
+    
+    <section>
+        <article>
+            <img src="reetendra_photo2.webp" alt="Reetendra Singh Photo" style="width: 100%; max-width: 400px; height: auto; margin-top: calc(2cm + 4px);">
+            <p>Reetendra Singh, PhD</p>
+            <p>Postdoctoral Fellow at Technion - Israel Institute of Technology, Israel </p>
         </article>
-    </main>
+    </section>
+    
+    <div class="Academic">
+        <h2>Academic Profile</h2>
+        <ul>
+            <li><h3>PhD (chemical science): 2020-2023</h3> 
+            <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
+            <p> New Chemistry Unit (NCU) & International Center for materials Science (ICMS)</p>
+            <p>Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR),</p> 
+            <p>Bengaluru, Karnataka, India.</p> </li>
+            
+            <li><h3>MS (chemical science): 2017-2020</h3> 
+            <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
+            <p> NCU & ICMS, JNCASR,</p>
+            <p> Bengaluru, Karnataka, India.</p> </li>
+            
+            <li><h3>BSc (chemistry): 2014-2017</h3> 
+            <p> Institute of Science, Banaras Hindu University (BHU)</p>
+            <p>Varanasi, India.</p> </li>
+        </ul>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Projects of TMR. All rights reserved.</p>
+    <footer>
+        <p>&copy; 2024 Reetendra Singh</p>
     </footer>
 </body>
 </html>

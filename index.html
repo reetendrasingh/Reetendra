@@ -1,200 +1,190 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="max-image-preview:large">
-    <title>Reetendra Singh – Postdoc Researcher</title>
-    
-    <!-- Link to external resources -->
-    <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="alternate" type="application/rss+xml" title="Reetendra Singh &raquo; Feed" href="/feed/">
-    <link rel="alternate" type="application/rss+xml" title="Reetendra Singh &raquo; Comments Feed" href="/comments/feed/">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
-    <link rel="stylesheet" href="/path/to/your/styles.css">
-
-    <!-- Emoji settings -->
-    <script type="text/javascript">
-        /* <![CDATA[ */
-        window._wpemojiSettings = {
-            "baseUrl": "https://s.w.org/images/core/emoji/15.0.3/72x72/",
-            "ext": ".png",
-            "svgUrl": "https://s.w.org/images/core/emoji/15.0.3/svg/",
-            "svgExt": ".svg",
-            "source": {
-                "concatemoji": "/wp-includes/js/wp-emoji-release.min.js?ver=6.6.1"
-            }
-        };
-        (function (i, n) {
-            var o, s, e;
-            function c(e) {
-                try {
-                    var t = { supportTests: e, timestamp: (new Date).valueOf() };
-                    sessionStorage.setItem(o, JSON.stringify(t));
-                } catch (e) { }
-            }
-            function p(e, t, n) {
-                e.clearRect(0, 0, e.canvas.width, e.canvas.height);
-                e.fillText(t, 0, 0);
-                var t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data),
-                    r = (e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0), new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data));
-                return t.every(function (e, t) { return e === r[t] });
-            }
-            function u(e, t, n) {
-                switch (t) {
-                    case "flag": return n(e, "🏳️‍⚧️", "🏳️​⚧️") ? !1 : !n(e, "🇺🇳", "🇺​🇳") && !n(e, "🏴", "🏴​​​​​​");
-                    case "emoji": return !n(e, "🐦‍⬛", "🐦​⬛");
-                }
-                return !1;
-            }
-            function f(e, t, n) {
-                var r = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : i.createElement("canvas"),
-                    a = r.getContext("2d", { willReadFrequently: !0 }),
-                    o = (a.textBaseline = "top", a.font = "600 32px Arial", {});
-                return e.forEach(function (e) { o[e] = t(a, e, n) }), o;
-            }
-            function t(e) {
-                var t = i.createElement("script");
-                t.src = e;
-                t.defer = !0;
-                i.head.appendChild(t);
-            }
-            if (typeof Promise !== "undefined") {
-                o = "wpEmojiSettingsSupports";
-                s = ["flag", "emoji"];
-                n.supports = { everything: !0, everythingExceptFlag: !0 };
-                e = new Promise(function (e) { i.addEventListener("DOMContentLoaded", e, { once: !0 }) });
-                new Promise(function (t) {
-                    var n = function () {
-                        try {
-                            var e = JSON.parse(sessionStorage.getItem(o));
-                            if (typeof e === "object" && typeof e.timestamp === "number" && (new Date).valueOf() < e.timestamp + 604800 && typeof e.supportTests === "object")
-                                return e.supportTests;
-                        } catch (e) { }
-                        return null;
-                    }();
-                    if (!n) {
-                        if (typeof Worker !== "undefined" && typeof OffscreenCanvas !== "undefined" && typeof URL !== "undefined" && URL.createObjectURL && typeof Blob !== "undefined")
-                            try {
-                                var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), p.toString()].join(",") + "));",
-                                    r = new Blob([e], { type: "text/javascript" }),
-                                    a = new Worker(URL.createObjectURL(r), { name: "wpTestEmojiSupports" });
-                                return void (a.onmessage = function (e) { c(n = e.data), a.terminate(), t(n) });
-                            } catch (e) { }
-                        c(n = f(s, u, p));
-                    }
-                    t(n);
-                }).then(function (e) {
-                    for (var t in e)
-                        n.supports[t] = e[t], n.supports.everything = n.supports.everything && n.supports[t],
-                        n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && n.supports[t];
-                    n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && !n.supports.flag;
-                    n.DOMReady = !1;
-                    n.readyCallback = function () { n.DOMReady = !0 };
-                }).then(function () { return e }).then(function () {
-                    var e;
-                    n.supports.everything || (n.readyCallback(), (e = n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji)));
-                });
-            }
-        }(window, document), window._wpemojiSettings);
-        /* ]]> */
-    </script>
-
-    <!-- Custom styles -->
+    <title>Reetendra Singh</title>
     <style>
+        /* Add your CSS styles here */
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f4f4f4;
+            text-align: center; /* Center align all text */
         }
         header {
-            background-color: #282c34;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
+            margin: 20px auto; /* Center the header */
+            max-width: 800px; /* Limit the maximum width */
         }
-        header h1 {
-            margin: 0;
-            font-size: 2em;
+        nav ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Align links horizontally */
         }
-        header p {
-            margin: 5px 0 0;
+        nav ul li {
+            margin-right: 8px; /* Adjust margin between navigation links */
         }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        nav ul li a {
+            font-size: 13px; /* Adjust font size for navigation links */
+            text-decoration: none; /* Remove underline */
+            padding: 2px 6px; /* Adjust padding */
+            border: 1px solid transparent; /* Add border */
+            border-radius: 5px; /* Add border radius */
+            color: #333; /* Set text color */
+            background-color: #fff; /* Set background color */
+            transition: all 0.3s ease; /* Add transition effect */
         }
-        .Academic {
-            width: 100%;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #fafafa;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .Academic h2 {
-            margin-top: 0;
+        nav ul li a:hover {
+            background-color: #333; /* Change background color on hover */
+            color: #fff; /* Change text color on hover */
         }
         footer {
-            background-color: #282c34;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
+            margin-top: 20px;
+            text-align: left; /* Align footer text to the left corner */
+            max-width: 800px; /* Limit the maximum width */
+            margin-left: 20px;
+            margin-right: auto;
         }
+        
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left; /* Align text in article to the left */
+            margin-left: 5%; /* Shift to the left */
+            margin-right: 5%; /* Shift to the right */
+        }
+        article ul {
+            list-style-type: none; /* Remove default list style */
+            padding-left: 0; /* Remove default padding */
+        }
+        article h3 {
+            margin-top: 20px; /* Add margin above the heading */
+        }
+        article h3:before {
+            content: "•"; /* Add bullet point before heading */
+            display: inline-block;
+            margin-right: 5px; /* Add spacing between bullet point and text */
+        }
+        article h3 + ul {
+            margin-top: 0; /* Remove margin between heading and list */
+        }
+        article li {
+            margin-left: 20px; /* Add margin to align with heading */
+        }
+
+       .Academic {
+    width: 45%;
+    position: absolute;
+    top: calc(50px + 6cm);
+    right: 5%;
+    text-align: left;
+    line-height: 1.2; /* Adjust line height */
+    }
+
+      .Academic h2 {
+       margin-top: 10px;
+       }
+
+      /* Add this rule to adjust line height of paragraphs */
+         .Academic p {
+         line-height: 1; /* Adjust line height */
+       }
+
+
+        hr {
+            margin-top: 20px; /* Adjust top margin */
+        }
+
+        /* Responsive Styles */
         @media only screen and (max-width: 768px) {
             header {
-                padding: 15px;
+                margin: 10px auto; /* Adjust margin for smaller screens */
+                max-width: 90%; /* Adjust max-width for smaller screens */
             }
-            .container {
-                width: 100%;
-                padding: 10px;
+            nav ul li {
+                margin-right: 4px; /* Further reduce margin between navigation links */
             }
+            nav ul li a {
+                font-size: 10px; /* Further reduce font size for navigation links */
+                padding: 2px 4px; /* Further adjust padding */
+            }
+            footer {
+                margin-top: 10px; /* Adjust margin for smaller screens */
+                max-width: 90%; /* Adjust max-width for smaller screens */
+                margin-left: 10px; /* Adjust margin-left for smaller screens */
+            }
+            article {
+                margin-left: 5%; /* Adjust margin-left for smaller screens */
+                margin-right: 5%; /* Adjust margin-right for smaller screens */
+            }
+            
             .Academic {
-                padding: 15px;
+                width: 90%; /* Adjust width for smaller screens */
+                float: none; /* Remove float for smaller screens */
+                position: relative; /* Change position to relative for smaller screens */
+                top: 0; /* Reset top position */
+                right: 0px; /* Reset right position */
+                margin-top: 20px; /* Adjust margin-top for smaller screens */
             }
         }
     </style>
+
+ <!-- JavaScript to remove .html extension from URLs -->
+    <script>
+        if (window.location.pathname.endsWith(".html")) {
+            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
+        }
+    </script>
+
 </head>
 <body>
     <header>
-        <h1>Reetendra Singh</h1>
-        <p>Postdoc Researcher</p>
-    </header>
-
-    <div class="container">
-        <article>
-            <img src="reetendra_photo2.webp" alt="Reetendra Singh Photo" style="width: 100%; max-width: 400px; height: auto;">
-            <p>Reetendra Singh, PhD</p>
-            <p>Postdoctoral Fellow at Technion - Israel Institute of Technology, Israel</p>
-        </article>
-
-        <div class="Academic">
-            <h2>Academic Profile</h2>
+        <h1>REETENDRA SINGH</h1>
+        <h2>Postdoctoral Fellow, Technion - Israel Institute of Technology</h2>
+        <nav>
             <ul>
-                <li><h3>PhD (Chemical Science): 2020-2023</h3>
-                    <p>Supervisor - Prof. C. N. R. Rao (FRS)</p>
-                    <p>New Chemistry Unit (NCU) & International Center for Materials Science (ICMS)</p>
-                    <p>Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR), Bengaluru, Karnataka, India.</p>
-                </li>
-                <li><h3>MSc (Chemistry): 2013-2015</h3>
-                    <p>Indian Institute of Technology (IIT) Bombay, Mumbai, India.</p>
-                </li>
-                <li><h3>BSc (Chemistry): 2010-2013</h3>
-                    <p>Indian Institute of Technology (IIT) Madras, Chennai, India.</p>
-                </li>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/research/">RESEARCH</a></li>
+                <li><a href="/cvreetendra/">CV</a></li>
+                <li><a href="/publications/">PUBLICATIONS</a></li>
+                <li><a href="/contact/">CONTACT</a></li>
+                <li><a href="/more/">MORE</a></li>
             </ul>
-        </div>
+        </nav>
+    </header>
+    <hr> <!-- Horizontal line -->
+    
+    <section>
+        <article>
+            <img src="reetendra_photo2.webp" alt="Reetendra Singh Photo" style="width: 100%; max-width: 400px; height: auto; margin-top: calc(2cm + 4px);">
+            <p>Reetendra Singh, PhD</p>
+            <p>Postdoctoral Fellow at Technion - Israel Institute of Technology, Israel </p>
+        </article>
+    </section>
+    
+    <div class="Academic">
+        <h2>Academic Profile</h2>
+        <ul>
+            <li><h3>PhD (chemical science): 2020-2023</h3> 
+            <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
+            <p> New Chemistry Unit (NCU) & International Center for materials Science (ICMS)</p>
+            <p>Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR),</p> 
+            <p>Bengaluru, Karnataka, India.</p> </li>
+            
+            <li><h3>MS (chemical science): 2017-2020</h3> 
+            <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
+            <p> NCU & ICMS, JNCASR,</p>
+            <p> Bengaluru, Karnataka, India.</p> </li>
+            
+            <li><h3>BSc (chemistry): 2014-2017</h3> 
+            <p> Institute of Science, Banaras Hindu University (BHU)</p>
+            <p>Varanasi, India.</p> </li>
+        </ul>
     </div>
 
     <footer>
-        <p>&copy; 2024 Reetendra Singh. All rights reserved.</p>
+        <p>&copy; 2024 Reetendra Singh</p>
     </footer>
 </body>
 </html>

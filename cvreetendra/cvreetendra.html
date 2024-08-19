@@ -48,12 +48,11 @@
         }
         
         article {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: left; /* Align text in article to the left */
             margin-left: 5%; /* Shift to the left */
             margin-right: 5%; /* Shift to the right */
-            position: relative;
         }
         article ul {
             list-style-type: none; /* Remove default list style */
@@ -128,84 +127,15 @@
                 right: 0px; /* Reset right position */
                 margin-top: 20px; /* Adjust margin-top for smaller screens */
             }
-
-            /* Adjust image dimensions for smaller screens */
-            img {
-                max-width: 100%;
-                height: auto;
-            }
         }
-
-        /* Adjust image dimensions for larger screens */
-        @media only screen and (min-width: 769px) {
-            img {
-                max-width: 80%; /* Adjust the maximum width for larger screens */
-                height: auto;
-            }
-        }
-
-        /* Full screen view for images */
-        .fullscreen-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-        .fullscreen-image img {
-            max-width: 90%;
-            max-height: 90%;
-            cursor: pointer;
-            position: relative;
-        }
-        .fullscreen-controls {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            z-index: 10000;
-        }
-        .next-previous {
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-            position: relative;
-        }
-        .previous {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .close-fullscreen {
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .photo-description {
-            color: #fff;
-            font-size: 18px;
-            position: absolute;
-            bottom: 60px; /* Adjust this value to move the description up or down */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10000;
-        }
-        
-        nav ul li a[href="photo.html"],
-        nav ul li a[href="awards.html"] {
-            font-size: 18px; /* Increase font size for specific navigation links */
-        }
-        
     </style>
     
+     <!-- JavaScript to remove .html extension from URLs -->
+    <script>
+        if (window.location.pathname.endsWith(".html")) {
+            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
+        }
+    </script>
     
 </head>
 <body>
@@ -224,24 +154,24 @@
         </nav>
     </header>
     <hr> <!-- Horizontal line -->
+       
     <section>
         <article>
-        <nav>
+            <h2>PROFESSIONAL ACCOMPLISHMENTS <span class="download-resume"><a href="https://drive.google.com/file/d/1gFs2YH5XvFzNW4anO439zdzfiXDHNDDz/view?usp=sharing" download>(download resume)</a></span></h2>
+             
+            <h2>Postdoctoral Fellow</h2>
             <ul>
-                  <h2><li><a href="photo.html">Photo Gallery</a></li></h2>
-                  <h2><li><a href="awards.html">Awards & Recognitations</a></li></h2>
-               
+                <p><strong>Transitions in Mott-insulators and applications in Neuromorphic computing:</strong> Jan 2024-present </p>
+                <p> Supervisor - Dr. Yoav Kalcheim</p>
+                <p>Department of Materials Science and Engineering, Technion, Haifa, Israel.</p>
             </ul>
-        </nav>
-            <p> JNCASR Annual “In-House Symposium”, Bangalore, India (Best Poster Presentation-2020) <strong>2022</strong></p>
-            <p> Research Conference on “Chemistry of Materials” JNCASR, India (Best Poster Presentation) <strong>2022</strong></p>
-            <p> Int. Workshop on Advanced Materials (IWAM), Ras Al Khamiah, UAE (Oral Presentation) <strong>2020</strong></p>
-            <p> Smt. And Sri Bapu Narayanaswamy Prize for the <strong>best MS Thesis</strong> in Chemical and Materials Science <strong>2020</strong></p>
-            <p> IIT-Bombay & JNCASR conference ”Chemical Frontiers”, Goa, India (Best Oral Presentation) <strong>2019</strong></p>
-            <p> JNCASR-Sheikh Saqr Laboratory Winter School, Bangalore, India (Best Oral Presentation) <strong>2019</strong></p>
-            <p> Qualified Joint Admission test for Masters (JAM) for MSc., <strong>(All India 110th rank)</strong> organized by Indian Institutes of Technology (IIT) <strong>2017</strong></p>
-            <p> Qualified Undergraduate Entrance Test (UET) for BSc., <strong>(All India 210th rank, Index-220)</strong> organized by Banaras Hindu University <strong>2014</strong></p>
             
+            <h2>Research Associate</h2>
+            <ul>
+                <p><strong>Atomic layer deposition and chemical vapor deposition of Mott-insulators:</strong> Jun 2023-Dec 2023 </p>
+                <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
+                <p> NCU & ICMS, JNCASR, Bengaluru, Karnataka, India.</p>
+            </ul>
         </article>
     </section>
 

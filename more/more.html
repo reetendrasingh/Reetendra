@@ -48,7 +48,7 @@
         }
         
         article {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             text-align: left; /* Align text in article to the left */
             margin-left: 5%; /* Shift to the left */
@@ -96,65 +96,53 @@
             margin-top: 20px; /* Adjust top margin */
         }
 
-       /* Responsive Styles */
-       @media only screen and (max-width: 768px) {
-           header {
-               margin: 10px auto; /* Adjust margin for smaller screens */
-               max-width: 90%; /* Adjust max-width for smaller screens */
-           }
-           nav ul li {
-               margin-right: 4px; /* Further reduce margin between navigation links */
-           }
-           nav ul li a {
-               font-size: 10px; /* Further reduce font size for navigation links */
-               padding: 2px 4px; /* Further adjust padding */
-           }
-           footer {
-               margin-top: 10px; /* Adjust margin for smaller screens */
-               max-width: 90%; /* Adjust max-width for smaller screens */
-               margin-left: 10px; /* Adjust margin-left for smaller screens */
-           }
-           article {
-               margin-left: 5%; /* Adjust margin-left for smaller screens */
-               margin-right: 5%; /* Adjust margin-right for smaller screens */
-           }
-           
-           .Academic {
-               width: 90%; /* Adjust width for smaller screens */
-               float: none; /* Remove float for smaller screens */
-               position: relative; /* Change position to relative for smaller screens */
-               top: 0; /* Reset top position */
-               right: 0px; /* Reset right position */
-               margin-top: 20px; /* Adjust margin-top for smaller screens */
-           }
-       }
-
-        /* Style for form elements */
-        form input[type="text"],
-        form input[type="email"],
-        form textarea {
-            width: 100%; /* Set width to fill container */
-            padding: 10px; /* Add padding */
-            margin: 10px 0; /* Add margin */
-            border: 1px solid #ccc; /* Add border */
-            border-radius: 5px; /* Add border radius */
-            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        /* Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            header {
+                margin: 10px auto; /* Adjust margin for smaller screens */
+                max-width: 90%; /* Adjust max-width for smaller screens */
+            }
+            nav ul li {
+                margin-right: 4px; /* Further reduce margin between navigation links */
+            }
+            nav ul li a {
+                font-size: 10px; /* Further reduce font size for navigation links */
+                padding: 2px 4px; /* Further adjust padding */
+            }
+            footer {
+                margin-top: 10px; /* Adjust margin for smaller screens */
+                max-width: 90%; /* Adjust max-width for smaller screens */
+                margin-left: 10px; /* Adjust margin-left for smaller screens */
+            }
+            article {
+                margin-left: 5%; /* Adjust margin-left for smaller screens */
+                margin-right: 5%; /* Adjust margin-right for smaller screens */
+            }
+            
+            .Academic {
+                width: 90%; /* Adjust width for smaller screens */
+                float: none; /* Remove float for smaller screens */
+                position: relative; /* Change position to relative for smaller screens */
+                top: 0; /* Reset top position */
+                right: 0px; /* Reset right position */
+                margin-top: 20px; /* Adjust margin-top for smaller screens */
+            }
         }
-        form input[type="submit"] {
-            background-color: #4CAF50; /* Set background color */
-            color: white; /* Set text color */
-            padding: 15px 20px; /* Add padding */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Add border radius */
-            cursor: pointer; /* Add cursor pointer */
-            transition: background-color 0.3s; /* Add transition for smooth hover effect */
+        
+        nav ul li a[href="photo.html"],
+        nav ul li a[href="awards.html"] {
+            font-size: 18px; /* Increase font size for specific navigation links */
         }
-        form input[type="submit"]:hover {
-            background-color: #45a049; /* Darken background color on hover */
-        }
+        
     </style>
     
-    
+     <!-- JavaScript to remove .html extension from URLs -->
+    <script>
+        if (window.location.pathname.endsWith(".html")) {
+            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
+        }
+    </script>
+  
 </head>
 <body>
     <header>
@@ -172,24 +160,18 @@
         </nav>
     </header>
     <hr> <!-- Horizontal line -->
-    
+      
     <section>
         <article>
-            <h2>CONTACT ME</h2>
-            <p>You can contact me via Mail Id: reetendra.rajpoot.bhu@gmail.com.</p>
+        <nav>
+            <ul>
+                <h2><li><a href="photo.html">Photo Gallery</a></li></h2>
+               <h2><li><a href="awards.html">Awards & Recognitations</a></li></h2>
+               
+            </ul>
+        </nav>
             
-            <h3>ADDRESS</h3>
-            <p>Department of Materials Science and Engineering,</p> 
-            <p>Technion, Haifa 32000, Israel</p>
             
-            <h3>GET IN TOUCH</h3>
-            <form action="https://formspree.io/f/xzbnrjqq" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required><br>
-                <input type="email" name="_replyto" placeholder="Your Email" required><br>
-                <input type="text" name="_subject" placeholder="Subject" required><br>
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br>
-                <input type="submit" value="Send Message">
-            </form>
         </article>
     </section>
 

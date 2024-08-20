@@ -13,20 +13,20 @@
             text-align: center; /* Center align all text */
         }
         header {
-            margin: 20px auto; /* Center the header */
-            max-width: 800px; /* Limit the maximum width */
+            background-color: red; /* Set background color of the header to red */
+            padding: 20px 0; /* Add padding to the header */
+            width: 100%; /* Make header full width */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+            margin-bottom: 20px; /* Add space below the header */
         }
-        nav {
-            background-color: red; /* Set the background color of the box to red */
-            padding: 10px 0; /* Add padding for better spacing */
-            margin-bottom: 20px; /* Add some space below the nav section */
-            box-sizing: border-box; /* Ensure padding does not affect the width */
-            width: 100%; /* Ensure the box covers the full width of the page */
+        h1, h2 {
+            margin: 0;
+            color: white; /* Set text color to white */
         }
         nav ul {
             list-style-type: none; /* Remove bullet points */
             padding: 0;
-            margin: 0;
+            margin: 20px 0 0 0; /* Remove margin at the top of the list */
             display: flex;
             justify-content: center; /* Align links horizontally */
         }
@@ -36,10 +36,10 @@
         nav ul li a {
             font-size: 13px; /* Adjust font size for navigation links */
             text-decoration: none; /* Remove underline */
-            padding: 2px 6px; /* Adjust padding */
+            padding: 5px 10px; /* Adjust padding */
             border-radius: 5px; /* Add border radius */
-            color: #fff; /* Set text color to white */
-            background-color: transparent; /* Keep links background transparent */
+            color: white; /* Set text color */
+            background-color: transparent; /* Keep background transparent */
             transition: all 0.3s ease; /* Add transition effect */
         }
         nav ul li a:hover {
@@ -106,8 +106,8 @@
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
             header {
-                margin: 10px auto; /* Adjust margin for smaller screens */
-                max-width: 90%; /* Adjust max-width for smaller screens */
+                margin: 0 auto; /* Adjust margin for smaller screens */
+                max-width: 100%; /* Adjust max-width for smaller screens */
             }
             nav ul li {
                 margin-right: 4px; /* Further reduce margin between navigation links */

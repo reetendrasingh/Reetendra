@@ -5,106 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reetendra Singh</title>
     <style>
+        /* Import Roboto Slab from Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
 
+        /* Add your CSS styles here */
         body {
-            font-family: 'Roboto Slab', serif;
+            font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
             margin: 0;
             padding: 0;
-            text-align: center;
-            background-color: #f9f9f9;
+            text-align: center; /* Center align all text */
+            background-color: #f9f9f9; /* Set background color to very light gray */
         }
         header {
-            background-color: black;
-            padding: 20px 0;
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 20px;
+            background-color: black; /* Set background color of the header to black */
+            padding: 20px 0; /* Add padding to the header */
+            width: 100%; /* Make header full width */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+            margin-bottom: 20px; /* Add space below the header */
         }
         h1, h2 {
-            margin: 0;
-            color: white;
+    margin: 0;
+    color: white; /* Default color for h1 and h2 */
+}
+
+article h2 {
+    color: black; /* Override color for h2 within article */
+}
+
+article h3 {
+    margin-top: 20px; /* Add margin above the heading */
+    color: black; /* Set color for h3 elements */
+}
+
+        h2.AcademicTitle {
+            color: black; /* Override color for specific h2 element */
         }
         nav ul {
-            list-style-type: none;
+            list-style-type: none; /* Remove bullet points */
             padding: 0;
-            margin: 20px 0 0;
+            margin: 20px 0 0 0; /* Remove margin at the top of the list */
             display: flex;
-            justify-content: center;
+            justify-content: center; /* Align links horizontally */
         }
         nav ul li {
-            margin-right: 8px;
+            margin-right: 8px; /* Adjust margin between navigation links */
         }
         nav ul li a {
-            font-size: 13px;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            color: white;
-            transition: all 0.3s ease;
+            font-size: 13px; /* Adjust font size for navigation links */
+            text-decoration: none; /* Remove underline */
+            padding: 5px 10px; /* Adjust padding */
+            border-radius: 5px; /* Add border radius */
+            color: white; /* Set text color */
+            background-color: transparent; /* Keep background transparent */
+            transition: all 0.3s ease; /* Add transition effect */
         }
         nav ul li a:hover {
-            background-color: #333;
+            background-color: #333; /* Change background color on hover */
+            color: #fff; /* Keep text color on hover */
         }
+        
         article {
             max-width: 800px;
-            margin: 0 auto 20px;
-            text-align: left;
+            margin: 0 auto;
+            text-align: left; /* Align text in article to the left */
+            margin-left: 5%; /* Shift to the left */
+            margin-right: 5%; /* Shift to the right */
         }
         article ul {
-            list-style-type: none;
-            padding-left: 0;
+            list-style-type: none; /* Remove default list style */
+            padding-left: 0; /* Remove default padding */
         }
         article h3 {
-            margin-top: 20px;
-            color: black;
+            margin-top: 20px; /* Add margin above the heading */
+            color: black; /* Set color for h3 elements */
         }
         article h3:before {
-            content: "•";
+            content: "•"; /* Add bullet point before heading */
             display: inline-block;
-            margin-right: 5px;
-            color: black;
+            margin-right: 5px; /* Add spacing between bullet point and text */
+            color: black; /* Set color for bullet point */
+        }
+        article h3 + ul {
+            margin-top: 0; /* Remove margin between heading and list */
         }
         article li {
-            margin-left: 20px;
-            color: black;
+            margin-left: 20px; /* Add margin to align with heading */
+            color: black; /* Set color for list items */
         }
         article p {
-            color: black;
+            color: black; /* Set color for paragraphs */
         }
+        
         footer {
-            background-color: black;
-            color: white;
-            width: 100%;
-            padding: 5px 0;
-            text-align: center;
-            box-sizing: border-box;
-            font-size: 12px;
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white */
+            width: 100%; /* Make the footer full width */
+            padding: 5px 0; /* Reduce padding to prevent cropping */
+            bottom: 0; /* Align the footer to the bottom */
+            left: 0; /* Ensure the footer starts from the left edge */
+            text-align: center; /* Center the text in the footer */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+            line-height: 1.2; /* Reduce line height to save space */
+            font-size: 12px; /* Reduce font size slightly to prevent cropping */
         }
+
         footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 8px;
+            color: white; /* Set the link color to white */
+            text-decoration: none; /* Remove underline from links */
+            margin: 0 8px; /* Reduce spacing between the links */
+            font-size: 12px; /* Ensure link font size matches the footer text */
         }
+
         footer a:hover {
-            text-decoration: underline;
+            text-decoration: underline; /* Add underline on hover */
         }
+
+        /* Responsive Styles */
         @media only screen and (max-width: 768px) {
             header {
-                max-width: 100%;
+                margin: 0 auto; /* Adjust margin for smaller screens */
+                max-width: 100%; /* Adjust max-width for smaller screens */
             }
             nav ul li {
-                margin-right: 4px;
+                margin-right: 4px; /* Further reduce margin between navigation links */
             }
             nav ul li a {
-                font-size: 10px;
-                padding: 2px 4px;
+                font-size: 10px; /* Further reduce font size for navigation links */
+                padding: 2px 4px; /* Further adjust padding */
             }
             article {
-                margin: 0 5%;
+                margin-left: 5%; /* Adjust margin-left for smaller screens */
+                margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
         }
     </style>
+
+    <!-- JavaScript to remove .html extension from URLs -->
+    <script>
+        if (window.location.pathname.endsWith(".html")) {
+            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
+        }
+    </script>
+
 </head>
 <body>
     <header>
@@ -123,34 +165,36 @@
     </header>
     
     <section>
-        <article>
-            <img src="reetendra_photo2.webp" alt="Reetendra Singh Photo" style="width: 100%; max-width: 400px; height: auto; margin-top: 4px;">
-            <p>Reetendra Singh, PhD</p>
-        </article>
-    </section>
+    <article>
+        <img src="reetendra_photo2.webp" alt="Reetendra Singh Photo" style="width: 100%; max-width: 400px; height: auto; margin-top: calc(0.0 cm + 4px);"> <!-- Reduced by 0.5 inch -->
+        <p>Reetendra Singh, PhD</p>
+    </article>
+</section>
 
-    <section>
-        <article>
-            <h2>Academic Profile</h2>
-            <ul>
-                <li>
-                    <h3>PhD (chemical science): 2020-2023</h3> 
-                    <p>Supervisor - Prof. C. N. R. Rao (FRS)</p>
-                    <p>New Chemistry Unit (NCU) & International Center for materials Science (ICMS), Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR)</p> 
-                    <p>Bengaluru, Karnataka, India.</p> 
-                </li>
-                <li>
-                    <h3>MS (chemical science): 2017-2020</h3> 
-                    <p>Supervisor - Prof. C. N. R. Rao (FRS)</p>
-                    <p>NCU & ICMS, JNCASR, Bengaluru, Karnataka, India.</p> 
-                </li>
-                <li>
-                    <h3>BSc (chemistry): 2014-2017</h3> 
-                    <p>Institute of Science, Banaras Hindu University (BHU), Varanasi, India.</p> 
-                </li>
-            </ul>
-        </article>
-    </section>
+ <section>
+     <article>
+    <h2>Academic Profile</h2>
+    <ul>
+        <li>
+            <h3>PhD (chemical science): 2020-2023</h3> 
+            <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
+            <p> New Chemistry Unit (NCU) & International Center for materials Science (ICMS), Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR)</p> 
+            <p>Bengaluru, Karnataka, India.</p> 
+        </li>
+        
+        <li>
+            <h3>MS (chemical science): 2017-2020</h3> 
+            <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
+            <p> NCU & ICMS, JNCASR, Bengaluru, Karnataka, India.</p> 
+        </li>
+        
+        <li>
+            <h3>BSc (chemistry): 2014-2017</h3> 
+            <p> Institute of Science, Banaras Hindu University (BHU), Varanasi, India.</p> 
+        </li>
+    </ul>
+   </article>
+</section>
 
     <footer>
         <p>Connect with me on:</p>

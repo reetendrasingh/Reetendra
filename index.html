@@ -53,13 +53,6 @@
             background-color: #333; /* Change background color on hover */
             color: #fff; /* Keep text color on hover */
         }
-        footer {
-            margin-top: 20px;
-            text-align: left; /* Align footer text to the left corner */
-            max-width: 800px; /* Limit the maximum width */
-            margin-left: 20px;
-            margin-right: auto;
-        }
         
         article {
             max-width: 800px;
@@ -87,7 +80,7 @@
             margin-left: 20px; /* Add margin to align with heading */
         }
 
-       .Academic {
+        .Academic {
             width: 45%;
             position: absolute;
             top: calc(50px + 6cm);
@@ -106,6 +99,28 @@
             line-height: 1; /* Adjust line height */
         }
 
+        footer {
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white */
+            width: 100%; /* Make the footer full width */
+            padding: 10px 0; /* Add padding to the footer */
+            position: fixed; /* Fix the footer to the bottom of the page */
+            bottom: 0; /* Align the footer to the bottom */
+            left: 0; /* Ensure the footer starts from the left edge */
+            text-align: center; /* Center the text in the footer */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+        }
+
+        footer a {
+            color: white; /* Set the link color to white */
+            text-decoration: none; /* Remove underline from links */
+            margin: 0 10px; /* Add some spacing between the links */
+        }
+
+        footer a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
             header {
@@ -118,11 +133,6 @@
             nav ul li a {
                 font-size: 10px; /* Further reduce font size for navigation links */
                 padding: 2px 4px; /* Further adjust padding */
-            }
-            footer {
-                margin-top: 10px; /* Adjust margin for smaller screens */
-                max-width: 90%; /* Adjust max-width for smaller screens */
-                margin-left: 10px; /* Adjust margin-left for smaller screens */
             }
             article {
                 margin-left: 5%; /* Adjust margin-left for smaller screens */
@@ -140,7 +150,7 @@
         }
     </style>
 
- <!-- JavaScript to remove .html extension from URLs -->
+    <!-- JavaScript to remove .html extension from URLs -->
     <script>
         if (window.location.pathname.endsWith(".html")) {
             window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
@@ -168,7 +178,6 @@
         <article>
             <img src="reetendra_photo2.webp" alt="Reetendra Singh Photo" style="width: 100%; max-width: 400px; height: auto; margin-top: calc(2cm + 4px);">
             <p>Reetendra Singh, PhD</p>
-       
         </article>
     </section>
     

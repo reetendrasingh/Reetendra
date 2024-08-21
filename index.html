@@ -5,148 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reetendra Singh</title>
     <style>
-        /* Import Roboto Slab from Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
 
-        /* Add your CSS styles here */
         body {
-            font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
+            font-family: 'Roboto Slab', serif;
             margin: 0;
             padding: 0;
-            text-align: center; /* Center align all text */
-            background-color: #f9f9f9; /* Set background color to very light gray */
+            text-align: center;
+            background-color: #f9f9f9;
         }
         header {
-            background-color: black; /* Set background color of the header to black */
-            padding: 20px 0; /* Add padding to the header */
-            width: 100%; /* Make header full width */
-            box-sizing: border-box; /* Ensure padding doesn't affect width */
-            margin-bottom: 20px; /* Add space below the header */
+            background-color: black;
+            padding: 20px 0;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
         }
         h1, h2 {
-    margin: 0;
-    color: white; /* Default color for h1 and h2 */
-}
-
-article h2 {
-    color: black; /* Override color for h2 within article */
-}
-
-article h3 {
-    margin-top: 20px; /* Add margin above the heading */
-    color: black; /* Set color for h3 elements */
-}
-
-        h2.AcademicTitle {
-            color: black; /* Override color for specific h2 element */
+            margin: 0;
+            color: white;
         }
         nav ul {
-            list-style-type: none; /* Remove bullet points */
+            list-style-type: none;
             padding: 0;
-            margin: 20px 0 0 0; /* Remove margin at the top of the list */
+            margin: 20px 0 0;
             display: flex;
-            justify-content: center; /* Align links horizontally */
+            justify-content: center;
         }
         nav ul li {
-            margin-right: 8px; /* Adjust margin between navigation links */
+            margin-right: 8px;
         }
         nav ul li a {
-            font-size: 13px; /* Adjust font size for navigation links */
-            text-decoration: none; /* Remove underline */
-            padding: 5px 10px; /* Adjust padding */
-            border-radius: 5px; /* Add border radius */
-            color: white; /* Set text color */
-            background-color: transparent; /* Keep background transparent */
-            transition: all 0.3s ease; /* Add transition effect */
+            font-size: 13px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            transition: all 0.3s ease;
         }
         nav ul li a:hover {
-            background-color: #333; /* Change background color on hover */
-            color: #fff; /* Keep text color on hover */
+            background-color: #333;
         }
-        
         article {
             max-width: 800px;
-            margin: 0 auto;
-            text-align: left; /* Align text in article to the left */
-            margin-left: 5%; /* Shift to the left */
-            margin-right: 5%; /* Shift to the right */
+            margin: 0 auto 20px;
+            text-align: left;
         }
         article ul {
-            list-style-type: none; /* Remove default list style */
-            padding-left: 0; /* Remove default padding */
+            list-style-type: none;
+            padding-left: 0;
         }
         article h3 {
-            margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Set color for h3 elements */
+            margin-top: 20px;
+            color: black;
         }
         article h3:before {
-            content: "•"; /* Add bullet point before heading */
+            content: "•";
             display: inline-block;
-            margin-right: 5px; /* Add spacing between bullet point and text */
-            color: black; /* Set color for bullet point */
-        }
-        article h3 + ul {
-            margin-top: 0; /* Remove margin between heading and list */
+            margin-right: 5px;
+            color: black;
         }
         article li {
-            margin-left: 20px; /* Add margin to align with heading */
-            color: black; /* Set color for list items */
+            margin-left: 20px;
+            color: black;
         }
         article p {
-            color: black; /* Set color for paragraphs */
+            color: black;
         }
-        
         footer {
-            background-color: black; /* Set the background color to black */
-            color: white; /* Set the text color to white */
-            width: 100%; /* Make the footer full width */
-            padding: 5px 0; /* Reduce padding to prevent cropping */
-            bottom: 0; /* Align the footer to the bottom */
-            left: 0; /* Ensure the footer starts from the left edge */
-            text-align: center; /* Center the text in the footer */
-            box-sizing: border-box; /* Ensure padding doesn't affect width */
-            line-height: 1.2; /* Reduce line height to save space */
-            font-size: 12px; /* Reduce font size slightly to prevent cropping */
+            background-color: black;
+            color: white;
+            width: 100%;
+            padding: 5px 0;
+            text-align: center;
+            box-sizing: border-box;
+            font-size: 12px;
         }
-
         footer a {
-            color: white; /* Set the link color to white */
-            text-decoration: none; /* Remove underline from links */
-            margin: 0 8px; /* Reduce spacing between the links */
-            font-size: 12px; /* Ensure link font size matches the footer text */
+            color: white;
+            text-decoration: none;
+            margin: 0 8px;
         }
-
         footer a:hover {
-            text-decoration: underline; /* Add underline on hover */
+            text-decoration: underline;
         }
-
-        /* Responsive Styles */
         @media only screen and (max-width: 768px) {
             header {
-                margin: 0 auto; /* Adjust margin for smaller screens */
-                max-width: 100%; /* Adjust max-width for smaller screens */
+                max-width: 100%;
             }
             nav ul li {
-                margin-right: 4px; /* Further reduce margin between navigation links */
+                margin-right: 4px;
             }
             nav ul li a {
-                font-size: 10px; /* Further reduce font size for navigation links */
-                padding: 2px 4px; /* Further adjust padding */
+                font-size: 10px;
+                padding: 2px 4px;
             }
             article {
-                margin-left: 5%; /* Adjust margin-left for smaller screens */
-                margin-right: 5%; /* Adjust margin-right for smaller screens */
+                margin: 0 5%;
             }
         }
     </style>
-
-    <!-- JavaScript to remove .html extension from URLs -->
-    <script>
-        if (window.location.pathname.endsWith(".html")) {
-            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
-        }
-    </script>
-
 </head>
 <body>
     <header>
@@ -165,36 +123,34 @@ article h3 {
     </header>
     
     <section>
-    <article>
-        <img src="reetendra_photo2.webp" alt="Reetendra Singh Photo" style="width: 100%; max-width: 400px; height: auto; margin-top: calc(0.0 cm + 4px);"> <!-- Reduced by 0.5 inch -->
-        <p>Reetendra Singh, PhD</p>
-    </article>
-</section>
+        <article>
+            <img src="reetendra_photo2.webp" alt="Reetendra Singh Photo" style="width: 100%; max-width: 400px; height: auto; margin-top: 4px;">
+            <p>Reetendra Singh, PhD</p>
+        </article>
+    </section>
 
- <section>
-     <article>
-    <h2>Academic Profile</h2>
-    <ul>
-        <li>
-            <h3>PhD (chemical science): 2020-2023</h3> 
-            <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
-            <p> New Chemistry Unit (NCU) & International Center for materials Science (ICMS), Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR)</p> 
-            <p>Bengaluru, Karnataka, India.</p> 
-        </li>
-        
-        <li>
-            <h3>MS (chemical science): 2017-2020</h3> 
-            <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
-            <p> NCU & ICMS, JNCASR, Bengaluru, Karnataka, India.</p> 
-        </li>
-        
-        <li>
-            <h3>BSc (chemistry): 2014-2017</h3> 
-            <p> Institute of Science, Banaras Hindu University (BHU), Varanasi, India.</p> 
-        </li>
-    </ul>
-   </article>
-</section>
+    <section>
+        <article>
+            <h2>Academic Profile</h2>
+            <ul>
+                <li>
+                    <h3>PhD (chemical science): 2020-2023</h3> 
+                    <p>Supervisor - Prof. C. N. R. Rao (FRS)</p>
+                    <p>New Chemistry Unit (NCU) & International Center for materials Science (ICMS), Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR)</p> 
+                    <p>Bengaluru, Karnataka, India.</p> 
+                </li>
+                <li>
+                    <h3>MS (chemical science): 2017-2020</h3> 
+                    <p>Supervisor - Prof. C. N. R. Rao (FRS)</p>
+                    <p>NCU & ICMS, JNCASR, Bengaluru, Karnataka, India.</p> 
+                </li>
+                <li>
+                    <h3>BSc (chemistry): 2014-2017</h3> 
+                    <p>Institute of Science, Banaras Hindu University (BHU), Varanasi, India.</p> 
+                </li>
+            </ul>
+        </article>
+    </section>
 
     <footer>
         <p>Connect with me on:</p>

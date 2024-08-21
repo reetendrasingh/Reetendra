@@ -138,6 +138,13 @@
                 margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
         }
+
+        /* Image responsiveness */
+        img.responsive {
+            width: 100%; /* Image will take up the full width of its container */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 1300px; /* Set a max width for larger screens */
+        }
     </style>
 
     <!-- JavaScript to remove .html extension from URLs -->
@@ -166,7 +173,7 @@
     
     <section>
     <article>
-        <img src="reetendra_singh.jpg" alt="Reetendra Singh Photo" style="width: 1300px; height: 400px;">
+        <img src="reetendra_singh.jpg" alt="Reetendra Singh Photo" class="responsive">
         <p>Reetendra Singh, PhD</p>
     </article>
 </section>

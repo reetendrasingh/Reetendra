@@ -5,214 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reetendra Singh</title>
     <style>
-        /* Add your CSS styles here */
+        /* Import Roboto Slab from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto Slab', serif;
             margin: 0;
             padding: 0;
-            text-align: center; /* Center align all text */
+            text-align: center;
+            background-color: #f9f9f9;
         }
+
         header {
-            margin: 20px auto; /* Center the header */
-            max-width: 800px; /* Limit the maximum width */
+            background-color: black;
+            padding: 20px 0;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
         }
-        nav ul {
-            list-style-type: none; /* Remove bullet points */
-            padding: 0;
-            display: flex;
-            justify-content: center; /* Align links horizontally */
+
+        h1, h2 {
+            margin: 0;
+            color: white;
         }
-        nav ul li {
-            margin-right: 8px; /* Adjust margin between navigation links */
+
+        article h2 {
+            color: black;
         }
-        nav ul li a {
-            font-size: 13px; /* Adjust font size for navigation links */
-            text-decoration: none; /* Remove underline */
-            padding: 2px 6px; /* Adjust padding */
-            border: 1px solid transparent; /* Add border */
-            border-radius: 5px; /* Add border radius */
-            color: #333; /* Set text color */
-            background-color: #fff; /* Set background color */
-            transition: all 0.3s ease; /* Add transition effect */
-        }
-        nav ul li a:hover {
-            background-color: #333; /* Change background color on hover */
-            color: #fff; /* Change text color on hover */
-        }
-        footer {
-            margin-top: 20px;
-            text-align: left; /* Align footer text to the left corner */
-            max-width: 800px; /* Limit the maximum width */
-            margin-left: 20px;
-            margin-right: auto;
-        }
-        
-        article {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: left; /* Align text in article to the left */
-            margin-left: 5%; /* Shift to the left */
-            margin-right: 5%; /* Shift to the right */
-            position: relative;
-        }
-        article ul {
-            list-style-type: none; /* Remove default list style */
-            padding-left: 0; /* Remove default padding */
-        }
+
         article h3 {
-            margin-top: 20px; /* Add margin above the heading */
-        }
-        article h3:before {
-            content: "•"; /* Add bullet point before heading */
-            display: inline-block;
-            margin-right: 5px; /* Add spacing between bullet point and text */
-        }
-        article h3 + ul {
-            margin-top: 0; /* Remove margin between heading and list */
-        }
-        article li {
-            margin-left: 20px; /* Add margin to align with heading */
+            margin-top: 20px;
+            color: black;
         }
 
-       .Academic {
-    width: 45%;
-    position: absolute;
-    top: calc(50px + 6cm);
-    right: 5%;
-    text-align: left;
-    line-height: 1.2; /* Adjust line height */
-    }
+        h2.AcademicTitle {
+            color: black;
+        }
 
-      .Academic h2 {
-       margin-top: 10px;
-       }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+            display: flex;
+            justify-content: center;
+        }
 
-      /* Add this rule to adjust line height of paragraphs */
-         .Academic p {
-         line-height: 1; /* Adjust line height */
-       }
+        nav ul li {
+            margin-right: 8px;
+        }
 
+        nav ul li a {
+            font-size: 13px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
 
-        hr {
-            margin-top: 20px; /* Adjust top margin */
+        nav ul li a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 0 5%;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            width: 100%;
+            padding: 5px 0;
+            text-align: center;
+            box-sizing: border-box;
+            font-size: 12px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 12px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        nav.secondary-nav ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        nav.secondary-nav ul li {
+            margin: 0 15px;
+        }
+
+        nav.secondary-nav ul li a {
+            font-size: 18px;
+            color: black;
+            text-decoration: none;
+        }
+
+        nav.secondary-nav ul li a:hover {
+            text-decoration: underline;
         }
 
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
-            header {
-                margin: 10px auto; /* Adjust margin for smaller screens */
-                max-width: 90%; /* Adjust max-width for smaller screens */
-            }
             nav ul li {
-                margin-right: 4px; /* Further reduce margin between navigation links */
+                margin-right: 4px;
             }
             nav ul li a {
-                font-size: 10px; /* Further reduce font size for navigation links */
-                padding: 2px 4px; /* Further adjust padding */
-            }
-            footer {
-                margin-top: 10px; /* Adjust margin for smaller screens */
-                max-width: 90%; /* Adjust max-width for smaller screens */
-                margin-left: 10px; /* Adjust margin-left for smaller screens */
+                font-size: 10px;
+                padding: 2px 4px;
             }
             article {
-                margin-left: 5%; /* Adjust margin-left for smaller screens */
-                margin-right: 5%; /* Adjust margin-right for smaller screens */
-            }
-            
-            .Academic {
-                width: 90%; /* Adjust width for smaller screens */
-                float: none; /* Remove float for smaller screens */
-                position: relative; /* Change position to relative for smaller screens */
-                top: 0; /* Reset top position */
-                right: 0px; /* Reset right position */
-                margin-top: 20px; /* Adjust margin-top for smaller screens */
-            }
-
-            /* Adjust image dimensions for smaller screens */
-            img {
-                max-width: 100%;
-                height: auto;
+                padding: 0 5%;
             }
         }
 
-        /* Adjust image dimensions for larger screens */
-        @media only screen and (min-width: 769px) {
-            img {
-                max-width: 80%; /* Adjust the maximum width for larger screens */
-                height: auto;
-            }
-        }
-
-        /* Full screen view for images */
-        .fullscreen-image {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Image responsiveness */
+        img.responsive {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
+            height: auto;
+            max-width: 1300px;
         }
-        .fullscreen-image img {
-            max-width: 90%;
-            max-height: 90%;
-            cursor: pointer;
-            position: relative;
-        }
-        .fullscreen-controls {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            z-index: 10000;
-        }
-        .next-previous {
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-            position: relative;
-        }
-        .previous {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .close-fullscreen {
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .photo-description {
-            color: #fff;
-            font-size: 18px;
-            position: absolute;
-            bottom: 60px; /* Adjust this value to move the description up or down */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10000;
-        }
-        
-        nav ul li a[href="/photo/"],
-        nav ul li a[href="/awards/"] {
-            font-size: 18px; /* Increase font size for specific navigation links */
-        }
-        
     </style>
-    
-     <!-- JavaScript to remove .html extension from URLs -->
+
+    <!-- JavaScript to remove .html extension from URLs -->
     <script>
         if (window.location.pathname.endsWith(".html")) {
             window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
         }
     </script>
-    
+
 </head>
 <body>
     <header>
@@ -229,30 +163,28 @@
             </ul>
         </nav>
     </header>
-    <hr> <!-- Horizontal line -->
+      
     <section>
-        <article>
-        <nav>
+        <nav class="secondary-nav">
             <ul>
-                  <h2><li><a href="/photo/">Photos</a></li></h2>
-                  <h2><li><a href="/awards/">Awards</a></li></h2>
-               
+                <li><a href="/photo/">Photos</a></li>
+                <li><a href="/awards/">Awards</a></li>
+                <li><a href="/fun/">Fun</a></li>
             </ul>
         </nav>
-            <p> JNCASR Annual “In-House Symposium”, Bangalore, India (Best Poster Presentation-2020) <strong>2022</strong></p>
-            <p> Research Conference on “Chemistry of Materials” JNCASR, India (Best Poster Presentation) <strong>2022</strong></p>
-            <p> Int. Workshop on Advanced Materials (IWAM), Ras Al Khamiah, UAE (Oral Presentation) <strong>2020</strong></p>
-            <p> Smt. And Sri Bapu Narayanaswamy Prize for the <strong>best MS Thesis</strong> in Chemical and Materials Science <strong>2020</strong></p>
-            <p> IIT-Bombay & JNCASR conference ”Chemical Frontiers”, Goa, India (Best Oral Presentation) <strong>2019</strong></p>
-            <p> JNCASR-Sheikh Saqr Laboratory Winter School, Bangalore, India (Best Oral Presentation) <strong>2019</strong></p>
-            <p> Qualified Joint Admission test for Masters (JAM) for MSc., <strong>(All India 110th rank)</strong> organized by Indian Institutes of Technology (IIT) <strong>2017</strong></p>
-            <p> Qualified Undergraduate Entrance Test (UET) for BSc., <strong>(All India 210th rank, Index-220)</strong> organized by Banaras Hindu University <strong>2014</strong></p>
-            
+        
+          <article>
+              <h2>Coming Soon.......</h2>
         </article>
+        
     </section>
 
     <footer>
-        <p>&copy; 2024 Reetendra Singh</p>
+        <p>Connect with me on:</p>
+        <a href="https://www.linkedin.com/in/reetendra-singh/">LinkedIn</a> |
+        <a href="https://scholar.google.com/citations?user=q8dYwRAAAAAJ&hl=en">Google Scholar</a> |
+        <a href="https://github.com/reetendra-singh">GitHub</a>
+        <p>&copy; 2024 Reetendra Singh. All Rights Reserved.</p>
     </footer>
 </body>
 </html>

@@ -83,7 +83,7 @@
         .Academic {
             width: 45%;
             position: absolute;
-            top: calc(50px + 6cm);
+            top: calc(50px + 7cm); /* Adjusted by 1.5 inches (3.8 cm) */
             right: 5%;
             text-align: left;
             line-height: 1.2; /* Adjust line height */
@@ -100,29 +100,29 @@
         }
 
         footer {
-        background-color: black; /* Set the background color to black */
-        color: white; /* Set the text color to white */
-        width: 100%; /* Make the footer full width */
-        padding: 5px 0; /* Reduce padding to prevent cropping */
-        position: fixed; /* Fix the footer to the bottom of the page */
-        bottom: 0; /* Align the footer to the bottom */
-        left: 0; /* Ensure the footer starts from the left edge */
-        text-align: center; /* Center the text in the footer */
-        box-sizing: border-box; /* Ensure padding doesn't affect width */
-        line-height: 1.2; /* Reduce line height to save space */
-        font-size: 12px; /* Reduce font size slightly to prevent cropping */
-    }
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white */
+            width: 100%; /* Make the footer full width */
+            padding: 5px 0; /* Reduce padding to prevent cropping */
+            position: relative; /* Changed position to relative for mobile view */
+            bottom: 0; /* Align the footer to the bottom */
+            left: 0; /* Ensure the footer starts from the left edge */
+            text-align: center; /* Center the text in the footer */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+            line-height: 1.2; /* Reduce line height to save space */
+            font-size: 12px; /* Reduce font size slightly to prevent cropping */
+        }
 
-    footer a {
-        color: white; /* Set the link color to white */
-        text-decoration: none; /* Remove underline from links */
-        margin: 0 8px; /* Reduce spacing between the links */
-        font-size: 12px; /* Ensure link font size matches the footer text */
-    }
+        footer a {
+            color: white; /* Set the link color to white */
+            text-decoration: none; /* Remove underline from links */
+            margin: 0 8px; /* Reduce spacing between the links */
+            font-size: 12px; /* Ensure link font size matches the footer text */
+        }
 
-    footer a:hover {
-        text-decoration: underline; /* Add underline on hover */
-    }
+        footer a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
 
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
@@ -149,6 +149,12 @@
                 top: 0; /* Reset top position */
                 right: 0px; /* Reset right position */
                 margin-top: 20px; /* Adjust margin-top for smaller screens */
+            }
+
+            footer {
+                position: relative; /* Ensure footer is not fixed on mobile */
+                padding: 10px 0; /* Adjust padding for mobile */
+                font-size: 14px; /* Increase font size for better readability on mobile */
             }
         }
     </style>
@@ -184,7 +190,7 @@
     </article>
 </section>
 
-<div class="Academic" style="top: calc(50px + 3.4cm);"> <!-- Reduced by 0.5 inch -->
+<div class="Academic" style="top: calc(50px + 7cm);"> <!-- Adjusted by 1.5 inches (3.8 cm) -->
     <h2>Academic Profile</h2>
     <ul>
         <li>
@@ -208,7 +214,7 @@
             <p>Varanasi, India.</p> 
         </li>
     </ul>
-    </div>
+</div>
 
     <footer>
         <p>Connect with me on:</p>

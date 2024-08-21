@@ -67,43 +67,48 @@
         }
         article h3 {
             margin-top: 20px; /* Add margin above the heading */
+            color: black; /* Set color for h3 elements */
         }
         article h3:before {
             content: "•"; /* Add bullet point before heading */
             display: inline-block;
             margin-right: 5px; /* Add spacing between bullet point and text */
+            color: black; /* Set color for bullet point */
         }
         article h3 + ul {
             margin-top: 0; /* Remove margin between heading and list */
         }
         article li {
             margin-left: 20px; /* Add margin to align with heading */
+            color: black; /* Set color for list items */
         }
-
+        article p {
+            color: black; /* Set color for paragraphs */
+        }
         
         footer {
-        background-color: black; /* Set the background color to black */
-        color: white; /* Set the text color to white */
-        width: 100%; /* Make the footer full width */
-        padding: 5px 0; /* Reduce padding to prevent cropping */
-        bottom: 0; /* Align the footer to the bottom */
-        left: 0; /* Ensure the footer starts from the left edge */
-        text-align: center; /* Center the text in the footer */
-        box-sizing: border-box; /* Ensure padding doesn't affect width */
-        line-height: 1.2; /* Reduce line height to save space */
-        font-size: 12px; /* Reduce font size slightly to prevent cropping */
-    }
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white */
+            width: 100%; /* Make the footer full width */
+            padding: 5px 0; /* Reduce padding to prevent cropping */
+            bottom: 0; /* Align the footer to the bottom */
+            left: 0; /* Ensure the footer starts from the left edge */
+            text-align: center; /* Center the text in the footer */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+            line-height: 1.2; /* Reduce line height to save space */
+            font-size: 12px; /* Reduce font size slightly to prevent cropping */
+        }
 
-    footer a {
-        color: white; /* Set the link color to white */
-        text-decoration: none; /* Remove underline from links */
-        margin: 0 8px; /* Reduce spacing between the links */
-        font-size: 12px; /* Ensure link font size matches the footer text */
-    }
+        footer a {
+            color: white; /* Set the link color to white */
+            text-decoration: none; /* Remove underline from links */
+            margin: 0 8px; /* Reduce spacing between the links */
+            font-size: 12px; /* Ensure link font size matches the footer text */
+        }
 
-    footer a:hover {
-        text-decoration: underline; /* Add underline on hover */
-    }
+        footer a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
 
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
@@ -122,8 +127,6 @@
                 margin-left: 5%; /* Adjust margin-left for smaller screens */
                 margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
-            
-        
         }
     </style>
 

@@ -5,20 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reetendra Singh</title>
     <style>
+        /* Import Roboto Slab from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
+
         /* Add your CSS styles here */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
             margin: 0;
             padding: 0;
             text-align: center; /* Center align all text */
+            background-color: #f9f9f9; /* Set background color to very light gray */
         }
         header {
-            margin: 20px auto; /* Center the header */
-            max-width: 800px; /* Limit the maximum width */
+            background-color: black; /* Set background color of the header to black */
+            padding: 20px 0; /* Add padding to the header */
+            width: 100%; /* Make header full width */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+            margin-bottom: 20px; /* Add space below the header */
+        }
+        h1, h2 {
+            margin: 0;
+            color: white; /* Default color for h1 and h2 */
+        }
+
+        article h2 {
+            color: black; /* Override color for h2 within article */
+        }
+
+        article h3 {
+            margin-top: 20px; /* Add margin above the heading */
+            color: black; /* Set color for h3 elements */
+        }
+
+        h2.AcademicTitle {
+            color: black; /* Override color for specific h2 element */
         }
         nav ul {
             list-style-type: none; /* Remove bullet points */
             padding: 0;
+            margin: 20px 0 0 0; /* Remove margin at the top of the list */
             display: flex;
             justify-content: center; /* Align links horizontally */
         }
@@ -28,23 +53,15 @@
         nav ul li a {
             font-size: 13px; /* Adjust font size for navigation links */
             text-decoration: none; /* Remove underline */
-            padding: 2px 6px; /* Adjust padding */
-            border: 1px solid transparent; /* Add border */
+            padding: 5px 10px; /* Adjust padding */
             border-radius: 5px; /* Add border radius */
-            color: #333; /* Set text color */
-            background-color: #fff; /* Set background color */
+            color: white; /* Set text color */
+            background-color: transparent; /* Keep background transparent */
             transition: all 0.3s ease; /* Add transition effect */
         }
         nav ul li a:hover {
             background-color: #333; /* Change background color on hover */
-            color: #fff; /* Change text color on hover */
-        }
-        footer {
-            margin-top: 20px;
-            text-align: left; /* Align footer text to the left corner */
-            max-width: 800px; /* Limit the maximum width */
-            margin-left: 20px;
-            margin-right: auto;
+            color: #fff; /* Keep text color on hover */
         }
         
         article {
@@ -60,47 +77,54 @@
         }
         article h3 {
             margin-top: 20px; /* Add margin above the heading */
+            color: black; /* Set color for h3 elements */
         }
         article h3:before {
             content: "•"; /* Add bullet point before heading */
             display: inline-block;
             margin-right: 5px; /* Add spacing between bullet point and text */
+            color: black; /* Set color for bullet point */
         }
         article h3 + ul {
             margin-top: 0; /* Remove margin between heading and list */
         }
         article li {
             margin-left: 20px; /* Add margin to align with heading */
+            color: black; /* Set color for list items */
+        }
+        article p {
+            color: black; /* Set color for paragraphs */
+        }
+        
+        footer {
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white */
+            width: 100%; /* Make the footer full width */
+            padding: 5px 0; /* Reduce padding to prevent cropping */
+            bottom: 0; /* Align the footer to the bottom */
+            left: 0; /* Ensure the footer starts from the left edge */
+            text-align: center; /* Center the text in the footer */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+            line-height: 1.2; /* Reduce line height to save space */
+            font-size: 12px; /* Reduce font size slightly to prevent cropping */
         }
 
-       .Academic {
-    width: 45%;
-    position: absolute;
-    top: calc(50px + 6cm);
-    right: 5%;
-    text-align: left;
-    line-height: 1.2; /* Adjust line height */
-    }
+        footer a {
+            color: white; /* Set the link color to white */
+            text-decoration: none; /* Remove underline from links */
+            margin: 0 8px; /* Reduce spacing between the links */
+            font-size: 12px; /* Ensure link font size matches the footer text */
+        }
 
-      .Academic h2 {
-       margin-top: 10px;
-       }
-
-      /* Add this rule to adjust line height of paragraphs */
-         .Academic p {
-         line-height: 1; /* Adjust line height */
-       }
-
-
-        hr {
-            margin-top: 20px; /* Adjust top margin */
+        footer a:hover {
+            text-decoration: underline; /* Add underline on hover */
         }
 
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
             header {
-                margin: 10px auto; /* Adjust margin for smaller screens */
-                max-width: 90%; /* Adjust max-width for smaller screens */
+                margin: 0 auto; /* Adjust margin for smaller screens */
+                max-width: 100%; /* Adjust max-width for smaller screens */
             }
             nav ul li {
                 margin-right: 4px; /* Further reduce margin between navigation links */
@@ -109,34 +133,27 @@
                 font-size: 10px; /* Further reduce font size for navigation links */
                 padding: 2px 4px; /* Further adjust padding */
             }
-            footer {
-                margin-top: 10px; /* Adjust margin for smaller screens */
-                max-width: 90%; /* Adjust max-width for smaller screens */
-                margin-left: 10px; /* Adjust margin-left for smaller screens */
-            }
             article {
                 margin-left: 5%; /* Adjust margin-left for smaller screens */
                 margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
-            
-            .Academic {
-                width: 90%; /* Adjust width for smaller screens */
-                float: none; /* Remove float for smaller screens */
-                position: relative; /* Change position to relative for smaller screens */
-                top: 0; /* Reset top position */
-                right: 0px; /* Reset right position */
-                margin-top: 20px; /* Adjust margin-top for smaller screens */
-            }
+        }
+
+        /* Image responsiveness */
+        img.responsive {
+            width: 100%; /* Image will take up the full width of its container */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 1300px; /* Set a max width for larger screens */
         }
     </style>
-    
-     <!-- JavaScript to remove .html extension from URLs -->
+
+    <!-- JavaScript to remove .html extension from URLs -->
     <script>
         if (window.location.pathname.endsWith(".html")) {
             window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
         }
     </script>
-    
+
 </head>
 <body>
     <header>
@@ -153,7 +170,7 @@
             </ul>
         </nav>
     </header>
-    <hr> <!-- Horizontal line -->
+       
        
     <section>
         <article>
@@ -175,8 +192,12 @@
         </article>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Reetendra Singh</p>
+ <footer>
+        <p>Connect with me on:</p>
+        <a href="https://www.linkedin.com/in/reetendra-singh/">LinkedIn</a> |
+        <a href="https://scholar.google.com/citations?user=q8dYwRAAAAAJ&hl=en">Google Scholar</a> |
+        <a href="https://github.com/reetendra-singh">GitHub</a>
+        <p>&copy; 2024 Reetendra Singh. All Rights Reserved.</p>
     </footer>
 </body>
 </html>

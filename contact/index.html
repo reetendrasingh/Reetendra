@@ -145,40 +145,39 @@
             height: auto; /* Maintain aspect ratio */
             max-width: 1300px; /* Set a max width for larger screens */
         }
-    </style>
 
-    <!-- JavaScript to remove .html extension from URLs -->
+        /* Style for form elements */
+        form input[type="text"],
+        form input[type="email"],
+        form textarea {
+            width: 100%; /* Set width to fill container */
+            padding: 10px; /* Add padding */
+            margin: 10px 0; /* Add margin */
+            border: 1px solid #ccc; /* Add border */
+            border-radius: 5px; /* Add border radius */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+        form input[type="submit"] {
+            background-color: #4CAF50; /* Set background color */
+            color: white; /* Set text color */
+            padding: 15px 20px; /* Add padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add border radius */
+            cursor: pointer; /* Add cursor pointer */
+            transition: background-color 0.3s; /* Add transition for smooth hover effect */
+        }
+        form input[type="submit"]:hover {
+            background-color: #45a049; /* Darken background color on hover */
+        }
+    </style>
+    
+     <!-- JavaScript to remove .html extension from URLs -->
     <script>
         if (window.location.pathname.endsWith(".html")) {
             window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
         }
     </script>
     
-         /* Style for form elements */
-         form input[type="text"],
-         form input[type="email"],
-         form textarea {
-             width: 100%; /* Set width to fill container */
-             padding: 10px; /* Add padding */
-             margin: 10px 0; /* Add margin */
-             border: 1px solid #ccc; /* Add border */
-             border-radius: 5px; /* Add border radius */
-             box-sizing: border-box; /* Include padding and border in element's total width and height */
-         }
-         form input[type="submit"] {
-             background-color: #4CAF50; /* Set background color */
-             color: white; /* Set text color */
-             padding: 15px 20px; /* Add padding */
-             border: none; /* Remove border */
-             border-radius: 5px; /* Add border radius */
-             cursor: pointer; /* Add cursor pointer */
-             transition: background-color 0.3s; /* Add transition for smooth hover effect */
-         }
-         form input[type="submit"]:hover {
-             background-color: #45a049; /* Darken background color on hover */
-         }
-    
-
 </head>
 <body>
     <header>
@@ -195,8 +194,6 @@
             </ul>
         </nav>
     </header>
-
-   
     
     <section>
         <article>
@@ -216,7 +213,7 @@
         </article>
     </section>
 
-   <footer>
+    <footer>
         <p>Connect with me on:</p>
         <a href="https://www.linkedin.com/in/reetendra-singh/">LinkedIn</a> |
         <a href="https://scholar.google.com/citations?user=q8dYwRAAAAAJ&hl=en">Google Scholar</a> |

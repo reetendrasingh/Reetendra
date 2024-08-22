@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reetendra Singh</title>
     <style>
-        /* Import Spezia Mono Regular font */
-        @import url('https://fonts.cdnfonts.com/css/spezia-mono-regular');
+        /* Import Roboto Slab from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
 
         body {
-            font-family: 'Spezia Mono Regular', monospace;
+            font-family: 'Roboto Slab', serif;
             margin: 0;
             padding: 0;
             text-align: center;
@@ -22,21 +22,51 @@
             width: 100%;
             box-sizing: border-box;
             margin-bottom: 20px;
+        }
+
+        h1, h2 {
+            margin: 0;
             color: white;
         }
 
-        header h3, header nav ul li a {
-            color: white;
-        }
-
-        header nav ul li a:hover {
-            background-color: #333;
-            color: #fff;
+        article h2 {
+            color: black;
         }
 
         article h3 {
             margin-top: 20px;
+            color: black;
+        }
+
+        h2.AcademicTitle {
+            color: black;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-right: 8px;
+        }
+
+        nav ul li a {
+            font-size: 13px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
             color: white;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            color: #fff;
         }
 
         article {
@@ -120,8 +150,8 @@
 </head>
 <body>
     <header>
-        <h3>REETENDRA SINGH</h3>
-        <h3>Postdoctoral Fellow, Technion - Israel Institute of Technology</h3>
+        <h1>REETENDRA SINGH</h1>
+        <h2>Postdoctoral Fellow, Technion - Israel Institute of Technology</h2>
         <nav>
             <ul>
                 <li><a href="/">HOME</a></li>
@@ -144,7 +174,7 @@
         </nav>
         
           <article>
-              <h3>Coming Soon.......</h3>
+              <h2>Coming Soon.......</h2>
         </article>
         
     </section>

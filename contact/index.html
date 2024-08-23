@@ -145,6 +145,20 @@
             max-width: 1300px; /* Set a max width for larger screens */
         }
 
+        /* Style for contact form container */
+        .contact-form {
+            width: 100%; /* Default width for mobile screens */
+            max-width: 800px; /* Optional: max width for larger screens */
+            margin: 0 auto; /* Center align the form */
+        }
+
+        /* Desktop Styles */
+        @media only screen and (min-width: 769px) {
+            .contact-form {
+                width: 50%; /* Set width to 50% for desktop screens */
+            }
+        }
+        
         /* Style for form elements */
         form input[type="text"],
         form input[type="email"],
@@ -168,23 +182,9 @@
         form input[type="submit"]:hover {
             background-color: #45a049; /* Darken background color on hover */
         }
-        
-        /* Style for contact form container */
-.contact-form {
-    width: 100%; /* Default width for mobile screens */
-    max-width: 800px; /* Optional: max width for larger screens */
-    margin: 0 auto; /* Center align the form */
-}
-
-/* Desktop Styles */
-@media only screen and (min-width: 769px) {
-    .contact-form {
-        width: 50%; /* Set width to 50% for desktop screens */
-    }
-}
     </style>
     
-     <!-- JavaScript to remove .html extension from URLs -->
+    <!-- JavaScript to remove .html extension from URLs -->
     <script>
         if (window.location.pathname.endsWith(".html")) {
             window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
@@ -210,7 +210,6 @@
     
     <section>
         <article>
-          
             <h2>ADDRESS</h2>
             <p>B9, Sagol Center for Composite Materials </p>
             <p>Department of Materials Science and Engineering</p> 
@@ -218,7 +217,7 @@
             
             <h3>GET IN TOUCH</h3>
             <p>You can contact me via Mail Id: reetendra.rajpoot.bhu@gmail.com.</p>
-            <form action="https://formspree.io/f/xzbnrjqq" method="POST">
+            <form class="contact-form" action="https://formspree.io/f/xzbnrjqq" method="POST">
                 <input type="text" name="name" placeholder="Your Name" required><br>
                 <input type="email" name="_replyto" placeholder="Your Email" required><br>
                 <input type="text" name="_subject" placeholder="Subject" required><br>

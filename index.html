@@ -64,7 +64,7 @@
             color: #fff; /* Keep text color on hover */
         }
         
-        aarticle {
+        article {
             width: 95%; /* Make article full width */
             margin: 0 auto;
             text-align: left; /* Align text in article to the left */
@@ -144,6 +144,13 @@
             height: auto; /* Maintain aspect ratio */
             max-width: 1300px; /* Set a max width for larger screens */
         }
+
+        /* Typing effect styles */
+        .typing {
+            border-right: .1em solid black;
+            white-space: nowrap;
+            overflow: hidden;
+        }
     </style>
 
     <!-- JavaScript to remove .html extension from URLs -->
@@ -151,6 +158,42 @@
         if (window.location.pathname.endsWith(".html")) {
             window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
         }
+
+        // Typing effect script
+        document.addEventListener("DOMContentLoaded", function() {
+            const texts = [
+                "PhD (chemical science): 2020-2023 - Supervisor - Prof. C. N. R. Rao (FRS) - New Chemistry Unit (NCU) & International Center for materials Science (ICMS), Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR), Bengaluru, Karnataka, India.",
+                "MS (chemical science): 2017-2020 - Supervisor - Prof. C. N. R. Rao (FRS) - NCU & ICMS, JNCASR, Bengaluru, Karnataka, India.",
+                "BSc (chemistry): 2014-2017 - Institute of Science, Banaras Hindu University (BHU), Varanasi, India."
+            ];
+            let i = 0;
+            let j = 0;
+            let currentText = '';
+            let isDeleting = false;
+
+            function type() {
+                const typingElement = document.getElementById("typing-text");
+                if (i < texts.length) {
+                    if (!isDeleting && j <= texts[i].length) {
+                        currentText = texts[i].slice(0, j++);
+                    } else if (isDeleting && j > 0) {
+                        currentText = texts[i].slice(0, j--);
+                    } else if (isDeleting && j === 0) {
+                        isDeleting = false;
+                        i++;
+                    } else if (j === texts[i].length) {
+                        isDeleting = true;
+                    }
+
+                    typingElement.innerHTML = currentText;
+
+                    const speed = isDeleting ? 30 : 50;
+                    setTimeout(type, speed);
+                }
+            }
+
+            type();
+        });
     </script>
 
 </head>
@@ -171,36 +214,18 @@
     </header>
     
     <section>
-    <article>
-        <img src="reetendra.webp" alt="Reetendra Singh Photo" class="responsive">
-        <p>Dr. Reetendra Singh</p>
-    </article>
-</section>
+        <article>
+            <img src="reetendra.webp" alt="Reetendra Singh Photo" class="responsive">
+            <p>Dr. Reetendra Singh</p>
+        </article>
+    </section>
 
-<section>
-    <article>
-        <h2>Academic Profile</h2>
-        <ul>
-            <li>
-                <h3>PhD (chemical science): 2020-2023</h3> 
-                <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
-                <p> New Chemistry Unit (NCU) & International Center for materials Science (ICMS), Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR)</p> 
-                <p>Bengaluru, Karnataka, India.</p> 
-            </li>
-            
-            <li>
-                <h3>MS (chemical science): 2017-2020</h3> 
-                <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
-                <p> NCU & ICMS, JNCASR, Bengaluru, Karnataka, India.</p> 
-            </li>
-            
-            <li>
-                <h3>BSc (chemistry): 2014-2017</h3> 
-                <p> Institute of Science, Banaras Hindu University (BHU), Varanasi, India.</p> 
-            </li>
-        </ul>
-    </article>
-</section>
+    <section>
+        <article>
+            <h2>Academic Profile</h2>
+            <div id="typing-text" class="typing"></div>
+        </article>
+    </section>
 
     <footer>
         <p>Connect with me on:</p>

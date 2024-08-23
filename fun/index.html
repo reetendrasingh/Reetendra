@@ -22,7 +22,6 @@
             width: 100%;
             box-sizing: border-box;
             margin-bottom: 20px;
-            position: relative;
         }
 
         h1, h2 {
@@ -43,58 +42,31 @@
             color: black;
         }
 
-        /* Hide the navigation menu by default */
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 20px 0 0 0;
-            display: none; /* Hide the navigation menu initially */
-            text-align: left; /* Align text to the left */
-            position: absolute; /* Position absolute to align with the hamburger */
-            left: 20px; /* Positioning the menu links to the left side */
-            background-color: black; /* To match the header background */
+            display: flex;
+            justify-content: center;
         }
 
         nav ul li {
-            margin-bottom: 15px; /* Adds spacing between each link */
+            margin-right: 8px;
         }
 
         nav ul li a {
-            font-size: 18px; /* Increased font size for larger text */
+            font-size: 13px;
             text-decoration: none;
-            padding: 10px 20px; /* Increased padding for a larger clickable area */
+            padding: 5px 10px;
             border-radius: 5px;
             color: white;
             background-color: transparent;
             transition: all 0.3s ease;
-            display: block; /* Ensure links have block behavior */
         }
 
         nav ul li a:hover {
             background-color: #333;
             color: #fff;
-        }
-
-        /* Hamburger icon styles */
-        .hamburger {
-            display: inline-block;
-            cursor: pointer;
-            position: absolute; /* Position absolute to align with nav */
-            left: 20px; /* Align hamburger icon to the left side */
-        }
-
-        .hamburger .bar {
-            width: 30px;
-            height: 4px;
-            background-color: white;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        /* Show menu on hover */
-        .hamburger:hover + nav ul,
-        nav ul:hover {
-            display: block; /* Show the menu on hover */
         }
 
         article {
@@ -149,11 +121,11 @@
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
             nav ul li {
-                margin-bottom: 8px; /* Adjust margin for smaller screens */
+                margin-right: 4px;
             }
             nav ul li a {
-                font-size: 16px; /* Adjusted font size for smaller screens */
-                padding: 8px 16px;
+                font-size: 10px;
+                padding: 2px 4px;
             }
             article {
                 padding: 0 5%;
@@ -180,11 +152,6 @@
     <header>
         <h1>REETENDRA SINGH</h1>
         <h2>Postdoctoral Fellow, Technion - Israel Institute of Technology</h2>
-        <div class="hamburger">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
         <nav>
             <ul>
                 <li><a href="/">HOME</a></li>
@@ -206,9 +173,10 @@
             </ul>
         </nav>
         
-        <article>
-            <h2>Coming Soon.......</h2>
+          <article>
+              <h2>Coming Soon.......</h2>
         </article>
+        
     </section>
 
     <footer>

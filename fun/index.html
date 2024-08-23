@@ -15,6 +15,9 @@
             padding: 0;
             text-align: center; /* Center align all text */
             background-color: #f9f9f9; /* Set background color to very light gray */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: black; /* Set background color of the header to black */
@@ -68,6 +71,7 @@
             width: 95%; /* Make article full width */
             margin: 0 auto;
             text-align: left; /* Align text in article to the left */
+            flex-grow: 1; /* Allow article to grow */
         }
         
         article ul {
@@ -100,12 +104,11 @@
             color: white; /* Set the text color to white */
             width: 100%; /* Make the footer full width */
             padding: 5px 0; /* Reduce padding to prevent cropping */
-            bottom: 0; /* Align the footer to the bottom */
-            left: 0; /* Ensure the footer starts from the left edge */
             text-align: center; /* Center the text in the footer */
             box-sizing: border-box; /* Ensure padding doesn't affect width */
             line-height: 1.2; /* Reduce line height to save space */
             font-size: 12px; /* Reduce font size slightly to prevent cropping */
+            margin-top: auto; /* Push the footer to the bottom if there is not enough content */
         }
 
         footer a {
@@ -215,6 +218,13 @@
             </ul>
         </nav>
     </header>
+    
+    <section>
+        <article>
+            <img src="reetendra.webp" alt="Reetendra Singh Photo" class="responsive">
+            <p>Dr. Reetendra Singh</p>
+        </article>
+    </section>
 
     <section>
         <article>

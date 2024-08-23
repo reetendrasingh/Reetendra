@@ -22,6 +22,7 @@
             width: 100%;
             box-sizing: border-box;
             margin-bottom: 20px;
+            position: relative;
         }
 
         h1, h2 {
@@ -42,13 +43,13 @@
             color: black;
         }
 
-        /* Updated primary navigation for vertical alignment with increased size */
+        /* Hide the navigation menu by default */
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 20px 0 0 0;
-            display: block; /* Changed from flex to block to stack links vertically */
-            text-align: center; /* Center align the links */
+            display: none; /* Hide the navigation menu initially */
+            text-align: center;
         }
 
         nav ul li {
@@ -69,6 +70,26 @@
         nav ul li a:hover {
             background-color: #333;
             color: #fff;
+        }
+
+        /* Hamburger icon styles */
+        .hamburger {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            margin: 5px auto;
+            transition: all 0.3s ease;
+        }
+
+        /* Show menu on hover */
+        .hamburger:hover + nav ul,
+        nav ul:hover {
+            display: block; /* Show the menu on hover */
         }
 
         article {
@@ -154,6 +175,11 @@
     <header>
         <h1>REETENDRA SINGH</h1>
         <h2>Postdoctoral Fellow, Technion - Israel Institute of Technology</h2>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
         <nav>
             <ul>
                 <li><a href="/">HOME</a></li>

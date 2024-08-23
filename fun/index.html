@@ -147,13 +147,6 @@
             height: auto; /* Maintain aspect ratio */
             max-width: 1300px; /* Set a max width for larger screens */
         }
-
-        /* Typing effect styles */
-        .typing {
-            border-right: .1em solid black;
-            white-space: nowrap;
-            overflow: hidden;
-        }
     </style>
 
     <!-- JavaScript to remove .html extension from URLs -->
@@ -181,19 +174,28 @@
 
             let currentTextIndex = 0;
             let currentCharIndex = 0;
-            let currentText = '';
-            let typing = true;
 
             function typeLineByLine() {
                 if (currentTextIndex < texts.length) {
-                    if (typing) {
-                        currentText = texts[currentTextIndex].slice(0, ++currentCharIndex);
+                    const currentText = texts[currentTextIndex];
+                    const partialText = currentText.slice(0, currentCharIndex + 1);
+                    const typingTextElement = document.getElementById("typing-text");
+
+                    if (currentCharIndex === 0) {
+                        // Start a new line
+                        const newLine = document.createElement("div");
+                        newLine.classList.add("typing-line");
+                        newLine.innerHTML = partialText;
+                        typingTextElement.appendChild(newLine);
+                    } else {
+                        // Update current line
+                        typingTextElement.lastChild.innerHTML = partialText;
                     }
 
-                    document.getElementById("typing-text").innerHTML = currentText;
+                    currentCharIndex++;
 
-                    if (currentCharIndex === texts[currentTextIndex].length) {
-                        typing = false;
+                    if (currentCharIndex === currentText.length) {
+                        // Finished typing the current line
                         currentTextIndex++;
                         currentCharIndex = 0;
                         setTimeout(typeLineByLine, 500);  // Pause before typing the next line
@@ -224,7 +226,13 @@
         </nav>
     </header>
     
-    
+    <section>
+        <article>
+            <img src="reetendra.webp" alt="Reetendra Singh Photo" class="responsive">
+            <p>Dr. Reetendra Singh</p>
+        </article>
+    </section>
+
     <section>
         <article>
             <h2>Academic Profile</h2>

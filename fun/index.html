@@ -48,14 +48,16 @@
             margin: 20px 0 0 0;
             display: flex;
             justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
 
         nav ul li {
-            margin-right: 8px;
+            margin: 10px 0;
         }
 
         nav ul li a {
-            font-size: 13px;
+            font-size: 18px;
             text-decoration: none;
             padding: 5px 10px;
             border-radius: 5px;
@@ -67,6 +69,29 @@
         nav ul li a:hover {
             background-color: #333;
             color: #fff;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+        }
+
+        .nav-menu.active {
+            display: flex;
         }
 
         article {
@@ -84,6 +109,7 @@
             text-align: center;
             box-sizing: border-box;
             font-size: 12px;
+            transition: margin-top 0.5s ease;
         }
 
         footer a {
@@ -120,15 +146,34 @@
 
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                display: none; /* Hide the nav links initially */
+                position: absolute;
+                background-color: black;
+                width: 100%;
+                top: 60px; /* Adjust top position according to header height */
+                left: 0;
+                padding: 0;
+                margin: 0;
+            }
+
             nav ul li {
-                margin-right: 4px;
+                margin: 10px 0;
             }
+
             nav ul li a {
-                font-size: 10px;
-                padding: 2px 4px;
+                font-size: 16px;
             }
-            article {
-                padding: 0 5%;
+
+            .nav-menu.active {
+                display: flex;
+                flex-direction: column;
             }
         }
 
@@ -145,6 +190,17 @@
         if (window.location.pathname.endsWith(".html")) {
             window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburger = document.querySelector(".hamburger");
+            const navMenu = document.querySelector(".nav-menu");
+            const footer = document.querySelector("footer");
+
+            hamburger.addEventListener("click", function() {
+                navMenu.classList.toggle("active");
+                footer.style.marginTop = navMenu.classList.contains("active") ? "200px" : "0";
+            });
+        });
     </script>
 
 </head>
@@ -152,8 +208,13 @@
     <header>
         <h1>REETENDRA SINGH</h1>
         <h2>Postdoctoral Fellow, Technion - Israel Institute of Technology</h2>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <nav>
-            <ul>
+            <ul class="nav-menu">
                 <li><a href="/">HOME</a></li>
                 <li><a href="/research/">RESEARCH</a></li>
                 <li><a href="/cvreetendra/">CV</a></li>

@@ -162,40 +162,53 @@
 
     let currentTextIndex = 0;
     let currentCharIndex = 0;
+    let isTypingEffectComplete = false;
+
+    function getRandomCharacter() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        return characters.charAt(Math.floor(Math.random() * characters.length));
+    }
 
     function typeLineByLine() {
         if (currentTextIndex < texts.length) {
             const currentText = texts[currentTextIndex];
-            const partialText = currentText.slice(0, currentCharIndex + 1);
             const typingTextElement = document.getElementById("typing-text");
 
-            if (currentCharIndex === 0) {
+            if (currentCharIndex === 0 && !isTypingEffectComplete) {
                 // Start a new line aligned to the left
                 const newLine = document.createElement("div");
                 newLine.classList.add("typing-line");
                 newLine.style.textAlign = "left"; // Ensure alignment is left
-                newLine.innerHTML = partialText;
                 typingTextElement.appendChild(newLine);
-            } else {
-                // Update current line
-                typingTextElement.lastChild.innerHTML = partialText;
             }
 
-            currentCharIndex++;
+            // Random character effect
+            if (currentCharIndex < currentText.length) {
+                const partialText = currentText.slice(0, currentCharIndex);
+                const randomChar = getRandomCharacter();
+                typingTextElement.lastChild.innerHTML = partialText + randomChar;
 
-            if (currentCharIndex === currentText.length) {
-                // Finished typing the current line
-                currentTextIndex++;
-                currentCharIndex = 0;
-                setTimeout(typeLineByLine, 50);  // Pause before typing the next line
+                setTimeout(typeLineByLine, 50); // Delay between random characters
             } else {
-                setTimeout(typeLineByLine, 10); // Faster typing speed
+                isTypingEffectComplete = true;
+                typingTextElement.lastChild.innerHTML = currentText.slice(0, currentCharIndex);
+                setTimeout(() => {
+                    currentTextIndex++;
+                    currentCharIndex = 0;
+                    isTypingEffectComplete = false;
+                    typeLineByLine();
+                }, 500);  // Pause before typing the next line
+            }
+
+            if (!isTypingEffectComplete) {
+                currentCharIndex++;
             }
         }
     }
 
     typeLineByLine();
 });
+
 
  </script>
 

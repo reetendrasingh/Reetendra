@@ -136,6 +136,9 @@
                 margin-left: 5%; /* Adjust margin-left for smaller screens */
                 margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
+            .contact-form {
+                width: 100%; /* Full width for mobile screens */
+            }
         }
 
         /* Image responsiveness */
@@ -149,7 +152,7 @@
         .contact-form {
             width: 100%; /* Default width for mobile screens */
             max-width: 800px; /* Optional: max width for larger screens */
-            margin: 0 auto; /* Center align the form */
+            margin: 0; /* Remove auto margin for left alignment */
             text-align: left; /* Align form elements to the left */
             padding: 0 20px; /* Add padding for spacing */
         }
@@ -158,9 +161,10 @@
         @media only screen and (min-width: 769px) {
             .contact-form {
                 width: 50%; /* Set width to 50% for desktop screens */
+                margin: 0; /* Remove margin for left alignment */
             }
         }
-        
+
         /* Style for form elements */
         form input[type="text"],
         form input[type="email"],
@@ -219,13 +223,15 @@
             
             <h3>GET IN TOUCH</h3>
             <p>You can contact me via Mail Id: reetendra.rajpoot.bhu@gmail.com.</p>
-            <form class="contact-form" action="https://formspree.io/f/xzbnrjqq" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required><br>
-                <input type="email" name="_replyto" placeholder="Your Email" required><br>
-                <input type="text" name="_subject" placeholder="Subject" required><br>
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br>
-                <input type="submit" value="Send Message">
-            </form>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/xzbnrjqq" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required><br>
+                    <input type="email" name="_replyto" placeholder="Your Email" required><br>
+                    <input type="text" name="_subject" placeholder="Subject" required><br>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br>
+                    <input type="submit" value="Send Message">
+                </form>
+            </div>
         </article>
     </section>
 

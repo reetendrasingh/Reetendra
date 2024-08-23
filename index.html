@@ -152,7 +152,7 @@
          window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
      }
 
-     document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
     const texts = [
         "I am Reetendra, a dedicated Material Science Researcher with over 7 years of experience in advancing the field. With more than 4 years focused on the growth of thin films and nanomaterials, my work spans 2D materials and oxide materials, aiming for breakthroughs in clean energy production and sensing applications.",
         "I am passionate about bridging the gap between lab research and industry applications, driving innovations that can be readily adopted. Recently, my curiosity has expanded to quantum materials, exploring their potential for neuromorphic device applications.",
@@ -162,19 +162,13 @@
 
     let currentTextIndex = 0;
     let currentCharIndex = 0;
-    let isTypingEffectComplete = false;
 
-    function getRandomCharacter() {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        return characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-
-    function typeLineByLine() {
+    function typeWriterEffect() {
         if (currentTextIndex < texts.length) {
             const currentText = texts[currentTextIndex];
             const typingTextElement = document.getElementById("typing-text");
 
-            if (currentCharIndex === 0 && !isTypingEffectComplete) {
+            if (currentCharIndex === 0) {
                 // Start a new line aligned to the left
                 const newLine = document.createElement("div");
                 newLine.classList.add("typing-line");
@@ -182,31 +176,24 @@
                 typingTextElement.appendChild(newLine);
             }
 
-            // Random character effect
+            const partialText = currentText.slice(0, currentCharIndex + 1);
+            typingTextElement.lastChild.innerHTML = partialText;
+
+            currentCharIndex++;
+
             if (currentCharIndex < currentText.length) {
-                const partialText = currentText.slice(0, currentCharIndex);
-                const randomChar = getRandomCharacter();
-                typingTextElement.lastChild.innerHTML = partialText + randomChar;
-
-                setTimeout(typeLineByLine, 50); // Delay between random characters
+                // Continue typing the current line
+                setTimeout(typeWriterEffect, 100); // Set typing speed
             } else {
-                isTypingEffectComplete = true;
-                typingTextElement.lastChild.innerHTML = currentText.slice(0, currentCharIndex);
-                setTimeout(() => {
-                    currentTextIndex++;
-                    currentCharIndex = 0;
-                    isTypingEffectComplete = false;
-                    typeLineByLine();
-                }, 500);  // Pause before typing the next line
-            }
-
-            if (!isTypingEffectComplete) {
-                currentCharIndex++;
+                // Finished typing the current line, move to next line after a short pause
+                currentTextIndex++;
+                currentCharIndex = 0;
+                setTimeout(typeWriterEffect, 500); // Pause before typing the next line
             }
         }
     }
 
-    typeLineByLine();
+    typeWriterEffect();
 });
 
 

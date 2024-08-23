@@ -183,12 +183,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (currentCharIndex < currentText.length) {
                 // Continue typing the current line
-                setTimeout(typeWriterEffect, 100); // Set typing speed
+                setTimeout(typeWriterEffect, 10); // Set typing speed
             } else {
                 // Finished typing the current line, move to next line after a short pause
                 currentTextIndex++;
                 currentCharIndex = 0;
-                setTimeout(typeWriterEffect, 500); // Pause before typing the next line
+                setTimeout(typeWriterEffect, 5); // Pause before typing the next line
             }
         }
     }

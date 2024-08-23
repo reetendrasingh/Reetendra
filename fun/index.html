@@ -42,16 +42,17 @@
             color: black;
         }
 
+        /* Updated primary navigation for vertical alignment */
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 20px 0 0 0;
-            display: flex;
-            justify-content: center;
+            display: block; /* Changed from flex to block to stack links vertically */
+            text-align: center; /* Center align the links */
         }
 
         nav ul li {
-            margin-right: 8px;
+            margin-bottom: 8px; /* Adds spacing between each link */
         }
 
         nav ul li a {
@@ -62,6 +63,7 @@
             color: white;
             background-color: transparent;
             transition: all 0.3s ease;
+            display: inline-block; /* Ensure links have block behavior */
         }
 
         nav ul li a:hover {
@@ -121,7 +123,7 @@
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
             nav ul li {
-                margin-right: 4px;
+                margin-bottom: 4px; /* Adjust margin for smaller screens */
             }
             nav ul li a {
                 font-size: 10px;
@@ -173,10 +175,9 @@
             </ul>
         </nav>
         
-          <article>
-              <h2>Coming Soon.......</h2>
+        <article>
+            <h2>Coming Soon.......</h2>
         </article>
-        
     </section>
 
     <footer>

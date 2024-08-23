@@ -149,7 +149,7 @@
         form input[type="text"],
         form input[type="email"],
         form textarea {
-            width: 50%; /* Set width to fill container */
+            width: 100%; /* Set width to fill container */
             padding: 10px; /* Add padding */
             margin: 10px 0; /* Add margin */
             border: 1px solid #ccc; /* Add border */
@@ -168,6 +168,20 @@
         form input[type="submit"]:hover {
             background-color: #45a049; /* Darken background color on hover */
         }
+        
+        /* Style for contact form container */
+.contact-form {
+    width: 100%; /* Default width for mobile screens */
+    max-width: 800px; /* Optional: max width for larger screens */
+    margin: 0 auto; /* Center align the form */
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 769px) {
+    .contact-form {
+        width: 50%; /* Set width to 50% for desktop screens */
+    }
+}
     </style>
     
      <!-- JavaScript to remove .html extension from URLs -->

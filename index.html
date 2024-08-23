@@ -146,12 +146,68 @@
         }
     </style>
 
-    <!-- JavaScript to remove .html extension from URLs -->
-    <script>
-        if (window.location.pathname.endsWith(".html")) {
-            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
-        }
-    </script>
+     <!-- JavaScript to remove .html extension from URLs -->
+     <script>
+     if (window.location.pathname.endsWith(".html")) {
+         window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
+     }
+
+     // Typing effect script
+     document.addEventListener("DOMContentLoaded", function() {
+         const texts = [
+             "1. PhD (chemical science): 2020-2023", 
+             "2. Supervisor - Prof. C. N. R. Rao (FRS)", 
+             "3. New Chemistry Unit (NCU) &", 
+             "4. International Center for materials Science (ICMS), Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR),", 
+             "5. Bengaluru, Karnataka, India.",
+             "6. MS (chemical science): 2017-2020", 
+             "7. Supervisor - Prof. C. N. R. Rao (FRS)", 
+             "8. NCU & ICMS, JNCASR,", 
+             "9. Bengaluru, Karnataka, India.", 
+             "10. BSc (chemistry): 2014-2017", 
+             "11. Institute of Science, Banaras Hindu University (BHU),", 
+             "12. Varanasi, India.",
+             "13. Additional Line 1", // Add more lines here
+             "14. Additional Line 2", // Add more lines here
+             "15. Additional Line 3"  // Add more lines here
+         ];
+
+         let currentTextIndex = 0;
+         let currentCharIndex = 0;
+
+         function typeLineByLine() {
+             if (currentTextIndex < texts.length) {
+                 const currentText = texts[currentTextIndex];
+                 const partialText = currentText.slice(0, currentCharIndex + 1);
+                 const typingTextElement = document.getElementById("typing-text");
+
+                 if (currentCharIndex === 0) {
+                     // Start a new line
+                     const newLine = document.createElement("div");
+                     newLine.classList.add("typing-line");
+                     newLine.innerHTML = partialText;
+                     typingTextElement.appendChild(newLine);
+                 } else {
+                     // Update current line
+                     typingTextElement.lastChild.innerHTML = partialText;
+                 }
+
+                 currentCharIndex++;
+
+                 if (currentCharIndex === currentText.length) {
+                     // Finished typing the current line
+                     currentTextIndex++;
+                     currentCharIndex = 0;
+                     setTimeout(typeLineByLine, 50);  // Pause before typing the next line
+                 } else {
+                     setTimeout(typeLineByLine, 5); // Faster typing speed
+                 }
+             }
+         }
+
+         typeLineByLine();
+     });
+ </script>
 
 </head>
 <body>
@@ -177,30 +233,13 @@
     </article>
 </section>
 
-<section>
-    <article>
-        <h2>Academic Profile</h2>
-        <ul>
-            <li>
-                <h3>PhD (chemical science): 2020-2023</h3> 
-                <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
-                <p> New Chemistry Unit (NCU) & International Center for materials Science (ICMS), Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR)</p> 
-                <p>Bengaluru, Karnataka, India.</p> 
-            </li>
-            
-            <li>
-                <h3>MS (chemical science): 2017-2020</h3> 
-                <p> Supervisor - Prof. C. N. R. Rao (FRS)</p>
-                <p> NCU & ICMS, JNCASR, Bengaluru, Karnataka, India.</p> 
-            </li>
-            
-            <li>
-                <h3>BSc (chemistry): 2014-2017</h3> 
-                <p> Institute of Science, Banaras Hindu University (BHU), Varanasi, India.</p> 
-            </li>
-        </ul>
-    </article>
-</section>
+
+    <section>
+        <article>
+            <h2>Academic Profile</h2>
+            <div id="typing-text" class="typing"></div>
+        </article>
+    </section>
 
     <footer>
         <p>Connect with me on:</p>

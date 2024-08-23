@@ -187,7 +187,10 @@
 
                     typingElement.innerHTML = currentText;
 
-                    const speed = isDeleting ? 30 : 50;
+                    // Automatically scroll down to the newest content
+                    window.scrollTo(0, document.body.scrollHeight);
+
+                    const speed = isDeleting ? 20 : 40; // Increased typing speed
                     setTimeout(type, speed);
                 }
             }
@@ -212,13 +215,6 @@
             </ul>
         </nav>
     </header>
-    
-    <section>
-        <article>
-            <img src="reetendra.webp" alt="Reetendra Singh Photo" class="responsive">
-            <p>Dr. Reetendra Singh</p>
-        </article>
-    </section>
 
     <section>
         <article>

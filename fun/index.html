@@ -165,40 +165,45 @@
         // Typing effect script
         document.addEventListener("DOMContentLoaded", function() {
             const texts = [
-                "PhD (chemical science): 2020-2023 - Supervisor - Prof. C. N. R. Rao (FRS) - New Chemistry Unit (NCU) & International Center for materials Science (ICMS), Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR), Bengaluru, Karnataka, India.",
-                "MS (chemical science): 2017-2020 - Supervisor - Prof. C. N. R. Rao (FRS) - NCU & ICMS, JNCASR, Bengaluru, Karnataka, India.",
-                "BSc (chemistry): 2014-2017 - Institute of Science, Banaras Hindu University (BHU), Varanasi, India."
+                "1. PhD (chemical science): 2020-2023", 
+                "2. Supervisor - Prof. C. N. R. Rao (FRS)", 
+                "3. New Chemistry Unit (NCU) &", 
+                "4. International Center for materials Science (ICMS), Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR),", 
+                "5. Bengaluru, Karnataka, India.",
+                "6. MS (chemical science): 2017-2020", 
+                "7. Supervisor - Prof. C. N. R. Rao (FRS)", 
+                "8. NCU & ICMS, JNCASR,", 
+                "9. Bengaluru, Karnataka, India.", 
+                "10. BSc (chemistry): 2014-2017", 
+                "11. Institute of Science, Banaras Hindu University (BHU),", 
+                "12. Varanasi, India."
             ];
-            let i = 0;
-            let j = 0;
-            let currentText = '';
-            let isDeleting = false;
 
-            function type() {
-                const typingElement = document.getElementById("typing-text");
-                if (i < texts.length) {
-                    if (!isDeleting && j <= texts[i].length) {
-                        currentText = texts[i].slice(0, j++);
-                    } else if (isDeleting && j > 0) {
-                        currentText = texts[i].slice(0, j--);
-                    } else if (isDeleting && j === 0) {
-                        isDeleting = false;
-                        i++;
-                    } else if (j === texts[i].length) {
-                        isDeleting = true;
+            let currentTextIndex = 0;
+            let currentCharIndex = 0;
+            let currentText = '';
+            let typing = true;
+
+            function typeLineByLine() {
+                if (currentTextIndex < texts.length) {
+                    if (typing) {
+                        currentText = texts[currentTextIndex].slice(0, ++currentCharIndex);
                     }
 
-                    typingElement.innerHTML = currentText;
+                    document.getElementById("typing-text").innerHTML = currentText;
 
-                    // Automatically scroll down to the newest content
-                    window.scrollTo(0, document.body.scrollHeight);
-
-                    const speed = isDeleting ? 20 : 40; // Increased typing speed
-                    setTimeout(type, speed);
+                    if (currentCharIndex === texts[currentTextIndex].length) {
+                        typing = false;
+                        currentTextIndex++;
+                        currentCharIndex = 0;
+                        setTimeout(typeLineByLine, 500);  // Pause before typing the next line
+                    } else {
+                        setTimeout(typeLineByLine, 50); // Continue typing
+                    }
                 }
             }
 
-            type();
+            typeLineByLine();
         });
     </script>
 
@@ -219,7 +224,12 @@
         </nav>
     </header>
     
-    
+    <section>
+        <article>
+            <img src="reetendra.webp" alt="Reetendra Singh Photo" class="responsive">
+            <p>Dr. Reetendra Singh</p>
+        </article>
+    </section>
 
     <section>
         <article>

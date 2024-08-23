@@ -12,18 +12,17 @@
             font-family: 'Roboto Slab', serif;
             margin: 0;
             padding: 0;
-            text-align: left;
+            text-align: center;
             background-color: #f9f9f9;
         }
 
         header {
             background-color: black;
-            padding: 20px;
+            padding: 20px 0;
             width: 100%;
             box-sizing: border-box;
             margin-bottom: 20px;
             position: relative;
-            text-align: left;
         }
 
         h1, h2 {
@@ -50,7 +49,10 @@
             padding: 0;
             margin: 20px 0 0 0;
             display: none; /* Hide the navigation menu initially */
-            text-align: left; /* Align the links to the left */
+            text-align: left; /* Align text to the left */
+            position: absolute; /* Position absolute to align with the hamburger */
+            left: 20px; /* Positioning the menu links to the left side */
+            background-color: black; /* To match the header background */
         }
 
         nav ul li {
@@ -65,7 +67,7 @@
             color: white;
             background-color: transparent;
             transition: all 0.3s ease;
-            display: inline-block; /* Ensure links have block behavior */
+            display: block; /* Ensure links have block behavior */
         }
 
         nav ul li a:hover {
@@ -77,8 +79,8 @@
         .hamburger {
             display: inline-block;
             cursor: pointer;
-            position: relative;
-            margin-left: 20px;
+            position: absolute; /* Position absolute to align with nav */
+            left: 20px; /* Align hamburger icon to the left side */
         }
 
         .hamburger .bar {
@@ -93,12 +95,6 @@
         .hamburger:hover + nav ul,
         nav ul:hover {
             display: block; /* Show the menu on hover */
-            position: absolute;
-            left: 20px; /* Align menu to the left */
-            top: 60px; /* Position menu below the header */
-            background-color: black;
-            padding: 10px;
-            border-radius: 5px;
         }
 
         article {

@@ -152,50 +152,51 @@
          window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
      }
 
-     // Typing effect script
      document.addEventListener("DOMContentLoaded", function() {
-         const texts = [
-             "I am Reetendra, a dedicated Material Science Researcher with over 7 years of experience in advancing the field. With more than 4 years focused on the growth of thin films and nanomaterials, my work spans 2D materials and oxide materials, aiming for breakthroughs in clean energy production and sensing applications.",
-             "I am passionate about bridging the gap between lab research and industry applications, driving innovations that can be readily adopted. Recently, my curiosity has expanded to quantum materials, exploring their potential for neuromorphic device applications.",
-             "My journey has been profoundly shaped by the invaluable guidance of my mentors and seniors, who have inspired me to persevere through every challenge.",
-             "Beyond my academic pursuits, I am actively enhancing my expertise in data analytics and data science to further contribute to interdisciplinary advancements."
-         ];
+    const texts = [
+        "I am Reetendra, a dedicated Material Science Researcher with over 7 years of experience in advancing the field. With more than 4 years focused on the growth of thin films and nanomaterials, my work spans 2D materials and oxide materials, aiming for breakthroughs in clean energy production and sensing applications.",
+        "I am passionate about bridging the gap between lab research and industry applications, driving innovations that can be readily adopted. Recently, my curiosity has expanded to quantum materials, exploring their potential for neuromorphic device applications.",
+        "My journey has been profoundly shaped by the invaluable guidance of my mentors and seniors, who have inspired me to persevere through every challenge.",
+        "Beyond my academic pursuits, I am actively enhancing my expertise in data analytics and data science to further contribute to interdisciplinary advancements."
+    ];
 
-         let currentTextIndex = 0;
-         let currentCharIndex = 0;
+    let currentTextIndex = 0;
+    let currentCharIndex = 0;
 
-         function typeLineByLine() {
-             if (currentTextIndex < texts.length) {
-                 const currentText = texts[currentTextIndex];
-                 const partialText = currentText.slice(0, currentCharIndex + 1);
-                 const typingTextElement = document.getElementById("typing-text");
+    function typeLineByLine() {
+        if (currentTextIndex < texts.length) {
+            const currentText = texts[currentTextIndex];
+            const partialText = currentText.slice(0, currentCharIndex + 1);
+            const typingTextElement = document.getElementById("typing-text");
 
-                 if (currentCharIndex === 0) {
-                     // Start a new line
-                     const newLine = document.createElement("div");
-                     newLine.classList.add("typing-line");
-                     newLine.innerHTML = partialText;
-                     typingTextElement.appendChild(newLine);
-                 } else {
-                     // Update current line
-                     typingTextElement.lastChild.innerHTML = partialText;
-                 }
+            if (currentCharIndex === 0) {
+                // Start a new line aligned to the left
+                const newLine = document.createElement("div");
+                newLine.classList.add("typing-line");
+                newLine.style.textAlign = "left"; // Ensure alignment is left
+                newLine.innerHTML = partialText;
+                typingTextElement.appendChild(newLine);
+            } else {
+                // Update current line
+                typingTextElement.lastChild.innerHTML = partialText;
+            }
 
-                 currentCharIndex++;
+            currentCharIndex++;
 
-                 if (currentCharIndex === currentText.length) {
-                     // Finished typing the current line
-                     currentTextIndex++;
-                     currentCharIndex = 0;
-                     setTimeout(typeLineByLine, 50);  // Pause before typing the next line
-                 } else {
-                     setTimeout(typeLineByLine, 10); // Faster typing speed
-                 }
-             }
-         }
+            if (currentCharIndex === currentText.length) {
+                // Finished typing the current line
+                currentTextIndex++;
+                currentCharIndex = 0;
+                setTimeout(typeLineByLine, 50);  // Pause before typing the next line
+            } else {
+                setTimeout(typeLineByLine, 10); // Faster typing speed
+            }
+        }
+    }
 
-         typeLineByLine();
-     });
+    typeLineByLine();
+});
+
  </script>
 
 </head>

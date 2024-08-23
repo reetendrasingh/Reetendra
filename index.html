@@ -66,8 +66,7 @@
         
         aarticle {
             width: 95%; /* Make article full width */
-            margin-left: 5px;
-            margin-right: 5px;
+            margin: 0 auto;
             text-align: left; /* Align text in article to the left */
         }
         
@@ -184,12 +183,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (currentCharIndex < currentText.length) {
                 // Continue typing the current line
-                setTimeout(typeWriterEffect, 10); // Set typing speed
+                setTimeout(typeWriterEffect, 5); // Set typing speed
             } else {
                 // Finished typing the current line, move to next line after a short pause
                 currentTextIndex++;
                 currentCharIndex = 0;
-                setTimeout(typeWriterEffect, 5); // Pause before typing the next line
+                setTimeout(typeWriterEffect, 10); // Pause before typing the next line
             }
         }
     }

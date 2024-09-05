@@ -19,7 +19,7 @@
         }
         .plot-container {
             border: 2px solid #ccc;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             width: 300px; /* Smaller width */
             height: 300px; /* Smaller height */
             display: inline-block;
@@ -32,10 +32,8 @@
             padding: 10px; /* Reduced padding */
             margin: 10px auto; /* Center the form container */
             max-width: 400px; /* Reduced max-width */
-            display: inline-block; /* Keep form container inline with plots */
-            vertical-align: top; /* Align form container with plots */
         }
-        .form-container h2 {
+        h2 {
             color: #444;
             margin-top: 0;
             font-size: 18px; /* Smaller font size */
@@ -72,19 +70,16 @@
         .form-group button:hover {
             background-color: #0056b3;
         }
-        .form-container-bottom {
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
     <h1>Metal-Insulator Transition Visualization</h1>
     <input type="file" id="fileInput" accept=".csv">
 
-    <!-- Plot 1 and Controls -->
-    <div class="plot-container" id="plot1"></div>
-    <div class="form-container form-container-bottom">
-        <h2>Temperature vs Resistance</h2>
+    <div class="form-container">
+        <div class="form-group">
+            <h2>Temperature vs Resistance</h2>
+        </div>
         <div class="form-group">
             <label for="tempMinPlot1">Temperature Min:</label>
             <input type="number" id="tempMinPlot1" placeholder="Min Temp">
@@ -98,10 +93,10 @@
         </div>
     </div>
 
-    <!-- Plot 2 and Controls -->
-    <div class="plot-container" id="plot2"></div>
-    <div class="form-container form-container-bottom">
-        <h2>d(log(R))/dT vs Temperature</h2>
+    <div class="form-container">
+        <div class="form-group">
+            <h2>d(log(R))/dT vs Temperature</h2>
+        </div>
         <div class="form-group">
             <label for="tempMinPlot2">Temperature Min:</label>
             <input type="number" id="tempMinPlot2" placeholder="Min Temp">
@@ -115,10 +110,10 @@
         </div>
     </div>
 
-    <!-- Plot 3 and Controls -->
-    <div class="plot-container" id="plot3"></div>
-    <div class="form-container form-container-bottom">
-        <h2>Log(R) vs 1/Temperature</h2>
+    <div class="form-container">
+        <div class="form-group">
+            <h2>Log(R) vs 1/Temperature</h2>
+        </div>
         <div class="form-group">
             <label for="activationTempMin">Activation Energy Temp Min:</label>
             <input type="number" id="activationTempMin" placeholder="Min Temp">
@@ -131,6 +126,10 @@
             <button id="updatePlot3">Update Plot</button>
         </div>
     </div>
+
+    <div id="plot1" class="plot-container"></div>
+    <div id="plot2" class="plot-container"></div>
+    <div id="plot3" class="plot-container"></div>
 
     <script>
         let originalData = { temperatures: [], resistances: [] };
@@ -238,14 +237,11 @@
             const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
             const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
 
-            if (filteredTemps.length < 2) {
-                alert('Not enough data in the specified range.');
-                return;
-            }
-
             const logResistances = filteredResistances.map(res => Math.log(res));
+
+            // Calculate d(log(R))/dT
             const dLogR_dT = [];
-            for (let i = 1; i < logResistances.length; i++) {
+            for (let i = 1; i < filteredTemps.length; i++) {
                 dLogR_dT.push((logResistances[i] - logResistances[i - 1]) / (filteredTemps[i] - filteredTemps[i - 1]));
             }
             const tempRange = filteredTemps.slice(1);

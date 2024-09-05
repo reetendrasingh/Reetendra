@@ -122,6 +122,36 @@
             text-decoration: underline; /* Add underline on hover */
         }
 
+        nav.secondary-nav ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        nav.secondary-nav ul li {
+            margin: 0 15px;
+            display: flex;
+            align-items: center; /* Align items vertically in the center */
+        }
+
+        /* Styles for Photos, Awards, Fun links */
+        nav.secondary-nav ul li a {
+            font-size: 16px; /* Adjust font size */
+            color: #ff9800; /* Set link color */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Make text bold */
+            border: 2px solid #ff9800; /* Add border around link */
+            padding: 5px 10px; /* Add padding */
+            border-radius: 5px; /* Add rounded corners */
+            transition: all 0.3s ease; /* Add transition for hover effect */
+        }
+
+        nav.secondary-nav ul li a:hover {
+            background-color: #ff9800; /* Change background color on hover */
+            color: white; /* Change text color on hover */
+        }
+
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
             header {
@@ -174,6 +204,14 @@
     </header>
 
     <section>
+
+         <nav class="secondary-nav">
+            <ul>
+                <li><a href="/photo/">Photos</a></li>
+                <li><a href="/fun/">Fun</a></li>
+            </ul>
+        </nav>
+        
         <article>
             <li><a href="/RT/" id="rt-link">Metal-Insulator Transition Visualization</a></li>
             <h2> More coming soon........</h2>

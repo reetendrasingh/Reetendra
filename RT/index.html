@@ -55,13 +55,11 @@
 
         .plot-container {
             border: 2px solid black; /* Ensure the plot containers have a visible border */
-            margin-bottom: 20px; /* Space between plots */
+            width: 400px; /* Set fixed width for square plots */
+            height: 400px; /* Set fixed height for square plots */
+            margin: 20px auto; /* Center the plots horizontally */
             display: inline-block; /* Align plots side by side if needed */
             text-align: left; /* Align text inside the plot container */
-        }
-        .plot-container div {
-            width: 100%; /* Ensure divs within the plot container take full width */
-            height: 100%; /* Ensure divs within the plot container take full height */
         }
 
         footer {
@@ -99,6 +97,7 @@
             }
             .plot-container {
                 width: 100%; /* Ensure plots take full width on smaller screens */
+                height: 300px; /* Adjust height for smaller screens */
             }
         }
     </style>
@@ -127,9 +126,9 @@
             <button id="updateActivationPlot">Update Activation Plot</button>
         </div>
         
-        <div id="plot1" class="plot-container" style="width: 100%; height: 400px;"></div>
-        <div id="plot2" class="plot-container" style="width: 100%; height: 400px;"></div>
-        <div id="plot3" class="plot-container" style="width: 100%; height: 400px;"></div>
+        <div id="plot1" class="plot-container"></div>
+        <div id="plot2" class="plot-container"></div>
+        <div id="plot3" class="plot-container"></div>
     </section>
 
     <footer>

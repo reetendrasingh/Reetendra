@@ -6,123 +6,53 @@
     <title>Metal-Insulator Transition Visualization</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif; /* Basic font for better appearance */
-            text-align: center; /* Center content */
-            background-color: #f4f4f4; /* Light background color */
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
         .plot-container {
-            border: 2px solid #ccc; /* Light border for plot containers */
+            border: 2px solid black; /* Ensure the plot containers have a visible border */
             margin-bottom: 20px; /* Space between plots */
             width: 400px; /* Fixed width for square plots */
             height: 400px; /* Fixed height for square plots */
             display: inline-block; /* Arrange plots in a row */
-            background: #fff; /* White background for plots */
         }
-        .form-container {
-            background: #fff; /* White background for forms */
-            border: 1px solid #ddd; /* Light border */
-            border-radius: 8px; /* Rounded corners */
-            padding: 20px;
-            margin: 20px auto; /* Center the form container */
-            max-width: 600px; /* Limit the width */
+        input, button {
+            margin: 5px; /* Space around inputs and buttons */
         }
-        h2 {
-            color: #444;
-            margin-top: 0;
-        }
-        .form-group {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .form-group label {
-            margin-right: 10px;
-            width: 200px; /* Fixed width for labels */
-            text-align: right; /* Align text to the right */
-        }
-        .form-group input {
-            width: 150px; /* Fixed width for inputs */
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px; /* Rounded corners for inputs */
-        }
-        .form-group button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .form-group button:hover {
-            background-color: #0056b3;
+        body {
+            font-family: Arial, sans-serif; /* Basic font for better appearance */
+            text-align: center; /* Center content */
         }
     </style>
 </head>
 <body>
     <h1>Metal-Insulator Transition Visualization</h1>
     <input type="file" id="fileInput" accept=".csv">
-
-    <div class="form-container">
-        <div class="form-group">
-            <h2>Temperature vs Resistance</h2>
-        </div>
-        <div class="form-group">
-            <label for="tempMinPlot1">Temperature Min:</label>
-            <input type="number" id="tempMinPlot1" placeholder="Min Temperature">
-        </div>
-        <div class="form-group">
-            <label for="tempMaxPlot1">Temperature Max:</label>
-            <input type="number" id="tempMaxPlot1" placeholder="Max Temperature">
-        </div>
-        <div class="form-group">
-            <button id="updatePlot1">Update Plot</button>
-        </div>
+    
+    <div>
+        <h2>Temperature vs Resistance</h2>
+        <label for="tempMinPlot1">Temperature Min:</label>
+        <input type="number" id="tempMinPlot1" placeholder="Min Temperature">
+        <label for="tempMaxPlot1">Temperature Max:</label>
+        <input type="number" id="tempMaxPlot1" placeholder="Max Temperature">
+        <button id="updatePlot1">Update Plot</button>
     </div>
-
-    <div class="form-container">
-        <div class="form-group">
-            <h2>d(log(R))/dT vs Temperature</h2>
-        </div>
-        <div class="form-group">
-            <label for="tempMinPlot2">Temperature Min:</label>
-            <input type="number" id="tempMinPlot2" placeholder="Min Temperature">
-        </div>
-        <div class="form-group">
-            <label for="tempMaxPlot2">Temperature Max:</label>
-            <input type="number" id="tempMaxPlot2" placeholder="Max Temperature">
-        </div>
-        <div class="form-group">
-            <button id="updatePlot2">Update Plot</button>
-        </div>
+    
+    <div>
+        <h2>d(log(R))/dT vs Temperature</h2>
+        <label for="tempMinPlot2">Temperature Min:</label>
+        <input type="number" id="tempMinPlot2" placeholder="Min Temperature">
+        <label for="tempMaxPlot2">Temperature Max:</label>
+        <input type="number" id="tempMaxPlot2" placeholder="Max Temperature">
+        <button id="updatePlot2">Update Plot</button>
     </div>
-
-    <div class="form-container">
-        <div class="form-group">
-            <h2>Log(R) vs 1/Temperature</h2>
-        </div>
-        <div class="form-group">
-            <label for="activationTempMin">Activation Energy Temp Min:</label>
-            <input type="number" id="activationTempMin" placeholder="Activation Energy Min Temp">
-        </div>
-        <div class="form-group">
-            <label for="activationTempMax">Activation Energy Temp Max:</label>
-            <input type="number" id="activationTempMax" placeholder="Activation Energy Max Temp">
-        </div>
-        <div class="form-group">
-            <button id="updatePlot3">Update Plot</button>
-        </div>
+    
+    <div>
+        <h2>Log(R) vs 1/Temperature</h2>
+        <label for="activationTempMin">Activation Energy Temp Min:</label>
+        <input type="number" id="activationTempMin" placeholder="Activation Energy Min Temp">
+        <label for="activationTempMax">Activation Energy Temp Max:</label>
+        <input type="number" id="activationTempMax" placeholder="Activation Energy Max Temp">
+        <button id="updatePlot3">Update Plot</button>
     </div>
-
+    
     <div id="plot1" class="plot-container"></div>
     <div id="plot2" class="plot-container"></div>
     <div id="plot3" class="plot-container"></div>
@@ -280,7 +210,7 @@
                 annotations: [{
                     x: minTemp,
                     y: minDLogR_dT,
-                    text: `<br>Transition Temp: ${minTemp.toFixed(2)}`,
+                    text: <br>Transition Temp: ${minTemp.toFixed(2)},
                     showarrow: true,
                     arrowhead: 2,
                     ax: 0,
@@ -335,7 +265,7 @@
                 y: inverseTempUpperLine.map(x => slope * x + intercept),
                 mode: 'lines',
                 type: 'scatter',
-                name: `E<sub>a</sub> = ${activationEnergyMeV.toFixed(2)} meV`, // Subscript 'a' in label
+                name: E<sub>a</sub> = ${activationEnergyMeV.toFixed(2)} meV, // Subscript 'a' in label
                 line: {color: 'green'}
             };
 

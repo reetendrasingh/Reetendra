@@ -36,7 +36,7 @@
     </div>
     
     <div>
-        <h2>Transition Temperature</h2>
+        <h2>d(log(R))/dT vs Temperature</h2>
         <label for="tempMinPlot2">Temperature Min:</label>
         <input type="number" id="tempMinPlot2" placeholder="Min Temperature">
         <label for="tempMaxPlot2">Temperature Max:</label>
@@ -45,7 +45,7 @@
     </div>
     
     <div>
-        <h2>Activation Energy</h2>
+        <h2>Log(R) vs 1/Temperature</h2>
         <label for="activationTempMin">Activation Energy Temp Min:</label>
         <input type="number" id="activationTempMin" placeholder="Activation Energy Min Temp">
         <label for="activationTempMax">Activation Energy Temp Max:</label>
@@ -181,7 +181,7 @@
                 marker: {color: 'darkred'}
             };
             const layout2 = {
-                title: 'd(log(R))/dT vs Temperature',
+                title: 'Transition Temperature',
                 xaxis: { 
                     title: 'Temperature (K)', 
                     showgrid: false,
@@ -253,7 +253,7 @@
             };
 
             const layout3 = {
-                title: 'Log(R) vs 1/Temperature',
+                title: 'Activation Energy',
                 xaxis: { 
                     title: '1/Temperature (1/K)',
                     showgrid: false,

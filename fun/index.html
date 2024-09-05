@@ -148,10 +148,14 @@
             max-width: 1300px; /* Set a max width for larger screens */
         }
     </style>
-
-   
-   
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('rt-link').addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+                window.open('/RT/', 'RTWindow', 'width=600,height=400,scrollbars=yes'); // Open in a new pop-up window
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -168,14 +172,11 @@
             </ul>
         </nav>
     </header>
-    
-    
 
     <section>
         <article>
             <h2>Coming Soon........</h2>
-            <li><a href="/RT/">RT</a></li>
-          
+            <li><a href="/RT/" id="rt-link">RT</a></li>
         </article>
     </section>
 

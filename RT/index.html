@@ -32,7 +32,7 @@
         <input type="number" id="tempMinPlot1" placeholder="Min Temperature">
         <label for="tempMaxPlot1">Temperature Max:</label>
         <input type="number" id="tempMaxPlot1" placeholder="Max Temperature">
-        <button id="updatePlot1">Update Plot </button>
+        <button id="updatePlot1">Update Plot</button>
     </div>
     
     <div>
@@ -41,7 +41,7 @@
         <input type="number" id="tempMinPlot2" placeholder="Min Temperature">
         <label for="tempMaxPlot2">Temperature Max:</label>
         <input type="number" id="tempMaxPlot2" placeholder="Max Temperature">
-        <button id="updatePlot2">Update Plot </button>
+        <button id="updatePlot2">Update Plot</button>
     </div>
     
     <div>
@@ -50,7 +50,7 @@
         <input type="number" id="activationTempMin" placeholder="Activation Energy Min Temp">
         <label for="activationTempMax">Activation Energy Temp Max:</label>
         <input type="number" id="activationTempMax" placeholder="Activation Energy Max Temp">
-        <button id="updatePlot3">Update Plot </button>
+        <button id="updatePlot3">Update Plot</button>
     </div>
     
     <div id="plot1" class="plot-container"></div>
@@ -171,6 +171,12 @@
                 dLogR_dT.push((logResistances[i] - logResistances[i - 1]) / (filteredTemps[i] - filteredTemps[i - 1]));
             }
             const tempRange = filteredTemps.slice(1);
+
+            // Find the minimum value and corresponding temperature
+            const minDLogR_dT = Math.min(...dLogR_dT);
+            const minIndex = dLogR_dT.indexOf(minDLogR_dT);
+            const minTemp = tempRange[minIndex];
+
             const trace2 = {
                 x: tempRange,
                 y: dLogR_dT,
@@ -180,6 +186,7 @@
                 line: {color: 'darkred'},
                 marker: {color: 'darkred'}
             };
+
             const layout2 = {
                 title: 'Transition Temperature',
                 xaxis: { 
@@ -199,7 +206,17 @@
                     linecolor: 'black',
                     linewidth: 2,
                     showticklabels: true
-                }
+                },
+                annotations: [{
+                    x: minTemp,
+                    y: minDLogR_dT,
+                    text: `<br>Transition Temp: ${minTemp.toFixed(2)}`,
+                    showarrow: true,
+                    arrowhead: 2,
+                    ax: 0,
+                    ay: -40,
+                    bgcolor: 'rgba(255, 255, 255, 0.8)'
+                }]
             };
 
             Plotly.newPlot('plot2', [trace2], layout2);

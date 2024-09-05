@@ -3,24 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metal-Insulator Transition Visualization</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Reetendra Singh</title>
     <style>
-        .plot-container {
-            border: 2px solid black; /* Ensure the plot containers have a visible border */
-            margin-bottom: 20px; /* Space between plots */
-            width: 400px; /* Fixed width for square plots */
-            height: 400px; /* Fixed height for square plots */
-            display: inline-block; /* Arrange plots in a row */
-        }
-        input, button {
-            margin: 5px; /* Space around inputs and buttons */
-        }
+        /* Import Roboto Slab from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
+
+        /* Add your CSS styles here */
         body {
-            font-family: Arial, sans-serif; /* Basic font for better appearance */
-            text-align: center; /* Center content */
+            font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Center align all text */
+            background-color: #f9f9f9; /* Set background color to very light gray */
+        }
+        header {
+            background-color: black; /* Set background color of the header to black */
+            padding: 20px 0; /* Add padding to the header */
+            width: 100%; /* Make header full width */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+            margin-bottom: 20px; /* Add space below the header */
+        }
+        h1, h2 {
+            margin: 0;
+            color: white; /* Default color for h1 and h2 */
+        }
+
+        article h2 {
+            color: black; /* Override color for h2 within article */
+        }
+
+        article h3 {
+            margin-top: 20px; /* Add margin above the heading */
+            color: black; /* Set color for h3 elements */
+        }
+
+        h2.AcademicTitle {
+            color: black; /* Override color for specific h2 element */
+        }
+        nav ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0;
+            margin: 20px 0 0 0; /* Remove margin at the top of the list */
+            display: flex;
+            justify-content: center; /* Align links horizontally */
+        }
+        nav ul li {
+            margin-right: 8px; /* Adjust margin between navigation links */
+        }
+        nav ul li a {
+            font-size: 13px; /* Adjust font size for navigation links */
+            text-decoration: none; /* Remove underline */
+            padding: 5px 10px; /* Adjust padding */
+            border-radius: 5px; /* Add border radius */
+            color: white; /* Set text color */
+            background-color: transparent; /* Keep background transparent */
+            transition: all 0.3s ease; /* Add transition effect */
+        }
+        nav ul li a:hover {
+            background-color: #333; /* Change background color on hover */
+            color: #fff; /* Keep text color on hover */
+        }
+        
+        aarticle {
+            width: 95%; /* Make article full width */
+            margin: 0 auto;
+            text-align: left; /* Align text in article to the left */
+        }
+        
+        article ul {
+            list-style-type: none; /* Remove default list style */
+            padding-left: 0; /* Remove default padding */
+        }
+        article h3 {
+            margin-top: 20px; /* Add margin above the heading */
+            color: black; /* Set color for h3 elements */
+        }
+        article h3:before {
+            content: "•"; /* Add bullet point before heading */
+            display: inline-block;
+            margin-right: 5px; /* Add spacing between bullet point and text */
+            color: black; /* Set color for bullet point */
+        }
+        article h3 + ul {
+            margin-top: 0; /* Remove margin between heading and list */
+        }
+        article li {
+            margin-left: 20px; /* Add margin to align with heading */
+            color: black; /* Set color for list items */
+        }
+        article p {
+            color: black; /* Set color for paragraphs */
+        }
+        
+        footer {
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white */
+            width: 100%; /* Make the footer full width */
+            padding: 5px 0; /* Reduce padding to prevent cropping */
+            bottom: 0; /* Align the footer to the bottom */
+            left: 0; /* Ensure the footer starts from the left edge */
+            text-align: center; /* Center the text in the footer */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+            line-height: 1.2; /* Reduce line height to save space */
+            font-size: 12px; /* Reduce font size slightly to prevent cropping */
+        }
+
+        footer a {
+            color: white; /* Set the link color to white */
+            text-decoration: none; /* Remove underline from links */
+            margin: 0 8px; /* Reduce spacing between the links */
+            font-size: 12px; /* Ensure link font size matches the footer text */
+        }
+
+        footer a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            header {
+                margin: 0 auto; /* Adjust margin for smaller screens */
+                max-width: 100%; /* Adjust max-width for smaller screens */
+            }
+            nav ul li {
+                margin-right: 4px; /* Further reduce margin between navigation links */
+            }
+            nav ul li a {
+                font-size: 10px; /* Further reduce font size for navigation links */
+                padding: 2px 4px; /* Further adjust padding */
+            }
+            article {
+                margin-left: 5%; /* Adjust margin-left for smaller screens */
+                margin-right: 5%; /* Adjust margin-right for smaller screens */
+            }
+        }
+
+        /* Image responsiveness */
+        img.responsive {
+            width: 100%; /* Image will take up the full width of its container */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 1350px; /* Set a max width for larger screens */
+            transform: translateY(0.5cm); /* Move the image 0.5 cm downward */
         }
     </style>
+
+     <!-- JavaScript to remove .html extension from URLs -->
+     <script>
+     if (window.location.pathname.endsWith(".html")) {
+         window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
+     }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const texts = [
+        "I am Reetendra, a dedicated Material Science Researcher with over 7 years of experience in advancing the field. With more than 4 years focused on the growth of thin films and nanomaterials, my work spans 2D materials and oxide materials, aiming for breakthroughs in clean energy production and sensing applications. I am passionate about bridging the gap between lab research and industry applications, driving innovations that can be readily adopted. ",
+        "Recently, my curiosity has expanded to quantum materials, exploring their potential for neuromorphic device applications.",
+        "My journey has been profoundly shaped by the invaluable guidance of my mentors and seniors, who have inspired me to persevere through every challenge.",
+        "Beyond my academic pursuits, I am actively enhancing my expertise in data analytics and data science to further contribute to interdisciplinary advancements."
+    ];
+
+    let currentTextIndex = 0;
+    let currentCharIndex = 0;
+
+    function typeWriterEffect() {
+        if (currentTextIndex < texts.length) {
+            const currentText = texts[currentTextIndex];
+            const typingTextElement = document.getElementById("typing-text");
+
+            if (currentCharIndex === 0) {
+                // Start a new line aligned to the left
+                const newLine = document.createElement("div");
+                newLine.classList.add("typing-line");
+                newLine.style.textAlign = "left"; // Ensure alignment is left
+                typingTextElement.appendChild(newLine);
+            }
+
+            const partialText = currentText.slice(0, currentCharIndex + 1);
+            typingTextElement.lastChild.innerHTML = partialText;
+
+            currentCharIndex++;
+
+            if (currentCharIndex < currentText.length) {
+                // Continue typing the current line
+                setTimeout(typeWriterEffect, 5); // Set typing speed
+            } else {
+                // Finished typing the current line, move to next line after a short pause
+                currentTextIndex++;
+                currentCharIndex = 0;
+                setTimeout(typeWriterEffect, 10); // Pause before typing the next line
+            }
+        }
+    }
+
+    typeWriterEffect();
+});
+
+
+ </script>
+
 </head>
 <body>
     <h1>Metal-Insulator Transition Visualization</h1>

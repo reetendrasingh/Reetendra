@@ -23,23 +23,34 @@
     </style>
 </head>
 <body>
-    <h1>Metal-Insulator Transition Visualization</h1>
+    <h1>CSV Data Visualization</h1>
     <input type="file" id="fileInput" accept=".csv">
     
     <div>
-        <label for="tempMin">Temperature Min:</label>
-        <input type="number" id="tempMin" placeholder="Min Temperature">
-        <label for="tempMax">Temperature Max:</label>
-        <input type="number" id="tempMax" placeholder="Max Temperature">
-        <button id="updatePlots">Update Plots</button>
+        <h2>Plot 1: Temperature vs Resistance</h2>
+        <label for="tempMinPlot1">Temperature Min:</label>
+        <input type="number" id="tempMinPlot1" placeholder="Min Temperature">
+        <label for="tempMaxPlot1">Temperature Max:</label>
+        <input type="number" id="tempMaxPlot1" placeholder="Max Temperature">
+        <button id="updatePlot1">Update Plot 1</button>
     </div>
     
     <div>
+        <h2>Plot 2: d(log(R))/dT vs Temperature</h2>
+        <label for="tempMinPlot2">Temperature Min:</label>
+        <input type="number" id="tempMinPlot2" placeholder="Min Temperature">
+        <label for="tempMaxPlot2">Temperature Max:</label>
+        <input type="number" id="tempMaxPlot2" placeholder="Max Temperature">
+        <button id="updatePlot2">Update Plot 2</button>
+    </div>
+    
+    <div>
+        <h2>Plot 3: Log(R) vs 1/Temperature</h2>
         <label for="activationTempMin">Activation Energy Temp Min:</label>
         <input type="number" id="activationTempMin" placeholder="Activation Energy Min Temp">
         <label for="activationTempMax">Activation Energy Temp Max:</label>
         <input type="number" id="activationTempMax" placeholder="Activation Energy Max Temp">
-        <button id="updateActivationPlot">Update Activation Plot</button>
+        <button id="updatePlot3">Update Plot 3</button>
     </div>
     
     <div id="plot1" class="plot-container"></div>
@@ -88,23 +99,23 @@
 
             originalData = { temperatures, resistances };
 
-            updatePlots(); // Initial plot update
+            // Initial plot update
+            updatePlot1();
+            updatePlot2();
+            updatePlot3();
         }
 
-        function updatePlots() {
-            const tempMin = parseFloat(document.getElementById('tempMin').value) || -Infinity;
-            const tempMax = parseFloat(document.getElementById('tempMax').value) || Infinity;
+        function updatePlot1() {
+            const tempMin = parseFloat(document.getElementById('tempMinPlot1').value) || -Infinity;
+            const tempMax = parseFloat(document.getElementById('tempMaxPlot1').value) || Infinity;
             
             const { temperatures, resistances } = originalData;
             
-            // Filter data based on the selected temperature range
+            // Filter data based on the selected temperature range for Plot 1
             const filteredIndices = temperatures.map((temp, index) => temp >= tempMin && temp <= tempMax);
             const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
             const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
 
-            const logResistances = filteredResistances.map(res => Math.log(res));
-
-            // Plot 1: Temperature vs Resistance
             const trace1 = {
                 x: filteredTemps,
                 y: filteredResistances,
@@ -139,6 +150,20 @@
             };
 
             Plotly.newPlot('plot1', [trace1], layout1);
+        }
+
+        function updatePlot2() {
+            const tempMin = parseFloat(document.getElementById('tempMinPlot2').value) || -Infinity;
+            const tempMax = parseFloat(document.getElementById('tempMaxPlot2').value) || Infinity;
+
+            const { temperatures, resistances } = originalData;
+
+            // Filter data based on the selected temperature range for Plot 2
+            const filteredIndices = temperatures.map((temp, index) => temp >= tempMin && temp <= tempMax);
+            const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
+            const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
+
+            const logResistances = filteredResistances.map(res => Math.log(res));
 
             // Calculate d(log(R))/dT
             const dLogR_dT = [];
@@ -178,12 +203,9 @@
             };
 
             Plotly.newPlot('plot2', [trace2], layout2);
-
-            // Update the activation energy plot based on default or previously set range
-            updateActivationEnergyPlot();
         }
 
-        function updateActivationEnergyPlot() {
+        function updatePlot3() {
             const activationTempMin = parseFloat(document.getElementById('activationTempMin').value) || -Infinity;
             const activationTempMax = parseFloat(document.getElementById('activationTempMax').value) || Infinity;
             
@@ -266,8 +288,9 @@
             return { slope, intercept };
         }
 
-        document.getElementById('updatePlots').addEventListener('click', updatePlots);
-        document.getElementById('updateActivationPlot').addEventListener('click', updateActivationEnergyPlot);
+        document.getElementById('updatePlot1').addEventListener('click', updatePlot1);
+        document.getElementById('updatePlot2').addEventListener('click', updatePlot2);
+        document.getElementById('updatePlot3').addEventListener('click', updatePlot3);
     </script>
 </body>
 </html>

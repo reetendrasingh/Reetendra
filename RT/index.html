@@ -6,56 +6,150 @@
     <title>Metal-Insulator Transition Visualization</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
+        body {
+            font-family: 'Roboto Slab', serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: black;
+            padding: 20px 0;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0;
+            color: white;
+            font-size: 24px;
+        }
+        header h2 {
+            margin: 0;
+            color: white;
+            font-size: 18px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin-right: 8px;
+        }
+        nav ul li a {
+            font-size: 13px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            width: 100%;
+            padding: 5px 0;
+            text-align: center;
+            box-sizing: border-box;
+            line-height: 1.2;
+            font-size: 12px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 12px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         .plot-container {
-            border: 2px solid black; /* Ensure the plot containers have a visible border */
-            margin-bottom: 20px; /* Space between plots */
-            width: 400px; /* Fixed width for square plots */
-            height: 400px; /* Fixed height for square plots */
-            display: inline-block; /* Arrange plots in a row */
+            border: 2px solid black;
+            margin-bottom: 20px;
+            width: 400px;
+            height: 400px;
+            display: inline-block;
         }
         input, button {
-            margin: 5px; /* Space around inputs and buttons */
-        }
-        body {
-            font-family: Arial, sans-serif; /* Basic font for better appearance */
-            text-align: center; /* Center content */
+            margin: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Metal-Insulator Transition Visualization</h1>
+    <header>
+        <h1>Reetendra Singh</h1>
+        <h2>Postdoctoral Fellow, Technion - Israel Institute of Technology</h2>
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">RESEARCH</a></li>
+                <li><a href="#">CV</a></li>
+                <li><a href="#">PUBLICATIONS</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="#">MORE</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <input type="file" id="fileInput" accept=".csv">
-    
+
     <div>
-        <h2>Temperature range for R(T) </h2>
+        <h2>Temperature range for R(T)</h2>
         <label for="tempMinPlot1">Min:</label>
         <input type="number" id="tempMinPlot1" placeholder="Min Temperature">
         <label for="tempMaxPlot1">Max:</label>
         <input type="number" id="tempMaxPlot1" placeholder="Max Temperature">
-        <button id="updatePlot1">Update Plot </button>
+        <button id="updatePlot1">Update Plot</button>
     </div>
-    
+
     <div>
-        <h2>Temperature range for d(log(R))/dT </h2>
+        <h2>Temperature range for d(log(R))/dT</h2>
         <label for="tempMinPlot2">Min:</label>
         <input type="number" id="tempMinPlot2" placeholder="Min Temperature">
         <label for="tempMaxPlot2">Max:</label>
         <input type="number" id="tempMaxPlot2" placeholder="Max Temperature">
-        <button id="updatePlot2">Update Plot </button>
+        <button id="updatePlot2">Update Plot</button>
     </div>
-    
+
     <div>
         <h2>Temperature range for activation energy</h2>
         <label for="activationTempMin">Min:</label>
         <input type="number" id="activationTempMin" placeholder="Min Temperature">
         <label for="activationTempMax">Max:</label>
         <input type="number" id="activationTempMax" placeholder="Max Temperature">
-        <button id="updatePlot3">Update Plot </button>
+        <button id="updatePlot3">Update Plot</button>
     </div>
-    
+
     <div id="plot1" class="plot-container"></div>
     <div id="plot2" class="plot-container"></div>
     <div id="plot3" class="plot-container"></div>
+
+    <footer>
+        <p>Connect with me on:</p>
+        <a href="https://www.linkedin.com/in/reetendra-singh" target="_blank">LinkedIn</a> |
+        <a href="https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID" target="_blank">Google Scholar</a> |
+        <a href="https://github.com/reetendras" target="_blank">GitHub</a>
+        <p>© 2024 Reetendra Singh. All Rights Reserved.</p>
+    </footer>
 
     <script>
         let originalData = { temperatures: [], resistances: [] };
@@ -139,7 +233,7 @@
                 yaxis: { 
                     title: 'Resistance (Ohms)', 
                     type: 'log',
-                    tickformat: '.1e', // Format y-axis in scientific notation
+                    tickformat: '.1e',
                     showgrid: false,
                     zeroline: true,
                     showline: true,

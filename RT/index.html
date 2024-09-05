@@ -117,24 +117,51 @@
             text-decoration: underline; /* Add underline on hover */
         }
 
-        /* Plot Container Styles */
-        .plot-container {
-            border: 2px solid black; /* Border around each plot */
-            margin-bottom: 20px; /* Space between plots */
-            width: 30%; /* Adjust width to allow three plots to fit in a row */
-            height: auto; /* Auto height to maintain aspect ratio */
-            display: inline-block; /* Arrange plots in a row */
-            vertical-align: top; /* Align plots at the top */
-        }
-
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
-            .plot-container {
-                width: 100%; /* On smaller screens, make plots full width */
-                margin-bottom: 20px; /* Maintain spacing between plots */
+            header {
+                margin: 0 auto; /* Adjust margin for smaller screens */
+                max-width: 100%; /* Adjust max-width for smaller screens */
+            }
+            nav ul li {
+                margin-right: 4px; /* Further reduce margin between navigation links */
+            }
+            nav ul li a {
+                font-size: 10px; /* Further reduce font size for navigation links */
+                padding: 2px 4px; /* Further adjust padding */
+            }
+            article {
+                margin-left: 5%; /* Adjust margin-left for smaller screens */
+                margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
         }
 
+        /* Image responsiveness */
+        img.responsive {
+            width: 100%; /* Image will take up the full width of its container */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 1300px; /* Set a max width for larger screens */
+        }
+
+        /* Plot Container Styles */
+        .plot-container {
+            border: 2px solid black; /* Ensure the plot containers have a visible border */
+            margin-bottom: 20px; /* Space between plots */
+            width: 400px; /* Fixed width for square plots */
+            height: 400px; /* Fixed height for square plots */
+            display: inline-block; /* Arrange plots in a row */
+        }
+        input, button {
+            margin: 5px; /* Space around inputs and buttons */
+        }
+        
+        .plot-container {
+            border: 2px solid black; /* Ensure the plot containers have a visible border */
+            margin-bottom: 20px; /* Space between plots */
+            width: 400px; /* Fixed width for square plots */
+            height: 400px; /* Fixed height for square plots */
+            display: inline-block; /* Arrange plots in a row */
+        }
         input, button {
             margin: 5px; /* Space around inputs and buttons */
         }
@@ -168,64 +195,64 @@
             <input type="file" id="fileInput" accept=".csv">
 
             <div>
-                <h3>Set temperature ranges</h3> R(T)
-                <label for="tempMinPlot1"></label>
-                <input type="number" id="tempMinPlot1" placeholder="">
-                <label for="tempMaxPlot1">to</label>
-                <input type="number" id="tempMaxPlot1" placeholder="">
-                <button id="updatePlot1">Update Plot</button>
-            </div>
+        <h3>Set temperature ranges</h3> R(T)
+        <label for="tempMinPlot1"></label>
+        <input type="number" id="tempMinPlot1" placeholder="">
+        <label for="tempMaxPlot1">to</label>
+        <input type="number" id="tempMaxPlot1" placeholder="">
+        <button id="updatePlot1">Update Plot </button>
+    </div>
     
-            <div>
-                d(log(R))/dT
-                <label for="tempMinPlot2"></label>
-                <input type="number" id="tempMinPlot2" placeholder="">
-                <label for="tempMaxPlot2">to</label>
-                <input type="number" id="tempMaxPlot2" placeholder="">
-                <button id="updatePlot2">Update Plot</button>
-            </div>
+    <div>
+       d(log(R))/dT
+        <label for="tempMinPlot2"></label>
+        <input type="number" id="tempMinPlot2" placeholder="">
+        <label for="tempMaxPlot2">to</label>
+        <input type="number" id="tempMaxPlot2" placeholder="">
+        <button id="updatePlot2">Update Plot </button>
+    </div>
     
-            <div>
-                Activation energy
-                <label for="activationTempMin"></label>
-                <input type="number" id="activationTempMin" placeholder="">
-                <label for="activationTempMax">to</label>
-                <input type="number" id="activationTempMax" placeholder="">
-                <button id="updatePlot3">Update Plot</button>
-            </div>
+    <div>
+        Activation energy
+        <label for="activationTempMin"></label>
+        <input type="number" id="activationTempMin" placeholder="">
+        <label for="activationTempMax">to</label>
+        <input type="number" id="activationTempMax" placeholder="">
+        <button id="updatePlot3">Update Plot </button>
+    </div>
     
-            <div id="plot1" class="plot-container"></div>
-            <div id="plot2" class="plot-container"></div>
-            <div id="plot3" class="plot-container"></div>
+    <div id="plot1" class="plot-container"></div>
+    <div id="plot2" class="plot-container"></div>
+    <div id="plot3" class="plot-container"></div>
 
-            <script>
-                let originalData = { temperatures: [], resistances: [] };
+    <script>
+        let originalData = { temperatures: [], resistances: [] };
 
-                document.getElementById('fileInput').addEventListener('change', function(event) {
-                    const file = event.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            const contents = e.target.result;
-                            processCSV(contents);
-                        };
-                        reader.readAsText(file);
-                    }
-                });
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const contents = e.target.result;
+                    processCSV(contents);
+                };
+                reader.readAsText(file);
+            }
+        });
 
-                function processCSV(csvData) {
-                    const lines = csvData.split('\n');
-                    const headers = lines[0].split('\t');
-                    const temperatureIndex = headers.indexOf('Temperature');
-                    const resistanceIndex = headers.indexOf('Resistance');
-                    
-                    if (temperatureIndex === -1 || resistanceIndex === -1) {
-                        alert('CSV must contain "Temperature" and "Resistance" columns.');
-                        return;
-                    }
+        function processCSV(csvData) {
+            const lines = csvData.split('\n');
+            const headers = lines[0].split('\t');
+            const temperatureIndex = headers.indexOf('Temperature');
+            const resistanceIndex = headers.indexOf('Resistance');
+            
+            if (temperatureIndex === -1 || resistanceIndex === -1) {
+                alert('CSV must contain "Temperature" and "Resistance" columns.');
+                return;
+            }
 
-                    let temperatures = [];
-                    let resistances = [];
+            let temperatures = [];
+            let resistances = [];
             for (let i = 1; i < lines.length; i++) {
                 const cells = lines[i].split('\t');
                 if (cells.length > Math.max(temperatureIndex, resistanceIndex)) {
@@ -455,6 +482,6 @@
     <a href="https://scholar.google.com/citations?user=quqtbIkAAAAJ&hl=en" style="color: white;">Google Scholar</a> |
     <a href="https://github.com/reetendra-singh" style="color: white;">GitHub</a>
     <p style="color: white;">&copy; 2024 Reetendra Singh. All Rights Reserved.</p>
-    </footer>
+</footer>
 </body>
 </html>

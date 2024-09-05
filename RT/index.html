@@ -3,142 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV Data Visualization</title>
+    <title>Metal-Insulator Transition Visualization</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
-        /* Import Roboto Slab from Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
-
-        /* Add your CSS styles here */
-        body {
-            font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
-            margin: 0;
-            padding: 0;
-            text-align: center; /* Center align all text */
-            background-color: #f9f9f9; /* Set background color to very light gray */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        header {
-            background-color: black; /* Set background color of the header to black */
-            padding: 20px 0; /* Add padding to the header */
-            width: 100%; /* Make header full width */
-            box-sizing: border-box; /* Ensure padding doesn't affect width */
-            margin-bottom: 20px; /* Add space below the header */
-        }
-        h1, h2 {
-            margin: 0;
-            color: white; /* Default color for h1 and h2 */
-        }
-
-        section {
-            padding: 20px;
-        }
-        
-        input, button {
-            margin: 5px; /* Space around inputs and buttons */
-            padding: 10px; /* Add padding */
-            font-size: 16px; /* Increase font size for better readability */
-            border: 1px solid #ccc; /* Border for inputs and buttons */
-            border-radius: 5px; /* Rounded corners */
-        }
-        button {
-            background-color: #333; /* Button background color */
-            color: white; /* Button text color */
-            border: none; /* Remove border from button */
-            cursor: pointer; /* Pointer cursor on hover */
-        }
-        button:hover {
-            background-color: #555; /* Darker background color on hover */
-        }
-
         .plot-container {
             border: 2px solid black; /* Ensure the plot containers have a visible border */
-            width: 400px; /* Set fixed width for square plots */
-            height: 400px; /* Set fixed height for square plots */
-            margin: 20px auto; /* Center the plots horizontally */
-            display: inline-block; /* Align plots side by side if needed */
-            text-align: left; /* Align text inside the plot container */
+            margin-bottom: 20px; /* Space between plots */
+            width: 400px; /* Fixed width for square plots */
+            height: 400px; /* Fixed height for square plots */
+            display: inline-block; /* Arrange plots in a row */
         }
-
-        footer {
-            background-color: black; /* Set the background color to black */
-            color: white; /* Set the text color to white */
-            width: 100%; /* Make the footer full width */
-            padding: 5px 0; /* Reduce padding to prevent cropping */
-            text-align: center; /* Center the text in the footer */
-            box-sizing: border-box; /* Ensure padding doesn't affect width */
-            line-height: 1.2; /* Reduce line height to save space */
-            font-size: 12px; /* Reduce font size slightly to prevent cropping */
-            margin-top: auto; /* Push the footer to the bottom if there is not enough content */
+        input, button {
+            margin: 5px; /* Space around inputs and buttons */
         }
-
-        footer a {
-            color: white; /* Set the link color to white */
-            text-decoration: none; /* Remove underline from links */
-            margin: 0 8px; /* Reduce spacing between the links */
-            font-size: 12px; /* Ensure link font size matches the footer text */
-        }
-
-        footer a:hover {
-            text-decoration: underline; /* Add underline on hover */
-        }
-
-        /* Responsive Styles */
-        @media only screen and (max-width: 768px) {
-            header {
-                margin: 0 auto; /* Adjust margin for smaller screens */
-                max-width: 100%; /* Adjust max-width for smaller screens */
-            }
-            input, button {
-                font-size: 14px; /* Adjust font size for smaller screens */
-                padding: 8px; /* Adjust padding */
-            }
-            .plot-container {
-                width: 100%; /* Ensure plots take full width on smaller screens */
-                height: 300px; /* Adjust height for smaller screens */
-            }
+        body {
+            font-family: Arial, sans-serif; /* Basic font for better appearance */
+            text-align: center; /* Center content */
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>CSV Data Visualization</h1>
-    </header>
+    <h1>CSV Data Visualization</h1>
+    <input type="file" id="fileInput" accept=".csv">
     
-    <section>
-        <input type="file" id="fileInput" accept=".csv">
-        
-        <div>
-            <label for="tempMin">Temperature Min:</label>
-            <input type="number" id="tempMin" placeholder="Min Temperature">
-            <label for="tempMax">Temperature Max:</label>
-            <input type="number" id="tempMax" placeholder="Max Temperature">
-            <button id="updatePlots">Update Plots</button>
-        </div>
-        
-        <div>
-            <label for="activationTempMin">Activation Energy Temp Min:</label>
-            <input type="number" id="activationTempMin" placeholder="Activation Energy Min Temp">
-            <label for="activationTempMax">Activation Energy Temp Max:</label>
-            <input type="number" id="activationTempMax" placeholder="Activation Energy Max Temp">
-            <button id="updateActivationPlot">Update Activation Plot</button>
-        </div>
-        
-        <div id="plot1" class="plot-container"></div>
-        <div id="plot2" class="plot-container"></div>
-        <div id="plot3" class="plot-container"></div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Your Name. All Rights Reserved.</p>
-        <p>Connect with me on:
-            <a href="https://www.linkedin.com/in/your-profile/">LinkedIn</a> |
-            <a href="https://scholar.google.com/citations?user=your-id">Google Scholar</a> |
-            <a href="https://github.com/your-profile">GitHub</a>
-        </p>
-    </footer>
+    <div>
+        <label for="tempMin">Temperature Min:</label>
+        <input type="number" id="tempMin" placeholder="Min Temperature">
+        <label for="tempMax">Temperature Max:</label>
+        <input type="number" id="tempMax" placeholder="Max Temperature">
+        <button id="updatePlots">Update Plots</button>
+    </div>
+    
+    <div>
+        <label for="activationTempMin">Activation Energy Temp Min:</label>
+        <input type="number" id="activationTempMin" placeholder="Activation Energy Min Temp">
+        <label for="activationTempMax">Activation Energy Temp Max:</label>
+        <input type="number" id="activationTempMax" placeholder="Activation Energy Max Temp">
+        <button id="updateActivationPlot">Update Activation Plot</button>
+    </div>
+    
+    <div id="plot1" class="plot-container"></div>
+    <div id="plot2" class="plot-container"></div>
+    <div id="plot3" class="plot-container"></div>
 
     <script>
         let originalData = { temperatures: [], resistances: [] };
@@ -222,7 +128,7 @@
                 yaxis: { 
                     title: 'Resistance (Ohms)', 
                     type: 'log',
-                    tickformat: '.1e',
+                    tickformat: '.1e', // Format y-axis in scientific notation
                     showgrid: false,
                     zeroline: true,
                     showline: true,
@@ -272,6 +178,9 @@
             };
 
             Plotly.newPlot('plot2', [trace2], layout2);
+
+            // Update the activation energy plot based on default or previously set range
+            updateActivationEnergyPlot();
         }
 
         function updateActivationEnergyPlot() {
@@ -279,11 +188,16 @@
             const activationTempMax = parseFloat(document.getElementById('activationTempMax').value) || Infinity;
             
             const { temperatures, resistances } = originalData;
-            
+
             // Filter data based on the selected temperature range for activation energy
             const maskActivationEnergy = temperatures.map(temp => temp >= activationTempMin && temp <= activationTempMax);
             const filteredTemps = temperatures.filter((_, i) => maskActivationEnergy[i]);
             const filteredResistances = resistances.filter((_, i) => maskActivationEnergy[i]);
+
+            if (filteredTemps.length < 2) {
+                alert('Not enough data in the specified range.');
+                return;
+            }
 
             const upperLineIndices = [...filteredResistances.keys()].sort((a, b) => filteredResistances[b] - filteredResistances[a]).slice(0, 200);
             const filteredTempsUpperLine = upperLineIndices.map(i => filteredTemps[i]);
@@ -314,6 +228,7 @@
                 name: `E_a = ${activationEnergyMeV.toFixed(2)} meV`,
                 line: {color: 'green'}
             };
+
             const layout3 = {
                 title: 'Log(R) vs 1/Temperature',
                 xaxis: { 

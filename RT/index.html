@@ -13,7 +13,6 @@
             font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
             margin: 0;
             padding: 0;
-            text-align: center; /* Center align all text */
             background-color: #f9f9f9; /* Set background color to very light gray */
             display: flex;
             flex-direction: column;
@@ -25,20 +24,11 @@
             width: 100%; /* Make header full width */
             box-sizing: border-box; /* Ensure padding doesn't affect width */
             margin-bottom: 20px; /* Add space below the header */
+            text-align: center;
         }
         h1, h2 {
             margin: 0;
             color: white; /* Default color for h1 and h2 */
-        }
-        article h2 {
-            color: black; /* Override color for h2 within article */
-        }
-        article h3 {
-            margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Set color for h3 elements */
-        }
-        h2.AcademicTitle {
-            color: black; /* Override color for specific h2 element */
         }
         nav ul {
             list-style-type: none; /* Remove bullet points */
@@ -70,32 +60,28 @@
             text-align: left; /* Align text in article to the left */
             flex-grow: 1; /* Allow article to grow */
         }
-        
-        article ul {
-            list-style-type: none; /* Remove default list style */
-            padding-left: 0; /* Remove default padding */
+
+        .plot-container {
+            border: 2px solid black; /* Ensure the plot containers have a visible border */
+            width: 400px; /* Fixed width for square plots */
+            height: 400px; /* Fixed height for square plots */
+            display: inline-block; /* Arrange plots in a row */
+            margin-bottom: 20px; /* Space between plots */
         }
-        article h3 {
-            margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Set color for h3 elements */
+
+        /* Center the plots */
+        #plot1, #plot2, #plot3 {
+            margin: 20px auto; /* Center the plots horizontally */
         }
-        article h3:before {
-            content: "•"; /* Add bullet point before heading */
-            display: inline-block;
-            margin-right: 5px; /* Add spacing between bullet point and text */
-            color: black; /* Set color for bullet point */
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            nav ul li a {
+                font-size: 10px; /* Further reduce font size for navigation links */
+                padding: 2px 4px; /* Further adjust padding */
+            }
         }
-        article h3 + ul {
-            margin-top: 0; /* Remove margin between heading and list */
-        }
-        article li {
-            margin-left: 20px; /* Add margin to align with heading */
-            color: black; /* Set color for list items */
-        }
-        article p {
-            color: black; /* Set color for paragraphs */
-        }
-        
+
         footer {
             background-color: black; /* Set the background color to black */
             color: white; /* Set the text color to white */
@@ -111,65 +97,11 @@
             color: white; /* Set the link color to white */
             text-decoration: none; /* Remove underline from links */
             margin: 0 8px; /* Reduce spacing between the links */
-            font-size: 12px; /* Ensure link font size matches the footer text */
         }
         footer a:hover {
             text-decoration: underline; /* Add underline on hover */
         }
 
-        /* Responsive Styles */
-        @media only screen and (max-width: 768px) {
-            header {
-                margin: 0 auto; /* Adjust margin for smaller screens */
-                max-width: 100%; /* Adjust max-width for smaller screens */
-            }
-            nav ul li {
-                margin-right: 4px; /* Further reduce margin between navigation links */
-            }
-            nav ul li a {
-                font-size: 10px; /* Further reduce font size for navigation links */
-                padding: 2px 4px; /* Further adjust padding */
-            }
-            article {
-                margin-left: 5%; /* Adjust margin-left for smaller screens */
-                margin-right: 5%; /* Adjust margin-right for smaller screens */
-            }
-        }
-
-        /* Image responsiveness */
-        img.responsive {
-            width: 100%; /* Image will take up the full width of its container */
-            height: auto; /* Maintain aspect ratio */
-            max-width: 1300px; /* Set a max width for larger screens */
-        }
-
-        /* Plot Container Styles */
-        .plot-container {
-            border: 2px solid black; /* Ensure the plot containers have a visible border */
-            margin-bottom: 20px; /* Space between plots */
-            width: 400px; /* Fixed width for square plots */
-            height: 400px; /* Fixed height for square plots */
-            display: inline-block; /* Arrange plots in a row */
-        }
-        input, button {
-            margin: 5px; /* Space around inputs and buttons */
-        }
-        
-        .plot-container {
-            border: 2px solid black; /* Ensure the plot containers have a visible border */
-            margin-bottom: 20px; /* Space between plots */
-            width: 400px; /* Fixed width for square plots */
-            height: 400px; /* Fixed height for square plots */
-            display: inline-block; /* Arrange plots in a row */
-        }
-        input, button {
-            margin: 5px; /* Space around inputs and buttons */
-        }
-        body {
-            font-family: Arial, sans-serif; /* Basic font for better appearance */
-            text-align: center; /* Center content */
-        }
-        
     </style>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
@@ -188,294 +120,43 @@
             </ul>
         </nav>
     </header>
-    
+
     <section>
         <article>
             <h2>Metal-Insulator Transition Visualization</h2>
             <input type="file" id="fileInput" accept=".csv">
 
             <div>
-        <h3>Set temperature ranges</h3> R(T)
-        <label for="tempMinPlot1"></label>
-        <input type="number" id="tempMinPlot1" placeholder="">
-        <label for="tempMaxPlot1">to</label>
-        <input type="number" id="tempMaxPlot1" placeholder="">
-        <button id="updatePlot1">Update Plot </button>
-    </div>
+                <h3>Set temperature ranges</h3>
+                R(T)
+                <input type="number" id="tempMinPlot1" placeholder="">
+                <label for="tempMaxPlot1">to</label>
+                <input type="number" id="tempMaxPlot1" placeholder="">
+                <button id="updatePlot1">Update Plot</button>
+            </div>
     
-    <div>
-       d(log(R))/dT
-        <label for="tempMinPlot2"></label>
-        <input type="number" id="tempMinPlot2" placeholder="">
-        <label for="tempMaxPlot2">to</label>
-        <input type="number" id="tempMaxPlot2" placeholder="">
-        <button id="updatePlot2">Update Plot </button>
-    </div>
+            <div>
+                d(log(R))/dT
+                <input type="number" id="tempMinPlot2" placeholder="">
+                <label for="tempMaxPlot2">to</label>
+                <input type="number" id="tempMaxPlot2" placeholder="">
+                <button id="updatePlot2">Update Plot</button>
+            </div>
     
-    <div>
-        Activation energy
-        <label for="activationTempMin"></label>
-        <input type="number" id="activationTempMin" placeholder="">
-        <label for="activationTempMax">to</label>
-        <input type="number" id="activationTempMax" placeholder="">
-        <button id="updatePlot3">Update Plot </button>
-    </div>
+            <div>
+                Activation energy
+                <input type="number" id="activationTempMin" placeholder="">
+                <label for="activationTempMax">to</label>
+                <input type="number" id="activationTempMax" placeholder="">
+                <button id="updatePlot3">Update Plot</button>
+            </div>
     
-    <div id="plot1" class="plot-container"></div>
-    <div id="plot2" class="plot-container"></div>
-    <div id="plot3" class="plot-container"></div>
+            <div id="plot1" class="plot-container"></div>
+            <div id="plot2" class="plot-container"></div>
+            <div id="plot3" class="plot-container"></div>
+        </article>
+    </section>
 
-    <script>
-        let originalData = { temperatures: [], resistances: [] };
-
-        document.getElementById('fileInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const contents = e.target.result;
-                    processCSV(contents);
-                };
-                reader.readAsText(file);
-            }
-        });
-
-        function processCSV(csvData) {
-            const lines = csvData.split('\n');
-            const headers = lines[0].split('\t');
-            const temperatureIndex = headers.indexOf('Temperature');
-            const resistanceIndex = headers.indexOf('Resistance');
-            
-            if (temperatureIndex === -1 || resistanceIndex === -1) {
-                alert('CSV must contain "Temperature" and "Resistance" columns.');
-                return;
-            }
-
-            let temperatures = [];
-            let resistances = [];
-            for (let i = 1; i < lines.length; i++) {
-                const cells = lines[i].split('\t');
-                if (cells.length > Math.max(temperatureIndex, resistanceIndex)) {
-                    const temp = parseFloat(cells[temperatureIndex]);
-                    const res = parseFloat(cells[resistanceIndex]);
-                    if (!isNaN(temp) && !isNaN(res) && res > 0) {
-                        temperatures.push(temp);
-                        resistances.push(res);
-                    }
-                }
-            }
-
-            originalData = { temperatures, resistances };
-
-            // Initial plot update
-            updatePlot1();
-            updatePlot2();
-            updatePlot3();
-        }
-
-        function updatePlot1() {
-            const tempMin = parseFloat(document.getElementById('tempMinPlot1').value) || -Infinity;
-            const tempMax = parseFloat(document.getElementById('tempMaxPlot1').value) || Infinity;
-            
-            const { temperatures, resistances } = originalData;
-            
-            // Filter data based on the selected temperature range for Plot 1
-            const filteredIndices = temperatures.map((temp, index) => temp >= tempMin && temp <= tempMax);
-            const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
-            const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
-
-            const trace1 = {
-                x: filteredTemps,
-                y: filteredResistances,
-                mode: 'markers+lines',
-                type: 'scatter',
-                name: 'Resistance vs Temperature',
-                line: {color: 'navy'},
-                marker: {color: 'navy'}
-            };
-            const layout1 = {
-                title: 'Resistance vs Temperature',
-                xaxis: { 
-                    title: 'Temperature (K)', 
-                    showgrid: false,
-                    zeroline: true,
-                    showline: true,
-                    linecolor: 'black',
-                    linewidth: 2,
-                    showticklabels: true
-                },
-                yaxis: { 
-                    title: 'Resistance (Ohms)', 
-                    type: 'log',
-                    tickformat: '.1e', // Format y-axis in scientific notation
-                    showgrid: false,
-                    zeroline: true,
-                    showline: true,
-                    linecolor: 'black',
-                    linewidth: 2,
-                    showticklabels: true
-                }
-            };
-
-            Plotly.newPlot('plot1', [trace1], layout1);
-        }
-
-        function updatePlot2() {
-            const tempMin = parseFloat(document.getElementById('tempMinPlot2').value) || -Infinity;
-            const tempMax = parseFloat(document.getElementById('tempMaxPlot2').value) || Infinity;
-
-            const { temperatures, resistances } = originalData;
-
-            // Filter data based on the selected temperature range for Plot 2
-            const filteredIndices = temperatures.map((temp, index) => temp >= tempMin && temp <= tempMax);
-            const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
-            const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
-
-            const logResistances = filteredResistances.map(res => Math.log(res));
-
-            // Calculate d(log(R))/dT
-            const dLogR_dT = [];
-            for (let i = 1; i < filteredTemps.length; i++) {
-                dLogR_dT.push((logResistances[i] - logResistances[i - 1]) / (filteredTemps[i] - filteredTemps[i - 1]));
-            }
-            const tempRange = filteredTemps.slice(1);
-
-            // Find the minimum value and corresponding temperature
-            const minDLogR_dT = Math.min(...dLogR_dT);
-            const minIndex = dLogR_dT.indexOf(minDLogR_dT);
-            const minTemp = tempRange[minIndex];
-
-            const trace2 = {
-                x: tempRange,
-                y: dLogR_dT,
-                mode: 'markers+lines',
-                type: 'scatter',
-                name: 'd(log(R))/dT',
-                line: {color: 'darkred'},
-                marker: {color: 'darkred'}
-            };
-
-            const layout2 = {
-                title: 'Transition Temperature',
-                xaxis: { 
-                    title: 'Temperature (K)', 
-                    showgrid: false,
-                    zeroline: true,
-                    showline: true,
-                    linecolor: 'black',
-                    linewidth: 2,
-                    showticklabels: true
-                },
-                yaxis: { 
-                    title: 'd(log(R))/dT',
-                    showgrid: false,
-                    zeroline: true,
-                    showline: true,
-                    linecolor: 'black',
-                    linewidth: 2,
-                    showticklabels: true
-                },
-                annotations: [{
-                    x: minTemp,
-                    y: minDLogR_dT,
-                    text: `<br>Transition Temp: ${minTemp.toFixed(2)}`,
-                    showarrow: true,
-                    arrowhead: 2,
-                    bgcolor: 'rgba(255, 255, 255, 0.8)'
-                }]
-            };
-
-            Plotly.newPlot('plot2', [trace2], layout2);
-        }
-
-        function updatePlot3() {
-            const activationTempMin = parseFloat(document.getElementById('activationTempMin').value) || -Infinity;
-            const activationTempMax = parseFloat(document.getElementById('activationTempMax').value) || Infinity;
-            
-            const { temperatures, resistances } = originalData;
-
-            // Filter data based on the selected temperature range for Plot 3
-            const maskActivationEnergy = temperatures.map(temp => temp >= activationTempMin && temp <= activationTempMax);
-            const filteredTemps = temperatures.filter((_, i) => maskActivationEnergy[i]);
-            const filteredResistances = resistances.filter((_, i) => maskActivationEnergy[i]);
-
-            if (filteredTemps.length < 2) {
-                alert('Not enough data in the specified range.');
-                return;
-            }
-
-            const upperLineIndices = [...filteredResistances.keys()].sort((a, b) => filteredResistances[b] - filteredResistances[a]).slice(0, 200);
-            const filteredTempsUpperLine = upperLineIndices.map(i => filteredTemps[i]);
-            const filteredResistancesUpperLine = upperLineIndices.map(i => filteredResistances[i]);
-
-            const inverseTempUpperLine = filteredTempsUpperLine.map(temp => 1 / temp);
-            const logResUpperLine = filteredResistancesUpperLine.map(res => Math.log(res));
-
-            // Perform linear regression
-            const { slope, intercept } = linearRegression(inverseTempUpperLine, logResUpperLine);
-            const activationEnergyMeV = Math.abs(slope * 8.617e-5) * 1000;
-
-            const trace3 = {
-                x: inverseTempUpperLine,
-                y: logResUpperLine,
-                mode: 'markers+lines',
-                type: 'scatter',
-                name: '', // Empty name to hide legend
-                line: {color: 'darkorange'},
-                marker: {color: 'darkorange'},
-                showlegend: false // Hide legend for this trace
-            };
-
-            const trace4 = {
-                x: inverseTempUpperLine,
-                y: inverseTempUpperLine.map(x => slope * x + intercept),
-                mode: 'lines',
-                type: 'scatter',
-                name: `E<sub>a</sub> = ${activationEnergyMeV.toFixed(2)} meV`, // Subscript 'a' in label
-                line: {color: 'green'}
-            };
-
-            const layout3 = {
-                title: 'Activation Energy',
-                xaxis: { 
-                    title: '1/Temperature (1/K)',
-                    showgrid: false,
-                    zeroline: true,
-                    showline: true,
-                    linecolor: 'black',
-                    linewidth: 2,
-                    showticklabels: true
-                },
-                yaxis: { 
-                    title: 'Log(R)',
-                    showgrid: false,
-                    zeroline: true,
-                    showline: true,
-                    linecolor: 'black',
-                    linewidth: 2,
-                    showticklabels: true
-                }
-            };
-
-            Plotly.newPlot('plot3', [trace3, trace4], layout3);
-        }
-
-        function linearRegression(x, y) {
-            const n = x.length;
-            const xMean = x.reduce((a, b) => a + b) / n;
-            const yMean = y.reduce((a, b) => a + b) / n;
-            const xyMean = x.reduce((sum, xi, i) => sum + xi * y[i], 0) / n;
-            const xxMean = x.reduce((sum, xi) => sum + xi * xi, 0) / n;
-
-            const slope = (xyMean - xMean * yMean) / (xxMean - xMean * xMean);
-            const intercept = yMean - slope * xMean;
-            return { slope, intercept };
-        }
-
-        document.getElementById('updatePlot1').addEventListener('click', updatePlot1);
-        document.getElementById('updatePlot2').addEventListener('click', updatePlot2);
-        document.getElementById('updatePlot3').addEventListener('click', updatePlot3);
-    </script>
     <footer>
         <p>Connect with me on:</p>
         <a href="https://www.linkedin.com/in/reetendra-singh/">LinkedIn</a> |
@@ -483,5 +164,9 @@
         <a href="https://github.com/reetendra-singh">GitHub</a>
         <p>&copy; 2024 Reetendra Singh. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        // Your existing JavaScript code
+    </script>
 </body>
 </html>

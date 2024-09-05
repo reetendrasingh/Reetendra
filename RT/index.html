@@ -23,34 +23,34 @@
     </style>
 </head>
 <body>
-    <h1>Metal-Insulator Transition Visualization</h1>
+    <h1>CSV Data Visualization</h1>
     <input type="file" id="fileInput" accept=".csv">
     
     <div>
-        <h2>Temperature vs Resistance</h2>
+        <h2>Plot 1: Temperature vs Resistance</h2>
         <label for="tempMinPlot1">Temperature Min:</label>
         <input type="number" id="tempMinPlot1" placeholder="Min Temperature">
         <label for="tempMaxPlot1">Temperature Max:</label>
         <input type="number" id="tempMaxPlot1" placeholder="Max Temperature">
-        <button id="updatePlot1">Update Plot</button>
+        <button id="updatePlot1">Update Plot 1</button>
     </div>
     
     <div>
-        <h2>d(log(R))/dT vs Temperature</h2>
+        <h2>Plot 2: d(log(R))/dT vs Temperature</h2>
         <label for="tempMinPlot2">Temperature Min:</label>
         <input type="number" id="tempMinPlot2" placeholder="Min Temperature">
         <label for="tempMaxPlot2">Temperature Max:</label>
         <input type="number" id="tempMaxPlot2" placeholder="Max Temperature">
-        <button id="updatePlot2">Update Plot</button>
+        <button id="updatePlot2">Update Plot 2</button>
     </div>
     
     <div>
-        <h2>Log(R) vs 1/Temperature</h2>
+        <h2>Plot 3: Log(R) vs 1/Temperature</h2>
         <label for="activationTempMin">Activation Energy Temp Min:</label>
         <input type="number" id="activationTempMin" placeholder="Activation Energy Min Temp">
         <label for="activationTempMax">Activation Energy Temp Max:</label>
         <input type="number" id="activationTempMax" placeholder="Activation Energy Max Temp">
-        <button id="updatePlot3">Update Plot</button>
+        <button id="updatePlot3">Update Plot 3</button>
     </div>
     
     <div id="plot1" class="plot-container"></div>
@@ -188,7 +188,7 @@
             };
 
             const layout2 = {
-                title: 'Transition Temperature',
+                title: 'd(log(R))/dT vs Temperature',
                 xaxis: { 
                     title: 'Temperature (K)', 
                     showgrid: false,
@@ -210,7 +210,7 @@
                 annotations: [{
                     x: minTemp,
                     y: minDLogR_dT,
-                    text: <br>Transition Temp: ${minTemp.toFixed(2)},
+                    text: `<br>Transition Temp: ${minTemp.toFixed(2)}`,
                     showarrow: true,
                     arrowhead: 2,
                     ax: 0,
@@ -265,12 +265,12 @@
                 y: inverseTempUpperLine.map(x => slope * x + intercept),
                 mode: 'lines',
                 type: 'scatter',
-                name: E<sub>a</sub> = ${activationEnergyMeV.toFixed(2)} meV, // Subscript 'a' in label
+                name: `E<sub>a</sub> = ${activationEnergyMeV.toFixed(2)} meV`, // Subscript 'a' in label
                 line: {color: 'green'}
             };
 
             const layout3 = {
-                title: 'Activation Energy',
+                title: 'Log(R) vs 1/Temperature',
                 xaxis: { 
                     title: '1/Temperature (1/K)',
                     showgrid: false,

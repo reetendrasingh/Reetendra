@@ -9,14 +9,12 @@
         .plot-container {
             border: 2px solid black; /* Ensure the plot containers have a visible border */
             margin-bottom: 20px; /* Space between plots */
-            width: 350px; /* Adjusted width for plots */
-            height: 350px; /* Adjusted height for plots */
+            width: 400px; /* Fixed width for square plots */
+            height: 400px; /* Fixed height for square plots */
             display: inline-block; /* Arrange plots in a row */
         }
         input, button {
-            margin: 2px; /* Reduced space around inputs and buttons */
-            width: 120px; /* Adjusted width for inputs and buttons */
-            padding: 5px; /* Added padding for better appearance */
+            margin: 5px; /* Space around inputs and buttons */
         }
         body {
             font-family: Arial, sans-serif; /* Basic font for better appearance */
@@ -29,29 +27,32 @@
     <input type="file" id="fileInput" accept=".csv">
     
     <div>
-        <h2>Temperature range for R(T) </h2>
+        <h2>R(T)</h2>
         <label for="tempMinPlot1"></label>
-        <input type="number" id="tempMinPlot1" placeholder="">
+        <input type="number" id="tempMinPlot1" placeholder="Min Temp.">
         <label for="tempMaxPlot1">to</label>
-        <input type="number" id="tempMaxPlot1" placeholder="">
+        <input type="number" id="tempMaxPlot1" placeholder="Max Temp.">
+        <input type="color" id="colorPlot1" value="#0000FF">
         <button id="updatePlot1">Update Plot</button>
     </div>
     
     <div>
-        <h2>d(log(R))/dT </h2>
+        <h2>d(log(R))/dT</h2>
         <label for="tempMinPlot2"></label>
-        <input type="number" id="tempMinPlot2" placeholder="">
+        <input type="number" id="tempMinPlot2" placeholder="Min Temp.">
         <label for="tempMaxPlot2">to</label>
-        <input type="number" id="tempMaxPlot2" placeholder="">
+        <input type="number" id="tempMaxPlot2" placeholder="Max Temp.">
+        <input type="color" id="colorPlot2" value="#FF0000">
         <button id="updatePlot2">Update Plot</button>
     </div>
     
     <div>
-        <h2> Activation energy</h2>
+        <h2>Activation energy</h2>
         <label for="activationTempMin"></label>
-        <input type="number" id="activationTempMin" placeholder="">
+        <input type="number" id="activationTempMin" placeholder="Min Temp.">
         <label for="activationTempMax">to</label>
-        <input type="number" id="activationTempMax" placeholder="">
+        <input type="number" id="activationTempMax" placeholder="Max Temp.">
+        <input type="color" id="colorPlot3" value="#FFA500">
         <button id="updatePlot3">Update Plot</button>
     </div>
     
@@ -110,7 +111,8 @@
         function updatePlot1() {
             const tempMin = parseFloat(document.getElementById('tempMinPlot1').value) || -Infinity;
             const tempMax = parseFloat(document.getElementById('tempMaxPlot1').value) || Infinity;
-            
+            const color = document.getElementById('colorPlot1').value;
+
             const { temperatures, resistances } = originalData;
             
             // Filter data based on the selected temperature range for Plot 1
@@ -121,11 +123,10 @@
             const trace1 = {
                 x: filteredTemps,
                 y: filteredResistances,
-                mode: 'markers+lines',
+                mode: 'lines',
                 type: 'scatter',
                 name: 'Resistance vs Temperature',
-                line: {color: 'navy'},
-                marker: {color: 'navy'}
+                line: {color: color}
             };
             const layout1 = {
                 title: 'Resistance vs Temperature',
@@ -157,6 +158,7 @@
         function updatePlot2() {
             const tempMin = parseFloat(document.getElementById('tempMinPlot2').value) || -Infinity;
             const tempMax = parseFloat(document.getElementById('tempMaxPlot2').value) || Infinity;
+            const color = document.getElementById('colorPlot2').value;
 
             const { temperatures, resistances } = originalData;
 
@@ -182,11 +184,10 @@
             const trace2 = {
                 x: tempRange,
                 y: dLogR_dT,
-                mode: 'markers+lines',
+                mode: 'lines',
                 type: 'scatter',
                 name: 'd(log(R))/dT',
-                line: {color: 'darkred'},
-                marker: {color: 'darkred'}
+                line: {color: color}
             };
 
             const layout2 = {
@@ -227,7 +228,8 @@
         function updatePlot3() {
             const activationTempMin = parseFloat(document.getElementById('activationTempMin').value) || -Infinity;
             const activationTempMax = parseFloat(document.getElementById('activationTempMax').value) || Infinity;
-            
+            const color = document.getElementById('colorPlot3').value;
+
             const { temperatures, resistances } = originalData;
 
             // Filter data based on the selected temperature range for Plot 3
@@ -254,12 +256,10 @@
             const trace3 = {
                 x: inverseTempUpperLine,
                 y: logResUpperLine,
-                mode: 'markers+lines',
+                mode: 'markers',
                 type: 'scatter',
                 name: '', // Empty name to hide legend
-                line: {color: 'darkorange'},
-                marker: {color: 'darkorange'},
-                showlegend: false // Hide legend for this trace
+                marker: {color: color}
             };
 
             const trace4 = {

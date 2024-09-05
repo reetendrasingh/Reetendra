@@ -59,6 +59,24 @@
             color: #fff;
         }
 
+        .plot-container {
+            border: 2px solid black;
+            margin: 10px;
+            width: 400px;
+            height: 400px;
+        }
+
+        .plot-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        input, button {
+            margin: 5px;
+        }
+
         footer {
             background-color: black;
             color: white;
@@ -80,17 +98,6 @@
 
         footer a:hover {
             text-decoration: underline;
-        }
-
-        .plot-container {
-            border: 2px solid black;
-            margin-bottom: 20px;
-            width: 400px;
-            height: 400px;
-            display: inline-block;
-        }
-        input, button {
-            margin: 5px;
         }
     </style>
 </head>
@@ -139,9 +146,11 @@
         <button id="updatePlot3">Update Plot</button>
     </div>
 
-    <div id="plot1" class="plot-container"></div>
-    <div id="plot2" class="plot-container"></div>
-    <div id="plot3" class="plot-container"></div>
+    <div class="plot-row">
+        <div id="plot1" class="plot-container"></div>
+        <div id="plot2" class="plot-container"></div>
+        <div id="plot3" class="plot-container"></div>
+    </div>
 
     <footer>
         <p>Connect with me on:</p>
@@ -256,6 +265,11 @@
             const filteredIndices = temperatures.map((temp, index) => temp >= tempMin && temp <= tempMax);
             const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
             const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
+
+            if (filteredTemps.length < 2) {
+                alert('Not enough data in the specified range.');
+                return;
+            }
 
             const logResistances = filteredResistances.map(res => Math.log(res));
 

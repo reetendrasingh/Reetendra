@@ -135,7 +135,7 @@
 
             let traces = [];
 
-            dataStore.forEach(({ temperatures, resistances, color }) => {
+            dataStore.forEach(({ temperatures, resistances, fileName, color }) => {
                 const filteredIndices = temperatures.map((temp, index) => temp >= tempMin && temp <= tempMax);
                 const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
                 const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
@@ -146,7 +146,8 @@
                     mode: 'lines', // Only lines, no markers
                     type: 'scatter',
                     line: { color: color },
-                    showlegend: false // Remove legend
+                    name: fileName, // Set the name to the filename
+                    showlegend: false // Hide legend
                 };
                 traces.push(trace);
             });
@@ -212,7 +213,8 @@
                     mode: 'lines', // Only lines, no markers
                     type: 'scatter',
                     line: { color: color },
-                    showlegend: false // Remove legend
+                    name: fileName, // Set the name to the filename
+                    showlegend: false // Hide legend
                 };
                 traces.push(trace);
 
@@ -223,7 +225,6 @@
                     text: `<br>T<sub>c</sub>(${index + 1}): ${transitionTemp.toFixed(2)} K`,
                     showarrow: true,
                     arrowhead: 5,
-                    font: { size: 14 },
                     bgcolor: 'rgba(255, 255, 255, 0.8)'
                 });
             });
@@ -296,7 +297,8 @@
                     mode: 'markers',
                     type: 'scatter',
                     marker: { color: color },
-                    showlegend: false // Remove legend
+                    name: fileName, // Set the name to the filename
+                    showlegend: false // Hide legend
                 };
 
                 // Trace for fitted line
@@ -307,7 +309,7 @@
                     mode: 'lines',
                     type: 'scatter',
                     line: { color: 'rgba(0, 0, 0, 0.5)' }, // Different color for fitted line
-                    showlegend: false // Remove legend
+                    showlegend: false // Hide legend for fitted line
                 };
 
                 traces.push(dataPointsTrace, fittedLineTrace);

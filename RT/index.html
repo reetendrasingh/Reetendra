@@ -20,9 +20,12 @@
             font-family: Arial, sans-serif;
             text-align: center;
         }
-        #fileNames {
-            margin: 10px;
-            text-align: left;
+        .color-picker {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -60,14 +63,28 @@
             dataStore = []; // Clear previous data
             transitionTemperatures = []; // Clear previous transition temperatures
             
-            // Display the file names with color codes
+            // Display the file names with color pickers
             const fileNamesDiv = document.getElementById('fileNames');
             fileNamesDiv.innerHTML = ''; // Clear previous file names
             Array.from(files).forEach((file, index) => {
-                const fileName = document.createElement('div');
-                fileName.innerHTML = `<span style="color: ${colorPalette[index % colorPalette.length]}">■</span> ${file.name}`;
-                fileNamesDiv.appendChild(fileName);
-                
+                const fileDiv = document.createElement('div');
+
+                const colorInput = document.createElement('input');
+                colorInput.type = 'color';
+                colorInput.value = colorPalette[index % colorPalette.length];
+                colorInput.className = 'color-picker';
+                colorInput.addEventListener('input', function() {
+                    dataStore[index].color = colorInput.value;
+                    updateAllPlots(); // Re-render plots with the updated color
+                });
+
+                const fileName = document.createElement('span');
+                fileName.textContent = `File(${index + 1}): ${file.name}`;
+
+                fileDiv.appendChild(colorInput);
+                fileDiv.appendChild(fileName);
+                fileNamesDiv.appendChild(fileDiv);
+
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const contents = e.target.result;
@@ -206,8 +223,7 @@
                     text: `<br>T<sub>c</sub>(${index + 1}): ${transitionTemp.toFixed(2)} K`,
                     showarrow: true,
                     arrowhead: 5,
-                    bgcolor: 'rgba(255, 255, 255, 0.8)',
-                    font: { size: 12 }
+                    bgcolor: 'rgba(255, 255, 255, 0.8)'
                 });
             });
 
@@ -350,6 +366,12 @@
             const intercept = (sumY - slope * sumX) / n;
             
             return { slope, intercept };
+        }
+
+        function updateAllPlots() {
+            updatePlot1();
+            updatePlot2();
+            updatePlot3();
         }
 
         document.getElementById('updatePlot1').addEventListener('click', updatePlot1);

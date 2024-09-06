@@ -7,82 +7,90 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         .plot-container {
-            border: 2px solid black; /* Ensure the plot containers have a visible border */
-            margin-bottom: 20px; /* Space between plots */
-            width: 400px; /* Fixed width for square plots */
-            height: 400px; /* Fixed height for square plots */
-            display: inline-block; /* Arrange plots in a row */
+            border: 2px solid black;
+            margin-bottom: 20px;
+            width: 400px;
+            height: 400px;
+            display: inline-block;
         }
         input, button {
-            margin: 5px; /* Space around inputs and buttons */
+            margin: 5px;
         }
         body {
-            font-family: Arial, sans-serif; /* Basic font for better appearance */
-            text-align: center; /* Center content */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #fileNames {
+            margin: 10px;
+            text-align: left;
         }
     </style>
 </head>
 <body>
     <h1>Metal-Insulator Transition Visualization</h1>
-    <input type="file" id="fileInput" accept=".csv">
-    
+    <input type="file" id="fileInput" accept=".csv" multiple>
+    <div id="fileNames"></div>
+
     <div>
         <h2>R(T)</h2>
-        <label for="tempMinPlot1"></label>
-        <input type="number" id="tempMinPlot1" placeholder="Min Temp.">
-        <label for="tempMaxPlot1">to</label>
-        <input type="number" id="tempMaxPlot1" placeholder="Max Temp.">
-        <input type="color" id="colorPlot1" value="#0000FF">
+        <input type="number" id="tempMinPlot1" placeholder="Min Temp">
+        <input type="number" id="tempMaxPlot1" placeholder="Max Temp">
         <button id="updatePlot1">Update Plot</button>
     </div>
     
     <div>
         <h2>d(log(R))/dT</h2>
-        <label for="tempMinPlot2"></label>
-        <input type="number" id="tempMinPlot2" placeholder="Min Temp.">
-        <label for="tempMaxPlot2">to</label>
-        <input type="number" id="tempMaxPlot2" placeholder="Max Temp.">
-        <input type="color" id="colorPlot2" value="#FF0000">
+        <input type="number" id="tempMinPlot2" placeholder="Min Temp">
+        <input type="number" id="tempMaxPlot2" placeholder="Max Temp">
         <button id="updatePlot2">Update Plot</button>
     </div>
     
     <div>
-        <h2>Activation energy</h2>
-        <label for="activationTempMin"></label>
-        <input type="number" id="activationTempMin" placeholder="Min Temp.">
-        <label for="activationTempMax">to</label>
-        <input type="number" id="activationTempMax" placeholder="Max Temp.">
-        <input type="color" id="colorPlot3" value="#FFA500">
+        <h2>Activation Energy</h2>
+        <input type="number" id="activationTempMin" placeholder="Min Temp">
+        <input type="number" id="activationTempMax" placeholder="Max Temp">
         <button id="updatePlot3">Update Plot</button>
     </div>
-    
+
     <div id="plot1" class="plot-container"></div>
     <div id="plot2" class="plot-container"></div>
     <div id="plot3" class="plot-container"></div>
 
     <script>
-        let originalData = { temperatures: [], resistances: [] };
+        let dataStore = []; // Store multiple files' data
+        const colorPalette = ['#FF0000', '#00FF00', '#0000FF', '#FF00FF', '#00FFFF', '#FFA500']; // Different colors for each file
+        let transitionTemperatures = []; // Store transition temperatures for each file
 
         document.getElementById('fileInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
+            const files = event.target.files;
+            dataStore = []; // Clear previous data
+            transitionTemperatures = []; // Clear previous transition temperatures
+            
+            // Display the file names
+            const fileNamesDiv = document.getElementById('fileNames');
+            fileNamesDiv.innerHTML = ''; // Clear previous file names
+            Array.from(files).forEach((file, index) => {
+                const fileName = document.createElement('div');
+                fileName.textContent = `File ${index + 1}: ${file.name}`;
+                fileNamesDiv.appendChild(fileName);
+                
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const contents = e.target.result;
-                    processCSV(contents);
+                    processCSV(contents, `File ${index + 1}`, index);
                 };
                 reader.readAsText(file);
-            }
+            });
         });
 
-        function processCSV(csvData) {
+        function processCSV(csvData, shortName, index) {
             const lines = csvData.split('\n');
             const headers = lines[0].split('\t');
             const temperatureIndex = headers.indexOf('Temperature');
             const resistanceIndex = headers.indexOf('Resistance');
             
             if (temperatureIndex === -1 || resistanceIndex === -1) {
-                alert('CSV must contain "Temperature" and "Resistance" columns.');
+                alert(`File ${shortName} must contain "Temperature" and "Resistance" columns.`);
                 return;
             }
 
@@ -100,34 +108,38 @@
                 }
             }
 
-            originalData = { temperatures, resistances };
+            dataStore.push({ temperatures, resistances, shortName, color: colorPalette[index % colorPalette.length] });
 
-            // Initial plot update
-            updatePlot1();
-            updatePlot2();
-            updatePlot3();
+            // Plot after processing all files
+            if (dataStore.length === document.getElementById('fileInput').files.length) {
+                updatePlot1();
+                updatePlot2();
+                updatePlot3();
+            }
         }
 
         function updatePlot1() {
             const tempMin = parseFloat(document.getElementById('tempMinPlot1').value) || -Infinity;
             const tempMax = parseFloat(document.getElementById('tempMaxPlot1').value) || Infinity;
-            const color = document.getElementById('colorPlot1').value;
 
-            const { temperatures, resistances } = originalData;
-            
-            // Filter data based on the selected temperature range for Plot 1
-            const filteredIndices = temperatures.map((temp, index) => temp >= tempMin && temp <= tempMax);
-            const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
-            const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
+            let traces = [];
 
-            const trace1 = {
-                x: filteredTemps,
-                y: filteredResistances,
-                mode: 'lines',
-                type: 'scatter',
-                name: 'Resistance vs Temperature',
-                line: {color: color}
-            };
+            dataStore.forEach(({ temperatures, resistances, shortName, color }) => {
+                const filteredIndices = temperatures.map((temp, index) => temp >= tempMin && temp <= tempMax);
+                const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
+                const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
+
+                const trace = {
+                    x: filteredTemps,
+                    y: filteredResistances,
+                    mode: 'lines', // Only lines, no markers
+                    type: 'scatter',
+                    name: shortName,
+                    line: { color: color }
+                };
+                traces.push(trace);
+            });
+
             const layout1 = {
                 title: 'Resistance vs Temperature',
                 xaxis: { 
@@ -142,7 +154,7 @@
                 yaxis: { 
                     title: 'Resistance (Ohms)', 
                     type: 'log',
-                    tickformat: '.1e', // Format y-axis in scientific notation
+                    tickformat: '.1e',
                     showgrid: false,
                     zeroline: true,
                     showline: true,
@@ -152,43 +164,60 @@
                 }
             };
 
-            Plotly.newPlot('plot1', [trace1], layout1);
+            Plotly.newPlot('plot1', traces, layout1);
         }
 
         function updatePlot2() {
             const tempMin = parseFloat(document.getElementById('tempMinPlot2').value) || -Infinity;
             const tempMax = parseFloat(document.getElementById('tempMaxPlot2').value) || Infinity;
-            const color = document.getElementById('colorPlot2').value;
 
-            const { temperatures, resistances } = originalData;
+            let traces = [];
+            let annotations = [];
 
-            // Filter data based on the selected temperature range for Plot 2
-            const filteredIndices = temperatures.map((temp, index) => temp >= tempMin && temp <= tempMax);
-            const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
-            const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
+            transitionTemperatures = []; // Reset transition temperatures
 
-            const logResistances = filteredResistances.map(res => Math.log(res));
+            dataStore.forEach(({ temperatures, resistances, shortName, color }) => {
+                const filteredIndices = temperatures.map((temp, index) => temp >= tempMin && temp <= tempMax);
+                const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
+                const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
 
-            // Calculate d(log(R))/dT
-            const dLogR_dT = [];
-            for (let i = 1; i < filteredTemps.length; i++) {
-                dLogR_dT.push((logResistances[i] - logResistances[i - 1]) / (filteredTemps[i] - filteredTemps[i - 1]));
-            }
-            const tempRange = filteredTemps.slice(1);
+                const logResistances = filteredResistances.map(res => Math.log(res));
 
-            // Find the minimum value and corresponding temperature
-            const minDLogR_dT = Math.min(...dLogR_dT);
-            const minIndex = dLogR_dT.indexOf(minDLogR_dT);
-            const minTemp = tempRange[minIndex];
+                // Calculate d(log(R))/dT
+                const dLogR_dT = [];
+                for (let i = 1; i < filteredTemps.length; i++) {
+                    dLogR_dT.push((logResistances[i] - logResistances[i - 1]) / (filteredTemps[i] - filteredTemps[i - 1]));
+                }
+                const tempRange = filteredTemps.slice(1);
 
-            const trace2 = {
-                x: tempRange,
-                y: dLogR_dT,
-                mode: 'lines',
-                type: 'scatter',
-                name: 'd(log(R))/dT',
-                line: {color: color}
-            };
+                // Find minimum value of d(log(R))/dT and its corresponding temperature
+                const minIndex = dLogR_dT.indexOf(Math.min(...dLogR_dT));
+                const transitionTemp = tempRange[minIndex];
+                transitionTemperatures.push({ shortName, transitionTemp, color });
+
+                const trace = {
+                    x: tempRange,
+                    y: dLogR_dT,
+                    mode: 'lines', // Only lines, no markers
+                    type: 'scatter',
+                    name: shortName,
+                    line: { color: color }
+                };
+                traces.push(trace);
+
+                // Add annotation for transition temperature
+                annotations.push({
+                    x: transitionTemp,
+                    y: Math.min(...dLogR_dT),
+                    text: `<br>T<sub>c</sub>: ${transitionTemp.toFixed(2)} K`,
+                    showarrow: true,
+                    arrowhead: 2,
+                    ax: 0,
+                    ay: -40,
+                    bgcolor: 'rgba(255, 255, 255, 0.8)',
+                    font: { size: 12 }
+                });
+            });
 
             const layout2 = {
                 title: 'Transition Temperature',
@@ -210,71 +239,81 @@
                     linewidth: 2,
                     showticklabels: true
                 },
-                annotations: [{
-                    x: minTemp,
-                    y: minDLogR_dT,
-                    text: `<br>Transition Temp: ${minTemp.toFixed(2)}`,
-                    showarrow: true,
-                    arrowhead: 2,
-                    ax: 0,
-                    ay: -40,
-                    bgcolor: 'rgba(255, 255, 255, 0.8)'
-                }]
+                annotations: annotations
             };
 
-            Plotly.newPlot('plot2', [trace2], layout2);
+            Plotly.newPlot('plot2', traces, layout2);
         }
 
         function updatePlot3() {
             const activationTempMin = parseFloat(document.getElementById('activationTempMin').value) || -Infinity;
             const activationTempMax = parseFloat(document.getElementById('activationTempMax').value) || Infinity;
-            const color = document.getElementById('colorPlot3').value;
 
-            const { temperatures, resistances } = originalData;
+            let traces = [];
+            let annotations = [];
 
-            // Filter data based on the selected temperature range for Plot 3
-            const maskActivationEnergy = temperatures.map(temp => temp >= activationTempMin && temp <= activationTempMax);
-            const filteredTemps = temperatures.filter((_, i) => maskActivationEnergy[i]);
-            const filteredResistances = resistances.filter((_, i) => maskActivationEnergy[i]);
+            dataStore.forEach(({ temperatures, resistances, shortName, color }) => {
+                const filteredIndices = temperatures.map(temp => temp >= activationTempMin && temp <= activationTempMax);
+                const filteredTemps = temperatures.filter((_, i) => filteredIndices[i]);
+                const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
 
-            if (filteredTemps.length < 2) {
-                alert('Not enough data in the specified range.');
-                return;
-            }
+                if (filteredTemps.length < 2) {
+                    alert(`Not enough data in the specified range for ${shortName}.`);
+                    return;
+                }
 
-            const upperLineIndices = [...filteredResistances.keys()].sort((a, b) => filteredResistances[b] - filteredResistances[a]).slice(0, 200);
-            const filteredTempsUpperLine = upperLineIndices.map(i => filteredTemps[i]);
-            const filteredResistancesUpperLine = upperLineIndices.map(i => filteredResistances[i]);
+                // Calculate inverse temperature and log resistance
+                const inverseTemps = filteredTemps.map(temp => 1 / temp);
+                const logResistances = filteredResistances.map(res => Math.log(res));
 
-            const inverseTempUpperLine = filteredTempsUpperLine.map(temp => 1 / temp);
-            const logResUpperLine = filteredResistancesUpperLine.map(res => Math.log(res));
+                // Perform linear regression
+                const { slope, intercept } = linearRegression(inverseTemps, logResistances);
+                const activationEnergyMeV = Math.abs(slope * 8.617e-5) * 1000; // Convert to meV
 
-            // Perform linear regression
-            const { slope, intercept } = linearRegression(inverseTempUpperLine, logResUpperLine);
-            const activationEnergyMeV = Math.abs(slope * 8.617e-5) * 1000;
+                // Original data points trace
+                const originalTrace = {
+                    x: inverseTemps,
+                    y: logResistances,
+                    mode: 'markers',
+                    type: 'scatter',
+                    name: `${shortName}`,
+                    marker: { color: color }
+                };
 
-            const trace3 = {
-                x: inverseTempUpperLine,
-                y: logResUpperLine,
-                mode: 'markers',
-                type: 'scatter',
-                name: '', // Empty name to hide legend
-                marker: {color: color}
-            };
+                // Fitted line trace
+                const fittedLine = inverseTemps.map(temp => slope * temp + intercept);
+                const fittedLineTrace = {
+                    x: inverseTemps,
+                    y: fittedLine,
+                    mode: 'lines',
+                    type: 'scatter',
+                    name: `(E<sub>a</sub> = ${activationEnergyMeV.toFixed(2)} meV)`,
+                    line: { color: color }
+                };
 
-            const trace4 = {
-                x: inverseTempUpperLine,
-                y: inverseTempUpperLine.map(x => slope * x + intercept),
-                mode: 'lines',
-                type: 'scatter',
-                name: `E<sub>a</sub> = ${activationEnergyMeV.toFixed(2)} meV`, // Subscript 'a' in label
-                line: {color: 'green'}
-            };
+                traces.push(originalTrace, fittedLineTrace);
+
+                // Add annotation for transition temperature
+                const transitionTemp = transitionTemperatures.find(item => item.shortName === shortName)?.transitionTemp;
+                if (transitionTemp !== undefined) {
+                    annotations.push({
+                        x: 1 / transitionTemp,
+                        y: Math.log(filteredResistances[filteredTemps.indexOf(transitionTemp)]),
+                        text: `<br>T<sub>c</sub>: ${transitionTemp.toFixed(2)} K`,
+                        showarrow: true,
+                        arrowhead: 2,
+                        ax: 0,
+                        ay: -40,
+                        bgcolor: 'rgba(255, 255, 255, 0.8)',
+                        font: { size: 12 }
+                    });
+                }
+            });
 
             const layout3 = {
                 title: 'Activation Energy',
                 xaxis: { 
-                    title: '1/Temperature (1/K)',
+                    title: '1/Temperature (1/K)', 
                     showgrid: false,
                     zeroline: true,
                     showline: true,
@@ -293,7 +332,11 @@
                 }
             };
 
-            Plotly.newPlot('plot3', [trace3, trace4], layout3);
+            if (traces.length === 0) {
+                console.warn('No valid data available for Activation Energy plot.');
+            }
+
+            Plotly.newPlot('plot3', traces, layout3);
         }
 
         function linearRegression(x, y) {

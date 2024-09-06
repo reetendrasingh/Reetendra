@@ -31,23 +31,24 @@
     <input type="file" id="fileInput" accept=".csv" multiple>
     <div id="fileNames"></div>
 
-    
-    
-
     <div id="plot1" class="plot-container">
         <h2>R(T)</h2>
         <input type="number" id="tempMinPlot1" placeholder="Min Temp">
         <input type="number" id="tempMaxPlot1" placeholder="Max Temp">
         <button id="updatePlot1">Update Plot</button>
     </div>
-    <div id="plot2" class="plot-container"> <h2>d(log(R))/dT</h2>
+    <div id="plot2" class="plot-container">
+        <h2>d(log(R))/dT</h2>
         <input type="number" id="tempMinPlot2" placeholder="Min Temp">
         <input type="number" id="tempMaxPlot2" placeholder="Max Temp">
-        <button id="updatePlot2">Update Plot</button></div>
-    <div id="plot3" class="plot-container"><h2>Activation Energy</h2>
+        <button id="updatePlot2">Update Plot</button>
+    </div>
+    <div id="plot3" class="plot-container">
+        <h2>Activation Energy</h2>
         <input type="number" id="activationTempMin" placeholder="Min Temp">
         <input type="number" id="activationTempMax" placeholder="Max Temp">
-        <button id="updatePlot3">Update Plot</button></div>
+        <button id="updatePlot3">Update Plot</button>
+    </div>
 
     <script>
         let dataStore = []; // Store multiple files' data
@@ -204,9 +205,7 @@
                     y: Math.min(...dLogR_dT),
                     text: `<br>T<sub>c</sub>: ${transitionTemp.toFixed(2)} K`,
                     showarrow: true,
-                    arrowhead: 2,
-                    ax: 0,
-                    ay: -40,
+                    arrowhead: 5,
                     bgcolor: 'rgba(255, 255, 255, 0.8)',
                     font: { size: 12 }
                 });
@@ -243,7 +242,6 @@
             const activationTempMax = parseFloat(document.getElementById('activationTempMax').value) || Infinity;
 
             let traces = [];
-            let annotations = [];
 
             dataStore.forEach(({ temperatures, resistances, shortName, color }) => {
                 const filteredIndices = temperatures.map(temp => temp >= activationTempMin && temp <= activationTempMax);
@@ -251,7 +249,7 @@
                 const filteredResistances = resistances.filter((_, i) => filteredIndices[i]);
 
                 if (filteredTemps.length < 2) {
-                    alert(`Not enough data in the specified range for ${shortName}.`);
+                    console.warn(`Not enough data in the specified range for ${shortName}.`);
                     return;
                 }
 
@@ -259,24 +257,35 @@
                 const inverseTemps = filteredTemps.map(temp => 1 / temp);
                 const logResistances = filteredResistances.map(res => Math.log(res));
 
-                // Perform linear regression
-                const { slope, intercept } = linearRegression(inverseTemps, logResistances);
-                const activationEnergyMeV = Math.abs(slope * 8.617e-5) * 1000; // Convert to meV
+                // Find and select data points with the highest resistances
+                const sortedIndices = logResistances
+                    .map((res, index) => ({ index, res }))
+                    .sort((a, b) => b.res - a.res) // Sort by descending resistance
+                    .map(({ index }) => index);
 
-                // Original data points trace
-                const originalTrace = {
-                    x: inverseTemps,
-                    y: logResistances,
-                    mode: 'markers',
+                const topIndices = sortedIndices.slice(0, 200); // Adjust the number as needed
+                const selectedInverseTemps = topIndices.map(i => inverseTemps[i]);
+                const selectedLogResistances = topIndices.map(i => logResistances[i]);
+
+                // Perform linear regression
+                const { slope, intercept } = linearRegression(selectedInverseTemps, selectedLogResistances);
+                const activationEnergyMeV = Math.abs(slope * 8.617e-5) * 1000;
+
+                // Combined trace for both lines and markers
+                const combinedTrace = {
+                    x: selectedInverseTemps,
+                    y: selectedLogResistances,
+                    mode: 'lines+markers',
                     type: 'scatter',
-                    name: `${shortName}`,
-                    marker: { color: color }
+                    name: `${shortName} (Data)`,
+                    marker: { color: color },
+                    line: { color: color }
                 };
 
                 // Fitted line trace
-                const fittedLine = inverseTemps.map(temp => slope * temp + intercept);
+                const fittedLine = selectedInverseTemps.map(temp => slope * temp + intercept);
                 const fittedLineTrace = {
-                    x: inverseTemps,
+                    x: selectedInverseTemps,
                     y: fittedLine,
                     mode: 'lines',
                     type: 'scatter',
@@ -284,24 +293,13 @@
                     line: { color: color }
                 };
 
-                traces.push(originalTrace, fittedLineTrace);
-
-                // Add annotation for transition temperature
-                const transitionTemp = transitionTemperatures.find(item => item.shortName === shortName)?.transitionTemp;
-                if (transitionTemp !== undefined) {
-                    annotations.push({
-                        x: 1 / transitionTemp,
-                        y: Math.log(filteredResistances[filteredTemps.indexOf(transitionTemp)]),
-                        text: `<br>T<sub>c</sub>: ${transitionTemp.toFixed(2)} K`,
-                        showarrow: true,
-                        arrowhead: 2,
-                        ax: 0,
-                        ay: -40,
-                        bgcolor: 'rgba(255, 255, 255, 0.8)',
-                        font: { size: 12 }
-                    });
-                }
+                traces.push(combinedTrace, fittedLineTrace);
             });
+
+            if (traces.length === 0) {
+                console.warn('No valid data available for Activation Energy plot.');
+                return;
+            }
 
             const layout3 = {
                 title: 'Activation Energy',
@@ -325,22 +323,19 @@
                 }
             };
 
-            if (traces.length === 0) {
-                console.warn('No valid data available for Activation Energy plot.');
-            }
-
             Plotly.newPlot('plot3', traces, layout3);
         }
 
         function linearRegression(x, y) {
             const n = x.length;
-            const xMean = x.reduce((a, b) => a + b) / n;
-            const yMean = y.reduce((a, b) => a + b) / n;
-            const xyMean = x.reduce((sum, xi, i) => sum + xi * y[i], 0) / n;
-            const xxMean = x.reduce((sum, xi) => sum + xi * xi, 0) / n;
-
-            const slope = (xyMean - xMean * yMean) / (xxMean - xMean * xMean);
-            const intercept = yMean - slope * xMean;
+            const sumX = x.reduce((a, b) => a + b, 0);
+            const sumY = y.reduce((a, b) => a + b, 0);
+            const sumXY = x.reduce((a, b, i) => a + b * y[i], 0);
+            const sumX2 = x.reduce((a, b) => a + b * b, 0);
+            
+            const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+            const intercept = (sumY - slope * sumX) / n;
+            
             return { slope, intercept };
         }
 

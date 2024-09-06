@@ -79,7 +79,7 @@
                 });
 
                 const fileName = document.createElement('span');
-                fileName.textContent = `File(${index + 1}): ${file.name}`;
+                fileName.textContent = ` ${file.name}`;
 
                 fileDiv.appendChild(colorInput);
                 fileDiv.appendChild(fileName);
@@ -288,29 +288,28 @@
                 const { slope, intercept } = linearRegression(selectedInverseTemps, selectedLogResistances);
                 const activationEnergyMeV = Math.abs(slope * 8.617e-5) * 1000;
 
-                // Combined trace for both lines and markers
-                const combinedTrace = {
+                // Trace for data points
+                const dataPointsTrace = {
                     x: selectedInverseTemps,
                     y: selectedLogResistances,
-                    mode: 'lines+markers',
+                    mode: 'markers',
                     type: 'scatter',
                     marker: { color: color },
-                    line: { color: color },
                     showlegend: false // Remove legend
                 };
 
-                // Fitted line trace
+                // Trace for fitted line
                 const fittedLine = selectedInverseTemps.map(temp => slope * temp + intercept);
                 const fittedLineTrace = {
                     x: selectedInverseTemps,
                     y: fittedLine,
                     mode: 'lines',
                     type: 'scatter',
-                    line: { color: color },
+                    line: { color: 'rgba(0, 0, 0, 0.5)' }, // Different color for fitted line
                     showlegend: false // Remove legend
                 };
 
-                traces.push(combinedTrace, fittedLineTrace);
+                traces.push(dataPointsTrace, fittedLineTrace);
 
                 // Add annotation for activation energy
                 annotations.push({

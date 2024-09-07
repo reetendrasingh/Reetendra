@@ -138,11 +138,10 @@
                 margin-right: 5%; /* Adjust margin-right for smaller screens */
             }
 
-            /* Ensure form is centered on mobile */
+            /* Adjust form size on mobile */
             .contact-form {
                 width: 90%; /* Reduce the form width for mobile screens */
                 margin: 0 auto;
-                transform: none; /* Remove translation on mobile screens */
             }
 
             form input[type="text"],
@@ -193,14 +192,12 @@
             width: 95%; /* Default width for mobile screens */
             max-width: 800px; /* Optional: max width for larger screens */
             margin: 0 auto; /* Center align the form */
-            transform: translateX(-5cm); /* Move the form 5 cm to the left on larger screens */
         }
 
         /* Desktop Styles */
         @media only screen and (min-width: 769px) {
             .contact-form {
                 width: 50%; /* Set width to 50% for desktop screens */
-                transform: translateX(-5cm); /* Move form 5 cm to the left */
             }
         }
     </style>

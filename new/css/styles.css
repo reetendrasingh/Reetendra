@@ -26,6 +26,10 @@ header h1 {
     color: #ffffff; /* White color for h1 */
 }
 
+header h2 {
+    color: #ffffff; /* White color for h2 */
+}
+
 nav ul {
     list-style-type: none; /* Remove bullet points */
     padding: 0;

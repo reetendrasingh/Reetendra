@@ -13,36 +13,37 @@
             font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
             margin: 0;
             padding: 0;
-            text-align: center; /* Center align all text */
-            background-color: #f9f9f9; /* Set background color to very light gray */
+            background-color: #e0f7fa; /* Set background color to a light cyan for a calming effect */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
         header {
-            background-color: black; /* Set background color of the header to black */
+            background-color: #004d40; /* Dark teal for header background */
             padding: 20px 0; /* Add padding to the header */
             width: 100%; /* Make header full width */
             box-sizing: border-box; /* Ensure padding doesn't affect width */
             margin-bottom: 20px; /* Add space below the header */
+            text-align: center; /* Center align header text */
         }
         h1, h2 {
             margin: 0;
-            color: white; /* Default color for h1 and h2 */
+            color: #ffffff; /* White color for h1 and h2 */
         }
 
         article h2 {
-            color: black; /* Override color for h2 within article */
+            color: #004d40; /* Dark teal color for h2 within article */
         }
 
         article h3 {
             margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Set color for h3 elements */
+            color: #004d40; /* Dark teal color for h3 elements */
         }
 
         h2.AcademicTitle {
-            color: black; /* Override color for specific h2 element */
+            color: #004d40; /* Dark teal color for specific h2 element */
         }
+
         nav ul {
             list-style-type: none; /* Remove bullet points */
             padding: 0;
@@ -58,13 +59,13 @@
             text-decoration: none; /* Remove underline */
             padding: 5px 10px; /* Adjust padding */
             border-radius: 5px; /* Add border radius */
-            color: white; /* Set text color */
+            color: #ffffff; /* Set text color */
             background-color: transparent; /* Keep background transparent */
             transition: all 0.3s ease; /* Add transition effect */
         }
         nav ul li a:hover {
-            background-color: #333; /* Change background color on hover */
-            color: #fff; /* Keep text color on hover */
+            background-color: #00796b; /* Change background color on hover */
+            color: #ffffff; /* Keep text color on hover */
         }
         
         article {
@@ -80,28 +81,28 @@
         }
         article h3 {
             margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Set color for h3 elements */
+            color: #004d40; /* Dark teal color for h3 elements */
         }
         article h3:before {
             content: "•"; /* Add bullet point before heading */
             display: inline-block;
             margin-right: 5px; /* Add spacing between bullet point and text */
-            color: black; /* Set color for bullet point */
+            color: #004d40; /* Dark teal color for bullet point */
         }
         article h3 + ul {
             margin-top: 0; /* Remove margin between heading and list */
         }
         article li {
             margin-left: 20px; /* Add margin to align with heading */
-            color: black; /* Set color for list items */
+            color: #004d40; /* Dark teal color for list items */
         }
         article p {
-            color: black; /* Set color for paragraphs */
+            color: #004d40; /* Dark teal color for paragraphs */
         }
-        
+
         footer {
-            background-color: black; /* Set the background color to black */
-            color: white; /* Set the text color to white */
+            background-color: #004d40; /* Dark teal background for footer */
+            color: #ffffff; /* White color for footer text */
             width: 100%; /* Make the footer full width */
             padding: 5px 0; /* Reduce padding to prevent cropping */
             text-align: center; /* Center the text in the footer */
@@ -112,7 +113,7 @@
         }
 
         footer a {
-            color: white; /* Set the link color to white */
+            color: #ffffff; /* White color for links in the footer */
             text-decoration: none; /* Remove underline from links */
             margin: 0 8px; /* Reduce spacing between the links */
             font-size: 12px; /* Ensure link font size matches the footer text */
@@ -138,18 +139,18 @@
         /* Styles for Photos, Awards, Fun links */
         nav.secondary-nav ul li a {
             font-size: 16px; /* Adjust font size */
-            color: #ff9800; /* Set link color */
+            color: #00796b; /* Teal color for links */
             text-decoration: none; /* Remove underline */
             font-weight: bold; /* Make text bold */
-            border: 2px solid #ff9800; /* Add border around link */
+            border: 2px solid #00796b; /* Add border around link */
             padding: 5px 10px; /* Add padding */
             border-radius: 5px; /* Add rounded corners */
             transition: all 0.3s ease; /* Add transition for hover effect */
         }
 
         nav.secondary-nav ul li a:hover {
-            background-color: #ff9800; /* Change background color on hover */
-            color: white; /* Change text color on hover */
+            background-color: #00796b; /* Change background color on hover */
+            color: #ffffff; /* Change text color on hover */
         }
 
         /* Responsive Styles */
@@ -176,6 +177,24 @@
             width: 100%; /* Image will take up the full width of its container */
             height: auto; /* Maintain aspect ratio */
             max-width: 1300px; /* Set a max width for larger screens */
+        }
+        
+        /* Custom style for specific link */
+        #rt-link {
+            display: inline-block; /* Ensure link displays as a block */
+            color: #00796b; /* Calming teal color for link */
+            text-decoration: none; /* Remove underline */
+            font-size: 18px; /* Increase font size */
+            font-weight: bold; /* Make font bold */
+            border: 2px solid #00796b; /* Add border around link */
+            padding: 10px 20px; /* Add padding */
+            border-radius: 5px; /* Add rounded corners */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Add transition effect */
+            margin: 0 0 20px 0; /* Margin below the link */
+        }
+        #rt-link:hover {
+            background-color: #00796b; /* Change background color on hover */
+            color: #ffffff; /* Change text color on hover */
         }
     </style>
     <script>
@@ -204,8 +223,7 @@
     </header>
 
     <section>
-
-         <nav class="secondary-nav">
+        <nav class="secondary-nav">
             <ul>
                 <li><a href="/photo/">Photos</a></li>
                 <li><a href="/fun/">Fun</a></li>
@@ -213,8 +231,8 @@
         </nav>
         
         <article>
-            <li><a href="/RT/" id="rt-link">Metal-Insulator Transition Visualization</a></li>
-            <h2> More coming soon........</h2>
+            <a href="/RT/" id="rt-link">Metal-Insulator Transition Visualization</a>
+            <h2>More coming soon........</h2>
         </article>
     </section>
 

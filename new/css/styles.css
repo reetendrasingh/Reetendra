@@ -18,10 +18,16 @@ header {
     margin-bottom: 20px; /* Add space below the header */
 }
 
-header h1, header h2 {
+header h1 {
     margin: 0;
     color: white; /* White text color */
-    line-height: 1.2; /* Adjust line height for spacing */
+    line-height: 1.2; /* Line height for h1 */
+}
+
+header h2 {
+    margin: 10px 0 0 0; /* Add space above h2 */
+    color: white; /* White text color */
+    line-height: 1.4; /* Line height for h2 */
 }
 
 nav ul {
@@ -125,6 +131,9 @@ footer a:hover {
         margin: 0 auto; /* Adjust margin for smaller screens */
         max-width: 100%; /* Adjust max-width for smaller screens */
     }
+    nav ul {
+        margin: 10px 0 0 0; /* Adjust margin for smaller screens */
+    }
     nav ul li {
         margin-right: 4px; /* Further reduce margin between navigation links */
     }
@@ -135,6 +144,9 @@ footer a:hover {
     section, article {
         margin-left: 5%; /* Adjust margin-left for smaller screens */
         margin-right: 5%; /* Adjust margin-right for smaller screens */
+    }
+    header h1, header h2 {
+        line-height: 1.2; /* Ensure consistent line height on mobile screens */
     }
 }
 

@@ -140,10 +140,20 @@
 
         /* Image responsiveness */
         img.responsive {
-            width: 100%; /* Image will take up the full width of its container */
+            display: block; /* Make the image a block-level element */
+            margin: 0 auto; /* Center the image horizontally */
+            width: 100%; /* Ensure the image does not exceed the container width */
             height: auto; /* Maintain aspect ratio */
             max-width: 1350px; /* Set a max width for larger screens */
             transform: translateY(0.5cm); /* Move the image 0.5 cm downward */
+        }
+
+        /* Mobile-Specific Styles */
+        @media only screen and (max-width: 768px) {
+            img.responsive {
+                max-width: 100%; /* Ensure the image does not exceed the container width on mobile screens */
+                transform: none; /* Remove any downward translation for mobile screens */
+            }
         }
     </style>
 

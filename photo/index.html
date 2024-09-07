@@ -139,17 +139,6 @@
             article {
                 padding: 0 5%;
             }
-            
-            /* Ensure images take full width on mobile */
-            .image-container {
-                display: block; /* Change to block for mobile view */
-            }
-            
-            .image-container img {
-                max-width: 100%; /* Full width for images */
-                margin: 0 auto; /* Center images */
-                display: block; /* Display images as block elements */
-            }
         }
         
         /* Full screen view for images */
@@ -198,17 +187,18 @@
             cursor: pointer;
         }
         .photo-description {
-            color: white; /* Text color */
-            font-size: 20px;
-            position: absolute;
-            bottom: 60px; /* Adjust this value to move the description up or down */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10000;
-            background-color: rgba(0, 0, 0, 0.5); /* Light black with 50% transparency */
-            padding: 10px; /* Optional: Adds padding around the text */
-            border-radius: 5px; /* Optional: Rounds the corners of the background */
-        }
+    color: white; /* Text color */
+    font-size: 20px;
+    position: absolute;
+    bottom: 60px; /* Adjust this value to move the description up or down */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.5); /* Light black with 50% transparency */
+    padding: 10px; /* Optional: Adds padding around the text */
+    border-radius: 5px; /* Optional: Rounds the corners of the background */
+}
+
         
         /* Add cursor pointer for photos */
         .fullscreen-trigger {

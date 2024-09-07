@@ -12,6 +12,47 @@ body {
     min-height: 100vh;
 }
 
+header {
+    background-color: #004d40; /* Dark teal for header background */
+    padding: 20px 0; /* Add padding to the header */
+    width: 100%; /* Make header full width */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    margin-bottom: 20px; /* Add space below the header */
+    text-align: center; /* Center align header text */
+}
+
+header h1 {
+    margin: 0;
+    color: #ffffff; /* White color for h1 */
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 20px 0 0 0; /* Remove margin at the top of the list */
+    display: flex;
+    justify-content: center; /* Align links horizontally */
+}
+
+nav ul li {
+    margin-right: 8px; /* Adjust margin between navigation links */
+}
+
+nav ul li a {
+    font-size: 13px; /* Adjust font size for navigation links */
+    text-decoration: none; /* Remove underline */
+    padding: 5px 10px; /* Adjust padding */
+    border-radius: 5px; /* Add border radius */
+    color: #ffffff; /* Set text color */
+    background-color: transparent; /* Keep background transparent */
+    transition: all 0.3s ease; /* Add transition effect */
+}
+
+nav ul li a:hover {
+    background-color: #00796b; /* Change background color on hover */
+    color: #ffffff; /* Keep text color on hover */
+}
+
 section {
     width: 95%; /* Make section full width */
     margin: 0 auto;
@@ -32,7 +73,7 @@ nav.secondary-nav ul li {
     align-items: center; /* Align items vertically in the center */
 }
 
-/* Styles for Photos, Awards, Fun links */
+/* Styles for secondary navigation links */
 nav.secondary-nav ul li a {
     font-size: 16px; /* Adjust font size */
     color: #00796b; /* Teal color for links */
@@ -50,7 +91,7 @@ nav.secondary-nav ul li a:hover {
 }
 
 /* Custom style for specific link */
-#rt-link {
+#main-link {
     display: inline-block; /* Ensure link displays as a block */
     color: #00796b; /* Calming teal color for link */
     text-decoration: none; /* Remove underline */
@@ -63,9 +104,33 @@ nav.secondary-nav ul li a:hover {
     margin: 0 0 20px 0; /* Margin below the link */
     box-sizing: border-box; /* Include padding in element's total width and height */
 }
-#rt-link:hover {
+
+#main-link:hover {
     background-color: #00796b; /* Change background color on hover */
     color: #ffffff; /* Change text color on hover */
+}
+
+footer {
+    background-color: #004d40; /* Dark teal background for footer */
+    color: #ffffff; /* White color for footer text */
+    width: 100%; /* Make the footer full width */
+    padding: 5px 0; /* Reduce padding to prevent cropping */
+    text-align: center; /* Center the text in the footer */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    line-height: 1.2; /* Reduce line height to save space */
+    font-size: 12px; /* Reduce font size slightly to prevent cropping */
+    margin-top: auto; /* Push the footer to the bottom if there is not enough content */
+}
+
+footer a {
+    color: #ffffff; /* White color for links in the footer */
+    text-decoration: none; /* Remove underline from links */
+    margin: 0 8px; /* Reduce spacing between the links */
+    font-size: 12px; /* Ensure link font size matches the footer text */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Add underline on hover */
 }
 
 /* Responsive Styles */
@@ -74,7 +139,7 @@ nav.secondary-nav ul li a:hover {
         margin-left: 5%; /* Adjust margin-left for smaller screens */
         margin-right: 5%; /* Adjust margin-right for smaller screens */
     }
-    #rt-link {
+    #main-link {
         font-size: 16px; /* Adjust font size */
         padding: 8px 16px; /* Adjust padding */
         max-width: 100%; /* Ensure the box does not exceed container width */

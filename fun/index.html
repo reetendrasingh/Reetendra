@@ -8,119 +8,93 @@
         /* Import Roboto Slab from Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
 
-        /* Add your CSS styles here */
         body {
-            font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
+            font-family: 'Roboto Slab', serif;
             margin: 0;
             padding: 0;
-            background-color: #e0f7fa; /* Set background color to a light cyan for a calming effect */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            text-align: center;
+            background-color: #e0f7fa; /* Light cyan background */
         }
+
         header {
             background-color: #004d40; /* Dark teal for header background */
-            padding: 20px 0; /* Add padding to the header */
-            width: 100%; /* Make header full width */
-            box-sizing: border-box; /* Ensure padding doesn't affect width */
-            margin-bottom: 20px; /* Add space below the header */
-            text-align: center; /* Center align header text */
+            padding: 20px 0;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
         }
+
         h1, h2 {
             margin: 0;
-            color: #ffffff; /* White color for h1 and h2 */
+            color: #ffffff; /* White text color */
         }
 
         article h2 {
-            color: black; /* Dark teal color for h2 within article */
+            color: black; /* Dark teal for article headings */
         }
 
         article h3 {
-            margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Dark teal color for h3 elements */
+            margin-top: 20px;
+            color: black; /* Dark teal for sub-headings */
         }
 
         h2.AcademicTitle {
-            color: #004d40; /* Dark teal color for specific h2 element */
+            color: #004d40; /* Dark teal for specific h2 elements */
         }
 
         nav ul {
-            list-style-type: none; /* Remove bullet points */
+            list-style-type: none;
             padding: 0;
-            margin: 20px 0 0 0; /* Remove margin at the top of the list */
+            margin: 20px 0 0 0;
             display: flex;
-            justify-content: center; /* Align links horizontally */
+            justify-content: center;
         }
+
         nav ul li {
-            margin-right: 8px; /* Adjust margin between navigation links */
+            margin-right: 8px;
         }
+
         nav ul li a {
-            font-size: 13px; /* Adjust font size for navigation links */
-            text-decoration: none; /* Remove underline */
-            padding: 5px 10px; /* Adjust padding */
-            border-radius: 5px; /* Add border radius */
-            color: #ffffff; /* Set text color */
-            background-color: transparent; /* Keep background transparent */
-            transition: all 0.3s ease; /* Add transition effect */
+            font-size: 13px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #ffffff; /* White text color */
+            background-color: transparent;
+            transition: all 0.3s ease;
         }
+
         nav ul li a:hover {
-            background-color: #00796b; /* Change background color on hover */
-            color: #ffffff; /* Keep text color on hover */
+            background-color: #00796b; /* Teal background on hover */
+            color: #ffffff; /* White text color on hover */
         }
-        
+
         article {
-            width: 95%; /* Make article full width */
+            max-width: 800px;
             margin: 0 auto;
-            text-align: left; /* Align text in article to the left */
-            flex-grow: 1; /* Allow article to grow */
-        }
-        
-        article ul {
-            list-style-type: none; /* Remove default list style */
-            padding-left: 0; /* Remove default padding */
-        }
-        article h3 {
-            margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Dark teal color for h3 elements */
-        }
-        article h3:before {
-            content: "•"; /* Add bullet point before heading */
-            display: inline-block;
-            margin-right: 5px; /* Add spacing between bullet point and text */
-            color: black; /* Dark teal color for bullet point */
-        }
-        article h3 + ul {
-            margin-top: 0; /* Remove margin between heading and list */
-        }
-        article li {
-            margin-left: 20px; /* Add margin to align with heading */
-            color: #004d40; /* Dark teal color for list items */
-        }
-        article p {
-            color: black; /* Dark teal color for paragraphs */
+            text-align: left;
+            padding: 0 5%;
         }
 
         footer {
-            background-color: #004d40; /* Dark teal background for footer */
-            color: #ffffff; /* White color for footer text */
-            width: 100%; /* Make the footer full width */
-            padding: 5px 0; /* Reduce padding to prevent cropping */
-            text-align: center; /* Center the text in the footer */
-            box-sizing: border-box; /* Ensure padding doesn't affect width */
-            line-height: 1.2; /* Reduce line height to save space */
-            font-size: 12px; /* Reduce font size slightly to prevent cropping */
-            margin-top: auto; /* Push the footer to the bottom if there is not enough content */
+            background-color: #004d40; /* Dark teal for footer background */
+            color: #ffffff; /* White text color */
+            width: 100%;
+            padding: 5px 0;
+            text-align: center;
+            box-sizing: border-box;
+            font-size: 12px;
         }
 
         footer a {
-            color: #ffffff; /* White color for links in the footer */
-            text-decoration: none; /* Remove underline from links */
-            margin: 0 8px; /* Reduce spacing between the links */
-            font-size: 12px; /* Ensure link font size matches the footer text */
+            color: #ffffff; /* White text color for footer links */
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 12px;
         }
 
         footer a:hover {
-            text-decoration: underline; /* Add underline on hover */
+            text-decoration: underline; /* Underline on hover */
         }
 
         nav.secondary-nav ul {
@@ -155,62 +129,121 @@
 
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
-            header {
-                margin: 0 auto; /* Adjust margin for smaller screens */
-                max-width: 100%; /* Adjust max-width for smaller screens */
-            }
             nav ul li {
-                margin-right: 4px; /* Further reduce margin between navigation links */
+                margin-right: 4px;
             }
             nav ul li a {
-                font-size: 10px; /* Further reduce font size for navigation links */
-                padding: 2px 4px; /* Further adjust padding */
+                font-size: 10px;
+                padding: 2px 4px;
             }
             article {
-                margin-left: 5%; /* Adjust margin-left for smaller screens */
-                margin-right: 5%; /* Adjust margin-right for smaller screens */
+                padding: 0 5%;
             }
-            #rt-link {
-                font-size: 16px; /* Adjust font size */
-                padding: 8px 16px; /* Adjust padding */
-                max-width: 100%; /* Ensure the box does not exceed container width */
-                box-sizing: border-box; /* Include padding in element's total width and height */
-            }
+        }
+        
+        /* Full screen view for images */
+        .fullscreen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .fullscreen-image img {
+            max-width: 90%;
+            max-height: 90%;
+            cursor: pointer;
+            position: relative;
+        }
+        .fullscreen-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 10000;
+        }
+        .next-previous {
+            color: #ffffff; /* White color for controls */
+            font-size: 24px;
+            cursor: pointer;
+            position: relative;
+        }
+        .previous {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .close-fullscreen {
+            color: #ffffff; /* White color for close button */
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .photo-description {
+    color: white; /* Text color */
+    font-size: 20px;
+    position: absolute;
+    bottom: 60px; /* Adjust this value to move the description up or down */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.5); /* Light black with 50% transparency */
+    padding: 10px; /* Optional: Adds padding around the text */
+    border-radius: 5px; /* Optional: Rounds the corners of the background */
+}
+
+        
+        /* Add cursor pointer for photos */
+        .fullscreen-trigger {
+            cursor: pointer;
         }
 
         /* Image responsiveness */
         img.responsive {
-            width: 100%; /* Image will take up the full width of its container */
-            height: auto; /* Maintain aspect ratio */
-            max-width: 1300px; /* Set a max width for larger screens */
+            width: 100%;
+            height: auto;
+            max-width: 1300px;
         }
         
-        /* Custom style for specific link */
-        #rt-link {
-            display: inline-block; /* Ensure link displays as a block */
-            color: #00796b; /* Calming teal color for link */
-            text-decoration: none; /* Remove underline */
-            font-size: 18px; /* Increase font size */
-            font-weight: bold; /* Make font bold */
-            border: 2px solid #00796b; /* Add border around link */
-            padding: 10px 20px; /* Add padding */
-            border-radius: 5px; /* Add rounded corners */
-            transition: background-color 0.3s ease, color 0.3s ease; /* Add transition effect */
-            margin: 0 0 20px 0; /* Margin below the link */
-            box-sizing: border-box; /* Include padding in element's total width and height */
+        nav ul li a[href="/photo/"],
+        nav ul li a[href="/awards/"] {
+            font-size: 18px; /* Increase font size for specific navigation links */
         }
-        #rt-link:hover {
-            background-color: #00796b; /* Change background color on hover */
-            color: #ffffff; /* Change text color on hover */
+
+        /* Adjustments for image container */
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Adjusted spacing between images */
         }
+
+        .image-container img {
+            max-width: calc(33.33% - 20px); /* Adjusted width of each image */
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05); /* Increased size on hover */
+        }
+        
     </style>
+    
+    <!-- JavaScript to remove .html extension from URLs -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('rt-link').addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default link behavior
-                window.open('/RT/', 'RTWindow', 'width=600,height=400,scrollbars=yes'); // Open in a new pop-up window
-            });
-        });
+        if (window.location.pathname.endsWith(".html")) {
+            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
+        }
     </script>
 </head>
 <body>

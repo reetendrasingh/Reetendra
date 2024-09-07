@@ -66,7 +66,7 @@
         
         article {
             width: 95%; /* Make article full width */
-            margin: 0 auto 20px auto; /* Add margin-bottom to create space above footer */
+            margin: 0 auto;
             text-align: left; /* Align text in article to the left */
         }
         
@@ -100,7 +100,6 @@
             color: white; /* White text color */
             width: 100%; /* Make the footer full width */
             padding: 5px 0; /* Reduce padding to prevent cropping */
-            margin-top: 20px; /* Add margin-top to create space between content and footer */
             bottom: 0; /* Align the footer to the bottom */
             left: 0; /* Ensure the footer starts from the left edge */
             text-align: center; /* Center the text in the footer */
@@ -136,23 +135,6 @@
             article {
                 margin-left: 5%; /* Adjust margin-left for smaller screens */
                 margin-right: 5%; /* Adjust margin-right for smaller screens */
-            }
-
-            /* Adjust form size on mobile */
-            .contact-form {
-                width: 90%; /* Reduce the form width for mobile screens */
-                margin: 0 auto;
-            }
-
-            form input[type="text"],
-            form input[type="email"],
-            form textarea {
-                padding: 8px; /* Reduce padding for input fields */
-                font-size: 14px; /* Reduce font size */
-            }
-
-            form input[type="submit"] {
-                padding: 12px 15px; /* Adjust padding for submit button */
             }
         }
 
@@ -235,7 +217,7 @@
             
             <h3>GET IN TOUCH</h3>
             <p>You can contact me through: reetendra.rajpoot.bhu@gmail.com </p>
-            <form class="contact-form" action="https://formspree.io/f/xzbnrjqq" method="POST">
+            <form action="https://formspree.io/f/xzbnrjqq" method="POST">
                 <input type="text" name="name" placeholder="Your Name" required><br>
                 <input type="email" name="_replyto" placeholder="Your Email" required><br>
                 <input type="text" name="_subject" placeholder="Subject" required><br>
@@ -253,4 +235,4 @@
         <p>&copy; 2024 Reetendra Singh. All Rights Reserved.</p>
     </footer>
 </body>
-</html>
+</html>"

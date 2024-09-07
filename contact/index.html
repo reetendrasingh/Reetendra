@@ -14,10 +14,10 @@
             margin: 0;
             padding: 0;
             text-align: center; /* Center align all text */
-            background-color: #f9f9f9; /* Set background color to very light gray */
+            background-color: #e0f7fa; /* Light cyan background for a calming effect */
         }
         header {
-            background-color: black; /* Set background color of the header to black */
+            background-color: #004d40; /* Dark teal for header background */
             padding: 20px 0; /* Add padding to the header */
             width: 100%; /* Make header full width */
             box-sizing: border-box; /* Ensure padding doesn't affect width */
@@ -25,20 +25,20 @@
         }
         h1, h2 {
             margin: 0;
-            color: white; /* Default color for h1 and h2 */
+            color: white; /* White text color */
         }
 
         article h2 {
-            color: black; /* Override color for h2 within article */
+            color: #004d40; /* Dark teal for h2 within article */
         }
 
         article h3 {
             margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Set color for h3 elements */
+            color: #004d40; /* Dark teal for h3 elements */
         }
 
         h2.AcademicTitle {
-            color: black; /* Override color for specific h2 element */
+            color: #004d40; /* Dark teal for specific h2 elements */
         }
         nav ul {
             list-style-type: none; /* Remove bullet points */
@@ -60,8 +60,8 @@
             transition: all 0.3s ease; /* Add transition effect */
         }
         nav ul li a:hover {
-            background-color: #333; /* Change background color on hover */
-            color: #fff; /* Keep text color on hover */
+            background-color: #00796b; /* Medium teal background on hover */
+            color: white; /* Keep text color on hover */
         }
         
         article {
@@ -76,28 +76,28 @@
         }
         article h3 {
             margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Set color for h3 elements */
+            color: #004d40; /* Dark teal for h3 elements */
         }
         article h3:before {
             content: "•"; /* Add bullet point before heading */
             display: inline-block;
             margin-right: 5px; /* Add spacing between bullet point and text */
-            color: black; /* Set color for bullet point */
+            color: #004d40; /* Dark teal for bullet point */
         }
         article h3 + ul {
             margin-top: 0; /* Remove margin between heading and list */
         }
         article li {
             margin-left: 20px; /* Add margin to align with heading */
-            color: black; /* Set color for list items */
+            color: #004d40; /* Dark teal for list items */
         }
         article p {
-            color: black; /* Set color for paragraphs */
+            color: #004d40; /* Dark teal for paragraphs */
         }
         
         footer {
-            background-color: black; /* Set the background color to black */
-            color: white; /* Set the text color to white */
+            background-color: #004d40; /* Dark teal for footer background */
+            color: white; /* White text color */
             width: 100%; /* Make the footer full width */
             padding: 5px 0; /* Reduce padding to prevent cropping */
             bottom: 0; /* Align the footer to the bottom */
@@ -157,8 +157,8 @@
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
         form input[type="submit"] {
-            background-color: #4CAF50; /* Set background color */
-            color: white; /* Set text color */
+            background-color: #004d40; /* Dark teal background color */
+            color: white; /* White text color */
             padding: 15px 20px; /* Add padding */
             border: none; /* Remove border */
             border-radius: 5px; /* Add border radius */
@@ -166,25 +166,25 @@
             transition: background-color 0.3s; /* Add transition for smooth hover effect */
         }
         form input[type="submit"]:hover {
-            background-color: #45a049; /* Darken background color on hover */
+            background-color: #00796b; /* Medium teal background color on hover */
         }
         
         /* Style for contact form container */
-.contact-form {
-    width: 100%; /* Default width for mobile screens */
-    max-width: 800px; /* Optional: max width for larger screens */
-    margin: 0 auto; /* Center align the form */
-}
+        .contact-form {
+            width: 100%; /* Default width for mobile screens */
+            max-width: 800px; /* Optional: max width for larger screens */
+            margin: 0 auto; /* Center align the form */
+        }
 
-/* Desktop Styles */
-@media only screen and (min-width: 769px) {
-    .contact-form {
-        width: 50%; /* Set width to 50% for desktop screens */
-    }
-}
+        /* Desktop Styles */
+        @media only screen and (min-width: 769px) {
+            .contact-form {
+                width: 50%; /* Set width to 50% for desktop screens */
+            }
+        }
     </style>
     
-     <!-- JavaScript to remove .html extension from URLs -->
+    <!-- JavaScript to remove .html extension from URLs -->
     <script>
         if (window.location.pathname.endsWith(".html")) {
             window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
@@ -210,7 +210,6 @@
     
     <section>
         <article>
-          
             <h2>ADDRESS</h2>
             <p>B9, Sagol Center for Composite Materials </p>
             <p>Department of Materials Science and Engineering</p> 

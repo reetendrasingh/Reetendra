@@ -187,14 +187,18 @@
             cursor: pointer;
         }
         .photo-description {
-            color: white; /* Teal color for description */
-            font-size: 20px;
-            position: absolute;
-            bottom: 60px; /* Adjust this value to move the description up or down */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10000;
-        }
+    color: white; /* Text color */
+    font-size: 20px;
+    position: absolute;
+    bottom: 60px; /* Adjust this value to move the description up or down */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.5); /* Light black with 50% transparency */
+    padding: 10px; /* Optional: Adds padding around the text */
+    border-radius: 5px; /* Optional: Rounds the corners of the background */
+}
+
         
         /* Add cursor pointer for photos */
         .fullscreen-trigger {

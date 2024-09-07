@@ -6,10 +6,8 @@ body {
     font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
     margin: 0;
     padding: 0;
-    background-color: #e0f7fa; /* Set background color to a light cyan for a calming effect */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    text-align: center; /* Center align all text */
+    background-color: #e0f7fa; /* Light cyan background for a calming effect */
 }
 
 header {
@@ -18,16 +16,12 @@ header {
     width: 100%; /* Make header full width */
     box-sizing: border-box; /* Ensure padding doesn't affect width */
     margin-bottom: 20px; /* Add space below the header */
-    text-align: center; /* Center align header text */
 }
 
-header h1 {
+header h1, header h2 {
     margin: 0;
-    color: #ffffff; /* White color for h1 */
-}
-
-header h2 {
-    color: #ffffff; /* White color for h2 */
+    color: white; /* White text color */
+    line-height: 1.2; /* Adjust line height for spacing */
 }
 
 nav ul {
@@ -47,76 +41,64 @@ nav ul li a {
     text-decoration: none; /* Remove underline */
     padding: 5px 10px; /* Adjust padding */
     border-radius: 5px; /* Add border radius */
-    color: #ffffff; /* Set text color */
+    color: white; /* Set text color */
     background-color: transparent; /* Keep background transparent */
     transition: all 0.3s ease; /* Add transition effect */
+    line-height: 1.2; /* Ensure consistent line height */
 }
 
 nav ul li a:hover {
-    background-color: #00796b; /* Change background color on hover */
-    color: #ffffff; /* Keep text color on hover */
+    background-color: #00796b; /* Teal background on hover */
+    color: white; /* Keep text color on hover */
 }
 
 section {
     width: 95%; /* Make section full width */
     margin: 0 auto;
-    text-align: left; /* Align text in section to the left */
-    flex-grow: 1; /* Allow section to grow */
+    text-align: center; /* Center align text in section */
 }
 
-nav.secondary-nav ul {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 20px 0;
+article {
+    width: 95%; /* Make article full width */
+    margin: 0 auto;
+    text-align: center; /* Center align text in article */
 }
 
-nav.secondary-nav ul li {
-    margin: 0 15px;
-    display: flex;
-    align-items: center; /* Align items vertically in the center */
+article ul {
+    list-style-type: none; /* Remove default list style */
+    padding-left: 0; /* Remove default padding */
 }
 
-/* Styles for secondary navigation links */
-nav.secondary-nav ul li a {
-    font-size: 16px; /* Adjust font size */
-    color: #00796b; /* Teal color for links */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Make text bold */
-    border: 2px solid #00796b; /* Add border around link */
-    padding: 5px 10px; /* Add padding */
-    border-radius: 5px; /* Add rounded corners */
-    transition: all 0.3s ease; /* Add transition for hover effect */
+article h3 {
+    margin-top: 20px; /* Add margin above the heading */
+    color: black; /* Dark teal for h3 elements */
+    line-height: 1.4; /* Adjust line height for spacing */
 }
 
-nav.secondary-nav ul li a:hover {
-    background-color: #00796b; /* Change background color on hover */
-    color: #ffffff; /* Change text color on hover */
+article h3:before {
+    content: "•"; /* Add bullet point before heading */
+    display: inline-block;
+    margin-right: 5px; /* Add spacing between bullet point and text */
+    color: black; /* Dark teal for bullet point */
 }
 
-/* Custom style for specific link */
-#main-link {
-    display: inline-block; /* Ensure link displays as a block */
-    color: #00796b; /* Calming teal color for link */
-    text-decoration: none; /* Remove underline */
-    font-size: 18px; /* Increase font size */
-    font-weight: bold; /* Make font bold */
-    border: 2px solid #00796b; /* Add border around link */
-    padding: 10px 20px; /* Add padding */
-    border-radius: 5px; /* Add rounded corners */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Add transition effect */
-    margin: 0 0 20px 0; /* Margin below the link */
-    box-sizing: border-box; /* Include padding in element's total width and height */
+article h3 + ul {
+    margin-top: 0; /* Remove margin between heading and list */
 }
 
-#main-link:hover {
-    background-color: #00796b; /* Change background color on hover */
-    color: #ffffff; /* Change text color on hover */
+article li {
+    margin-left: 20px; /* Add margin to align with heading */
+    color: #004d40; /* Dark teal for list items */
+}
+
+article p {
+    color: black; /* Dark teal for paragraphs */
+    line-height: 1.5; /* Adjust line height for readability */
 }
 
 footer {
-    background-color: #004d40; /* Dark teal background for footer */
-    color: #ffffff; /* White color for footer text */
+    background-color: #004d40; /* Dark teal for footer background */
+    color: white; /* White text color */
     width: 100%; /* Make the footer full width */
     padding: 5px 0; /* Reduce padding to prevent cropping */
     text-align: center; /* Center the text in the footer */
@@ -127,7 +109,7 @@ footer {
 }
 
 footer a {
-    color: #ffffff; /* White color for links in the footer */
+    color: white; /* Set the link color to white */
     text-decoration: none; /* Remove underline from links */
     margin: 0 8px; /* Reduce spacing between the links */
     font-size: 12px; /* Ensure link font size matches the footer text */
@@ -139,22 +121,37 @@ footer a:hover {
 
 /* Responsive Styles */
 @media only screen and (max-width: 768px) {
-    section {
+    header {
+        margin: 0 auto; /* Adjust margin for smaller screens */
+        max-width: 100%; /* Adjust max-width for smaller screens */
+    }
+    nav ul li {
+        margin-right: 4px; /* Further reduce margin between navigation links */
+    }
+    nav ul li a {
+        font-size: 10px; /* Further reduce font size for navigation links */
+        padding: 2px 4px; /* Further adjust padding */
+    }
+    section, article {
         margin-left: 5%; /* Adjust margin-left for smaller screens */
         margin-right: 5%; /* Adjust margin-right for smaller screens */
-    }
-    #main-link {
-        font-size: 16px; /* Adjust font size */
-        padding: 8px 16px; /* Adjust padding */
-        max-width: 100%; /* Ensure the box does not exceed container width */
-        box-sizing: border-box;
-        max-width: 95%; /* Include padding in element's total width and height */
     }
 }
 
 /* Image responsiveness */
 img.responsive {
-    width: 100%; /* Image will take up the full width of its container */
+    display: block; /* Make the image a block-level element */
+    margin: 0 auto; /* Center the image horizontally */
+    width: 100%; /* Ensure the image does not exceed the container width */
     height: auto; /* Maintain aspect ratio */
-    max-width: 1300px; /* Set a max width for larger screens */
+    max-width: 1350px; /* Set a max width for larger screens */
+    transform: translateY(0.3cm); /* Move the image 0.3 cm downward */
+}
+
+/* Mobile-Specific Styles */
+@media only screen and (max-width: 768px) {
+    img.responsive {
+        max-width: 100%; /* Ensure the image does not exceed the container width on mobile screens */
+        transform: translateY(0.25cm) translateX(-0.25cm); /* Remove any downward translation for mobile screens */
+    }
 }

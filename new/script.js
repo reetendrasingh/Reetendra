@@ -1,8 +1,3 @@
-// JavaScript to remove .html extension from URLs
-if (window.location.pathname.endsWith(".html")) {
-    window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
-}
-
 document.addEventListener("DOMContentLoaded", function() {
     const texts = [
         "I am Reetendra, a dedicated Material Science Researcher with over 7 years of experience in advancing the field. With more than 4 years focused on the growth of thin films and nanomaterials, my work spans 2D materials and oxide materials, aiming for breakthroughs in clean energy production and sensing applications. I am passionate about bridging the gap between lab research and industry applications, driving innovations that can be readily adopted. ",

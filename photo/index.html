@@ -13,11 +13,11 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            background-color: #f9f9f9;
+            background-color: #e0f7fa; /* Light cyan background */
         }
 
         header {
-            background-color: black;
+            background-color: #004d40; /* Dark teal for header background */
             padding: 20px 0;
             width: 100%;
             box-sizing: border-box;
@@ -26,20 +26,20 @@
 
         h1, h2 {
             margin: 0;
-            color: white;
+            color: #ffffff; /* White text color */
         }
 
         article h2 {
-            color: black;
+            color: #004d40; /* Dark teal for article headings */
         }
 
         article h3 {
             margin-top: 20px;
-            color: black;
+            color: #004d40; /* Dark teal for sub-headings */
         }
 
         h2.AcademicTitle {
-            color: black;
+            color: #004d40; /* Dark teal for specific h2 elements */
         }
 
         nav ul {
@@ -59,14 +59,14 @@
             text-decoration: none;
             padding: 5px 10px;
             border-radius: 5px;
-            color: white;
+            color: #ffffff; /* White text color */
             background-color: transparent;
             transition: all 0.3s ease;
         }
 
         nav ul li a:hover {
-            background-color: #333;
-            color: #fff;
+            background-color: #00796b; /* Teal background on hover */
+            color: #ffffff; /* White text color on hover */
         }
 
         article {
@@ -77,8 +77,8 @@
         }
 
         footer {
-            background-color: black;
-            color: white;
+            background-color: #004d40; /* Dark teal for footer background */
+            color: #ffffff; /* White text color */
             width: 100%;
             padding: 5px 0;
             text-align: center;
@@ -87,14 +87,14 @@
         }
 
         footer a {
-            color: white;
+            color: #ffffff; /* White text color for footer links */
             text-decoration: none;
             margin: 0 8px;
             font-size: 12px;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            text-decoration: underline; /* Underline on hover */
         }
 
         nav.secondary-nav ul {
@@ -113,20 +113,19 @@
         /* Styles for Photos, Awards, Fun links */
         nav.secondary-nav ul li a {
             font-size: 16px; /* Adjust font size */
-            color: #ff9800; /* Set link color */
+            color: #00796b; /* Teal color for links */
             text-decoration: none; /* Remove underline */
             font-weight: bold; /* Make text bold */
-            border: 2px solid #ff9800; /* Add border around link */
+            border: 2px solid #00796b; /* Add border around link */
             padding: 5px 10px; /* Add padding */
             border-radius: 5px; /* Add rounded corners */
             transition: all 0.3s ease; /* Add transition for hover effect */
         }
 
         nav.secondary-nav ul li a:hover {
-            background-color: #ff9800; /* Change background color on hover */
-            color: white; /* Change text color on hover */
+            background-color: #00796b; /* Change background color on hover */
+            color: #ffffff; /* Change text color on hover */
         }
-        
 
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
@@ -171,7 +170,7 @@
             z-index: 10000;
         }
         .next-previous {
-            color: #fff;
+            color: #ffffff; /* White color for controls */
             font-size: 24px;
             cursor: pointer;
             position: relative;
@@ -183,12 +182,12 @@
             right: 10px;
         }
         .close-fullscreen {
-            color: #fff;
+            color: #ffffff; /* White color for close button */
             font-size: 24px;
             cursor: pointer;
         }
         .photo-description {
-            color: orange; /* Change color to blue */
+            color: #00796b; /* Teal color for description */
             font-size: 20px;
             position: absolute;
             bottom: 60px; /* Adjust this value to move the description up or down */
@@ -268,9 +267,6 @@
             </ul>
         </nav>
                
-            </ul>
-        </nav>
-        
         <p>(click on a photo to know more about it)</p>
         <!-- Added image container -->
         <div class="image-container">
@@ -281,16 +277,15 @@
             <img src="winterschool.webp" alt="Image 6" class="fullscreen-trigger" data-description="Winterschool, November 2020">
             <img src="Bsc.webp" alt="Image 5" class="fullscreen-trigger" data-description="BSc degree (100th convocation BHU), November 2018">
         </div>
-        </nav>
     </section>
 
-      <footer>
-             <p>Connect with me on:</p>
-             <a href="https://www.linkedin.com/in/reetendra-singh/">LinkedIn</a> |
-             <a href="https://scholar.google.com/citations?user=quqtbIkAAAAJ&hl=en">Google Scholar</a> |
-             <a href="https://github.com/reetendra-singh">GitHub</a>
-             <p>&copy; 2024 Reetendra Singh. All Rights Reserved.</p>
-         </footer>
+    <footer>
+        <p>Connect with me on:</p>
+        <a href="https://www.linkedin.com/in/reetendra-singh/">LinkedIn</a> |
+        <a href="https://scholar.google.com/citations?user=quqtbIkAAAAJ&hl=en">Google Scholar</a> |
+        <a href="https://github.com/reetendra-singh">GitHub</a>
+        <p>&copy; 2024 Reetendra Singh. All Rights Reserved.</p>
+    </footer>
 
     <!-- Fullscreen image container -->
     <div class="fullscreen-image">

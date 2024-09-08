@@ -128,19 +128,21 @@
             }
         }
 
-        /* Image responsiveness */
-        img.responsive {
-            width: 100%;
-            height: auto;
-            max-width: 1300px;
+        /* Box and image styling */
+        .image-container {
+            width: 150px; /* Set the width of the box */
+            height: 150px; /* Set the height of the box */
+            display: inline-block;
+            overflow: hidden; /* Hide any overflow */
+            position: relative;
+            margin: 0 auto; /* Center the box */
         }
 
-        /* Custom style for small image */
-        .small-img {
-            width: 100px; /* Adjust width as needed */
-            height: auto;
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the image covers the box */
             display: block;
-            margin: 0 auto; /* Center the image */
         }
 
         /* Custom style for specific links */
@@ -190,9 +192,11 @@
 
     <!-- New sections -->
     <article>
-        <!-- Metal-Insulator Transition Visualization with Small Image -->
+        <!-- Metal-Insulator Transition Visualization with Matching Box and Image -->
         <a href="/RT/" id="rt-link">
-            <img src="images/RT.png" alt="Metal-Insulator Transition" class="small-img">
+            <div class="image-container">
+                <img src="images/RT.png" alt="Metal-Insulator Transition">
+            </div>
             Metal-Insulator Transition
         </a>
 

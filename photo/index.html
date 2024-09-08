@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reetendra Singh</title>
+    <title>Reetendra Singh - Photos</title>
     <style>
         /* Import Roboto Slab from Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
@@ -27,19 +27,6 @@
         h1, h2 {
             margin: 0;
             color: #ffffff; /* White text color */
-        }
-
-        article h2 {
-            color: black; /* Dark teal for article headings */
-        }
-
-        article h3 {
-            margin-top: 20px;
-            color: black; /* Dark teal for sub-headings */
-        }
-
-        h2.AcademicTitle {
-            color: #004d40; /* Dark teal for specific h2 elements */
         }
 
         nav ul {
@@ -110,99 +97,21 @@
             align-items: center; /* Align items vertically in the center */
         }
 
-        /* Styles for Photos, Awards, Fun links */
+        /* Styles for Photos, Fun links */
         nav.secondary-nav ul li a {
-            font-size: 16px; /* Adjust font size */
+            font-size: 16px;
             color: #00796b; /* Teal color for links */
-            text-decoration: none; /* Remove underline */
-            font-weight: bold; /* Make text bold */
-            border: 2px solid #00796b; /* Add border around link */
-            padding: 5px 10px; /* Add padding */
-            border-radius: 5px; /* Add rounded corners */
-            transition: all 0.3s ease; /* Add transition for hover effect */
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #00796b;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
         nav.secondary-nav ul li a:hover {
             background-color: #00796b; /* Change background color on hover */
             color: #ffffff; /* Change text color on hover */
-        }
-
-        /* Responsive Styles */
-        @media only screen and (max-width: 768px) {
-            nav ul li {
-                margin-right: 4px;
-            }
-            nav ul li a {
-                font-size: 10px;
-                padding: 2px 4px;
-            }
-            article {
-                padding: 0 5%;
-            }
-        }
-        
-        /* Full screen view for images */
-        .fullscreen-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-        .fullscreen-image img {
-            max-width: 90%;
-            max-height: 90%;
-            cursor: pointer;
-            position: relative;
-        }
-        .fullscreen-controls {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            z-index: 10000;
-        }
-        .next-previous {
-            color: #ffffff; /* White color for controls */
-            font-size: 24px;
-            cursor: pointer;
-            position: relative;
-        }
-        .previous {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .close-fullscreen {
-            color: #ffffff; /* White color for close button */
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .photo-description {
-    color: white; /* Text color */
-    font-size: 20px;
-    position: absolute;
-    bottom: 60px; /* Adjust this value to move the description up or down */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10000;
-    background-color: rgba(0, 0, 0, 0.5); /* Light black with 50% transparency */
-    padding: 10px; /* Optional: Adds padding around the text */
-    border-radius: 5px; /* Optional: Rounds the corners of the background */
-}
-
-        
-        /* Add cursor pointer for photos */
-        .fullscreen-trigger {
-            cursor: pointer;
         }
 
         /* Image responsiveness */
@@ -211,18 +120,13 @@
             height: auto;
             max-width: 1300px;
         }
-        
-        nav ul li a[href="/photo/"],
-        nav ul li a[href="/awards/"] {
-            font-size: 18px; /* Increase font size for specific navigation links */
-        }
 
         /* Adjustments for image container */
         .image-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px; /* Adjusted spacing between images */
+            gap: 20px;
         }
 
         .image-container img {
@@ -236,16 +140,52 @@
         .image-container img:hover {
             transform: scale(1.05); /* Increased size on hover */
         }
-        
-    </style>
-    
-    <!-- JavaScript to remove .html extension from URLs -->
-    <script>
-        if (window.location.pathname.endsWith(".html")) {
-            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
+
+        /* Full screen view for images */
+        .fullscreen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
         }
-    </script>
-   
+
+        .fullscreen-image img {
+            max-width: 90%;
+            max-height: 90%;
+            cursor: pointer;
+        }
+
+        .photo-description {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .close-fullscreen {
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .next-previous {
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 <body>
     <header>
@@ -262,7 +202,7 @@
             </ul>
         </nav>
     </header>
-      
+
     <section>
         <nav class="secondary-nav">
             <ul>
@@ -270,9 +210,10 @@
                 <li><a href="/fun/">Fun</a></li>
             </ul>
         </nav>
-               
+
         <p>(click on a photo to know more about it)</p>
-        <!-- Added image container -->
+
+       <!-- Added image container -->
         <div class="image-container">
             <img src="lab.webp" alt="Image 2" class="fullscreen-trigger" data-description="Lab lunch (Dr. Yoav, Amir, Inbal, Noy, Chubin, Dr. Shany, Me and Dr. Abhishek), March 2024">
             <img src="defense.webp" alt="Image 3" class="fullscreen-trigger" data-description="PhD Defense (Prof. C. N. R. Rao), June 2023">
@@ -295,11 +236,7 @@
     <div class="fullscreen-image">
         <img class="fullscreen-content" src="">
         <div class="photo-description"></div>
-        <div class="fullscreen-controls">
-            <span class="previous next-previous">&#10094; Previous</span>
-            <span class="close-fullscreen">Close</span>
-            <span class="next next-previous">Next &#10095;</span>
-        </div>
+        <span class="close-fullscreen">Close</span>
     </div>
 
     <script>
@@ -310,7 +247,6 @@
         const photoDescription = document.querySelector('.photo-description');
         let currentIndex = 0;
 
-        // Add event listener to each image
         fullscreenImages.forEach((image, index) => {
             image.addEventListener('click', function() {
                 currentIndex = index;
@@ -320,26 +256,8 @@
             });
         });
 
-        // Close full-screen image view
-        const closeFullscreen = document.querySelector('.close-fullscreen');
-        closeFullscreen.addEventListener('click', function() {
+        document.querySelector('.close-fullscreen').addEventListener('click', function() {
             fullscreenContainer.style.display = 'none';
-        });
-
-        // Next and previous buttons functionality
-        const nextButton = document.querySelector('.next');
-        const previousButton = document.querySelector('.previous');
-
-        nextButton.addEventListener('click', function() {
-            currentIndex = (currentIndex + 1) % fullscreenImages.length;
-            fullscreenContent.src = fullscreenImages[currentIndex].src;
-            photoDescription.textContent = fullscreenImages[currentIndex].getAttribute('data-description');
-        });
-
-        previousButton.addEventListener('click', function() {
-            currentIndex = (currentIndex - 1 + fullscreenImages.length) % fullscreenImages.length;
-            fullscreenContent.src = fullscreenImages[currentIndex].src;
-            photoDescription.textContent = fullscreenImages[currentIndex].getAttribute('data-description');
         });
     </script>
 </body>

@@ -8,119 +8,80 @@
         /* Import Roboto Slab from Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
 
-        /* Add your CSS styles here */
         body {
-            font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
+            font-family: 'Roboto Slab', serif;
             margin: 0;
             padding: 0;
-            background-color: #e0f7fa; /* Set background color to a light cyan for a calming effect */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            text-align: center;
+            background-color: #e0f7fa; /* Light cyan background for a calming effect */
         }
+
         header {
             background-color: #004d40; /* Dark teal for header background */
-            padding: 20px 0; /* Add padding to the header */
-            width: 100%; /* Make header full width */
-            box-sizing: border-box; /* Ensure padding doesn't affect width */
-            margin-bottom: 20px; /* Add space below the header */
-            text-align: center; /* Center align header text */
+            padding: 20px 0;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
         }
+
         h1, h2 {
             margin: 0;
-            color: #ffffff; /* White color for h1 and h2 */
-        }
-
-        article h2 {
-            color: black; /* Dark teal color for h2 within article */
-        }
-
-        article h3 {
-            margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Dark teal color for h3 elements */
-        }
-
-        h2.AcademicTitle {
-            color: #004d40; /* Dark teal color for specific h2 element */
+            color: #ffffff; /* White text color */
         }
 
         nav ul {
-            list-style-type: none; /* Remove bullet points */
+            list-style-type: none;
             padding: 0;
-            margin: 20px 0 0 0; /* Remove margin at the top of the list */
+            margin: 20px 0 0 0;
             display: flex;
-            justify-content: center; /* Align links horizontally */
+            justify-content: center;
         }
+
         nav ul li {
-            margin-right: 8px; /* Adjust margin between navigation links */
+            margin-right: 8px;
         }
+
         nav ul li a {
-            font-size: 13px; /* Adjust font size for navigation links */
-            text-decoration: none; /* Remove underline */
-            padding: 5px 10px; /* Adjust padding */
-            border-radius: 5px; /* Add border radius */
-            color: #ffffff; /* Set text color */
-            background-color: transparent; /* Keep background transparent */
-            transition: all 0.3s ease; /* Add transition effect */
+            font-size: 13px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #ffffff; /* White text color */
+            background-color: transparent;
+            transition: all 0.3s ease;
         }
+
         nav ul li a:hover {
-            background-color: #00796b; /* Change background color on hover */
-            color: #ffffff; /* Keep text color on hover */
+            background-color: #00796b; /* Teal background on hover */
+            color: #ffffff; /* White text color on hover */
         }
-        
+
         article {
-            width: 95%; /* Make article full width */
+            max-width: 800px;
             margin: 0 auto;
-            text-align: left; /* Align text in article to the left */
-            flex-grow: 1; /* Allow article to grow */
-        }
-        
-        article ul {
-            list-style-type: none; /* Remove default list style */
-            padding-left: 0; /* Remove default padding */
-        }
-        article h3 {
-            margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Dark teal color for h3 elements */
-        }
-        article h3:before {
-            content: "•"; /* Add bullet point before heading */
-            display: inline-block;
-            margin-right: 5px; /* Add spacing between bullet point and text */
-            color: black; /* Dark teal color for bullet point */
-        }
-        article h3 + ul {
-            margin-top: 0; /* Remove margin between heading and list */
-        }
-        article li {
-            margin-left: 20px; /* Add margin to align with heading */
-            color: #004d40; /* Dark teal color for list items */
-        }
-        article p {
-            color: black; /* Dark teal color for paragraphs */
+            text-align: left;
+            padding: 0 5%;
         }
 
         footer {
-            background-color: #004d40; /* Dark teal background for footer */
-            color: #ffffff; /* White color for footer text */
-            width: 100%; /* Make the footer full width */
-            padding: 5px 0; /* Reduce padding to prevent cropping */
-            text-align: center; /* Center the text in the footer */
-            box-sizing: border-box; /* Ensure padding doesn't affect width */
-            line-height: 1.2; /* Reduce line height to save space */
-            font-size: 12px; /* Reduce font size slightly to prevent cropping */
-            margin-top: auto; /* Push the footer to the bottom if there is not enough content */
+            background-color: #004d40; /* Dark teal for footer background */
+            color: #ffffff; /* White text color */
+            width: 100%;
+            padding: 5px 0;
+            text-align: center;
+            box-sizing: border-box;
+            font-size: 12px;
         }
 
         footer a {
-            color: #ffffff; /* White color for links in the footer */
-            text-decoration: none; /* Remove underline from links */
-            margin: 0 8px; /* Reduce spacing between the links */
-            font-size: 12px; /* Ensure link font size matches the footer text */
+            color: #ffffff; /* White text color for footer links */
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 12px;
         }
 
         footer a:hover {
-            text-decoration: underline; /* Add underline on hover */
+            text-decoration: underline; /* Underline on hover */
         }
 
         nav.secondary-nav ul {
@@ -136,7 +97,7 @@
             align-items: center; /* Align items vertically in the center */
         }
 
-        /* Styles for Photos, Awards, Fun links */
+        /* Styles for Photos, Fun links */
         nav.secondary-nav ul li a {
             font-size: 16px; /* Adjust font size */
             color: #00796b; /* Teal color for links */
@@ -155,38 +116,26 @@
 
         /* Responsive Styles */
         @media only screen and (max-width: 768px) {
-            header {
-                margin: 0 auto; /* Adjust margin for smaller screens */
-                max-width: 100%; /* Adjust max-width for smaller screens */
-            }
             nav ul li {
-                margin-right: 4px; /* Further reduce margin between navigation links */
+                margin-right: 4px;
             }
             nav ul li a {
-                font-size: 10px; /* Further reduce font size for navigation links */
-                padding: 2px 4px; /* Further adjust padding */
+                font-size: 10px;
+                padding: 2px 4px;
             }
             article {
-                margin-left: 5%; /* Adjust margin-left for smaller screens */
-                margin-right: 5%; /* Adjust margin-right for smaller screens */
-            }
-            #rt-link {
-                font-size: 16px; /* Adjust font size */
-                padding: 8px 16px; /* Adjust padding */
-                max-width: 100%; /* Ensure the box does not exceed container width */
-                box-sizing: border-box;
-                max-width: 95%;/* Include padding in element's total width and height */
+                padding: 0 5%;
             }
         }
 
         /* Image responsiveness */
         img.responsive {
-            width: 100%; /* Image will take up the full width of its container */
-            height: auto; /* Maintain aspect ratio */
-            max-width: 1300px; /* Set a max width for larger screens */
+            width: 100%;
+            height: auto;
+            max-width: 1300px;
         }
-        
-        /* Custom style for specific link */
+
+        /* Custom style for specific links */
         #rt-link, #rs-link {
             display: inline-block;
             color: #8a0b9e;
@@ -205,20 +154,6 @@
             color: #ffffff;
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Handle RT link click
-            document.getElementById('rt-link').addEventListener('click', function(event) {
-                event.preventDefault(); 
-                window.open('/RT/', 'RTWindow', 'width=600,height=400,scrollbars=yes');
-            });
-            // Handle RS link click
-            document.getElementById('rs-link').addEventListener('click', function(event) {
-                event.preventDefault();
-                window.open('/RS/', 'RSWindow', 'width=600,height=400,scrollbars=yes');
-            });
-        });
-    </script>
 </head>
 <body>
     <header>
@@ -235,7 +170,7 @@
             </ul>
         </nav>
     </header>
-
+      
     <section>
         <nav class="secondary-nav">
             <ul>
@@ -243,14 +178,16 @@
                 <li><a href="/fun/">Fun</a></li>
             </ul>
         </nav>
-        
-        <article>
-            <a href="/RT/" id="rt-link">Metal-Insulator Transition Visualization</a>
-            <a href="/RS/" id="rs-link">Resistive Switching</a>
-            <li><a href="/new/">Null</a></li>
-            <h2>More coming soon........</h2>
-        </article>
     </section>
+
+    <!-- New sections -->
+    <article>
+        <!-- Metal-Insulator Transition Visualization -->
+        <a href="/RT/" id="rt-link">Metal-Insulator Transition Visualization</a>
+
+        <!-- Resistive Switching -->
+        <a href="/RS/" id="rs-link">Resistive Switching</a>
+    </article>
 
     <footer>
         <p>Connect with me on:</p>
@@ -259,5 +196,22 @@
         <a href="https://github.com/reetendra-singh">GitHub</a>
         <p>&copy; 2024 Reetendra Singh. All Rights Reserved.</p>
     </footer>
+
+    <!-- JavaScript to handle custom link behavior -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle "Metal-Insulator Transition Visualization" link click
+            document.getElementById('rt-link').addEventListener('click', function(event) {
+                event.preventDefault(); 
+                window.open('/RT/', 'RTWindow', 'width=600,height=400,scrollbars=yes');
+            });
+
+            // Handle "Resistive Switching" link click
+            document.getElementById('rs-link').addEventListener('click', function(event) {
+                event.preventDefault(); 
+                window.open('/RS/', 'RSWindow', 'width=600,height=400,scrollbars=yes');
+            });
+        });
+    </script>
 </body>
 </html>

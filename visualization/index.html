@@ -29,19 +29,6 @@
             color: #ffffff; /* White text color */
         }
 
-        article h2 {
-            color: black; /* Dark teal for article headings */
-        }
-
-        article h3 {
-            margin-top: 20px;
-            color: black; /* Dark teal for sub-headings */
-        }
-
-        h2.AcademicTitle {
-            color: #004d40; /* Dark teal for specific h2 elements */
-        }
-
         nav ul {
             list-style-type: none;
             padding: 0;
@@ -110,7 +97,7 @@
             align-items: center; /* Align items vertically in the center */
         }
 
-        /* Styles for Photos, Awards, Fun links */
+        /* Styles for Photos, Fun links */
         nav.secondary-nav ul li a {
             font-size: 16px; /* Adjust font size */
             color: #00796b; /* Teal color for links */
@@ -141,21 +128,42 @@
             }
         }
 
-        /* Image responsiveness */
-        img.responsive {
+        /* Box and image styling */
+        .image-container {
+            width: 150px; /* Set the width of the box */
+            height: 150px; /* Set the height of the box */
+            display: inline-block;
+            overflow: hidden; /* Hide any overflow */
+            position: relative;
+            margin: 0 auto; /* Center the box */
+        }
+
+        .image-container img {
             width: 100%;
-            height: auto;
-            max-width: 1300px;
+            height: 100%;
+            object-fit: cover; /* Ensure the image covers the box */
+            display: block;
+        }
+
+        /* Custom style for specific links */
+        #rt-link, #rs-link {
+            display: inline-block;
+            color: #8a0b9e;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #8a0b9e;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin: 0 0 20px 0;
+            box-sizing: border-box;
+        }
+        #rt-link:hover, #rs-link:hover {
+            background-color: #8a0b9e;
+            color: #ffffff;
         }
     </style>
-
-    <!-- JavaScript to remove .html extension from URLs -->
-    <script>
-        if (window.location.pathname.endsWith(".html")) {
-            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
-        }
-    </script>
-
 </head>
 <body>
     <header>
@@ -182,6 +190,25 @@
         </nav>
     </section>
 
+    <!-- New sections -->
+    <article>
+        <!-- Metal-Insulator Transition Visualization with Matching Box and Image -->
+        <a href="/RT/" id="rt-link">
+            <div class="image-container">
+                <img src="images/RT1.png" alt="Metal-Insulator Transition">
+            </div>
+           <!--  Metal-Insulator Transition -->
+        </a>
+
+        <!-- Resistive Switching -->
+        <a href="/RS/" id="rs-link">
+            <div class="image-container">
+                <img src="images/RS.png" alt="Resistive switching">
+            </div>
+           <!--  Resistive Switching (remove this if you want name) --> 
+        </a>
+    </article>
+
     <footer>
         <p>Connect with me on:</p>
         <a href="https://www.linkedin.com/in/reetendra-singh/">LinkedIn</a> |
@@ -189,5 +216,22 @@
         <a href="https://github.com/reetendra-singh">GitHub</a>
         <p>&copy; 2024 Reetendra Singh. All Rights Reserved.</p>
     </footer>
+
+    <!-- JavaScript to handle custom link behavior -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle "Metal-Insulator Transition Visualization" link click
+            document.getElementById('rt-link').addEventListener('click', function(event) {
+                event.preventDefault(); 
+                window.open('/RT/', 'RTWindow', 'width=600,height=400,scrollbars=yes');
+            });
+
+            // Handle "Resistive Switching" link click
+            document.getElementById('rs-link').addEventListener('click', function(event) {
+                event.preventDefault(); 
+                window.open('/RS/', 'RSWindow', 'width=600,height=400,scrollbars=yes');
+            });
+        });
+    </script>
 </body>
 </html>

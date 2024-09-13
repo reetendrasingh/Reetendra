@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistive switching</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        .plot-container {
+            border: 2px solid black;
+            margin-bottom: 20px;
+            width: 400px;
+            height: 400px;
+            display: inline-block;
+        }
+        input, button {
+            margin: 5px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .color-picker {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resistive switching</h1>
+    <input type="file" id="fileInput" accept=".csv" multiple>
+    <div id="fileNames"></div>
+
+    <div id="plot1" class="plot-container">
+        <h2>I(V)</h2>
+        <input type="number" id="xMinPlot1" placeholder="X Min"> - 
+        <input type="number" id="xMaxPlot1" placeholder="X Max">
+        <input type="number" id="yMinPlot1" placeholder="Y Min"> - 
+        <input type="number" id="yMaxPlot1" placeholder="Y Max">
+        <button id="updatePlot1">Update Plot</button>
+    </div>
+    <div id="plot2" class="plot-container">
+        <h2>R(V)</h2>
+        <input type="number" id="xMinPlot2" placeholder="X Min"> - 
+        <input type="number" id="xMaxPlot2" placeholder="X Max">
+        <input type="number" id="yMinPlot2" placeholder="Y Min"> - 
+        <input type="number" id="yMaxPlot2" placeholder="Y Max">
+        <button id="updatePlot2">Update Plot</button>
+    </div>
+    <div id="plot3" class="plot-container">
+        <h2>R(I)</h2>
+        <input type="number" id="xMinPlot3" placeholder="X Min"> - 
+        <input type="number" id="xMaxPlot3" placeholder="X Max">
+        <input type="number" id="yMinPlot3" placeholder="Y Min"> - 
+        <input type="number" id="yMaxPlot3" placeholder="Y Max">
+        <button id="updatePlot3">Update Plot</button>
+    </div>
+    <div id="plot4" class="plot-container">
+        <h2>C(I)</h2>
+        <input type="number" id="xMinPlot4" placeholder="X Min"> - 
+        <input type="number" id="xMaxPlot4" placeholder="X Max">
+        <input type="number" id="yMinPlot4" placeholder="Y Min"> - 
+        <input type="number" id="yMaxPlot4" placeholder="Y Max">
+        <button id="updatePlot4">Update Plot</button>
+    </div>
+    <div id="plot5" class="plot-container">
+        <h2>I(P)</h2>
+        <input type="number" id="xMinPlot5" placeholder="X Min"> - 
+        <input type="number" id="xMaxPlot5" placeholder="X Max">
+        <input type="number" id="yMinPlot5" placeholder="Y Min"> - 
+        <input type="number" id="yMaxPlot5" placeholder="Y Max">
+        <button id="updatePlot5">Update Plot</button>
+    </div>
+
+<script>
+    let dataStore = [];
+    const colorPalette = ['#FF0000', '#00FF00', '#0000FF', '#FF00FF', '#00FFFF', '#FFA500']; // Example colors
+
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+        const files = event.target.files;
+        dataStore = [];
+        const fileNamesDiv = document.getElementById('fileNames');
+        fileNamesDiv.innerHTML = '';
+
+        Array.from(files).forEach((file, index) => {
+            const fileDiv = document.createElement('div');
+            fileDiv.className = 'file-info';
+
+            const colorInput = document.createElement('input');
+            colorInput.type = 'color';
+            colorInput.value = colorPalette[index % colorPalette.length];
+            colorInput.className = 'color-picker';
+            colorInput.addEventListener('input', function() {
+                dataStore[index].color = colorInput.value;
+                updatePlots();
+            });
+
+            const fileName = document.createElement('span');
+            fileName.textContent = `File(${index + 1}): ${file.name}`;
+
+            fileDiv.appendChild(colorInput);
+            fileDiv.appendChild(fileName);
+            fileNamesDiv.appendChild(fileDiv);
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const csvData = e.target.result;
+                processCSV(csvData, file.name, index);
+            };
+            reader.readAsText(file);
+        });
+    });
+
+    function processCSV(csvData, fileName, index) {
+        const lines = csvData.split('\n').filter(line => line.trim() !== '');
+        const headers = lines[0].split('\t');
+        const voltageIndex = headers.findIndex(header => header.trim().toLowerCase() === 'voltage (v)' || header.trim().toLowerCase() === 'volatge (v)');
+        const currentIndex = headers.findIndex(header => header.trim().toLowerCase() === 'current (a)');
+        const resistanceIndex = headers.findIndex(header => header.trim().toLowerCase() === 'resistance (ohm)');
+
+        if (voltageIndex === -1 || currentIndex === -1 || resistanceIndex === -1) {
+            alert(`File ${fileName} must contain "Voltage (V)", "Current (A)", and "Resistance (Ohm)" columns. Found headers: ${headers.join(', ')}`);
+            return;
+        }
+
+        let voltages = [];
+        let currents = [];
+        let resistances = [];
+
+        for (let i = 1; i < lines.length; i++) {
+            const cells = lines[i].split('\t');
+            if (cells.length > Math.max(voltageIndex, currentIndex, resistanceIndex)) {
+                const voltage = parseFloat(cells[voltageIndex]);
+                const current = parseFloat(cells[currentIndex]);
+                const resistance = parseFloat(cells[resistanceIndex]);
+
+                if (!isNaN(voltage) && !isNaN(current) && !isNaN(resistance) && resistance > 0) {
+                    voltages.push(voltage);
+                    currents.push(current * 1e3);  // Convert to mA
+                    resistances.push(resistance);
+                }
+            }
+        }
+
+        dataStore.push({
+            voltages,
+            currents,
+            resistances,
+            fileName,
+            color: colorPalette[index % colorPalette.length]
+        });
+
+        if (dataStore.length === document.getElementById('fileInput').files.length) {
+            updatePlots();
+        }
+    }
+
+    function updatePlots() {
+        updatePlot1();
+        updatePlot2();
+        updatePlot3();
+        updatePlot4();
+        updatePlot5();
+    }
+
+    function getAxisRanges(plotId) {
+        const xMin = parseFloat(document.getElementById(`xMin${plotId}`).value) || null;
+        const xMax = parseFloat(document.getElementById(`xMax${plotId}`).value) || null;
+        const yMin = parseFloat(document.getElementById(`yMin${plotId}`).value) || null;
+        const yMax = parseFloat(document.getElementById(`yMax${plotId}`).value) || null;
+        return { xMin, xMax, yMin, yMax };
+    }
+
+    function updatePlot1() {
+        const { xMin, xMax, yMin, yMax } = getAxisRanges('Plot1');
+
+        const traces = dataStore.map(({ voltages, currents, color }, index) => ({
+            
+            x: currents,
+            y: voltages,
+            mode: 'lines',
+            marker: { color, size: 8 },
+            line: { color, width: 2 },
+            name: `File ${index + 1}`
+        }));
+
+        const layout = {
+            title: 'I(V)',
+            yaxis: { 
+                title: 'Voltage (V)',
+                range: [xMin, xMax],
+                type: 'log',
+                showgrid: false,
+                zeroline: true,
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                showticklabels: true,
+                ticks: 'outside'
+            },
+            xaxis: { 
+                title: 'Current (mA)',
+                range: [yMin, yMax],
+                type: 'log',
+                showgrid: false,
+                zeroline: true,
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                showticklabels: true,
+                ticks: 'outside'
+            }
+        };
+
+        Plotly.newPlot('plot1', traces, layout);
+    }
+
+    function updatePlot2() {
+        const { xMin, xMax, yMin, yMax } = getAxisRanges('Plot2');
+
+        const traces = dataStore.map(({ voltages, resistances, color }, index) => ({
+            x: voltages,
+            y: resistances,
+            mode: 'lines',
+            marker: { color, size: 8 },
+            line: { color, width: 2 },
+            name: `File ${index + 1}`
+        }));
+
+        const layout = {
+            title: 'R(V)',
+            xaxis: { 
+                title: 'Voltage (V)',
+                range: [xMin, xMax],
+                type: 'log',
+                showgrid: false,
+                zeroline: true,
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                showticklabels: true,
+                ticks: 'outside'
+            },
+            yaxis: { 
+                title: 'Resistance (Ohm)',
+                range: [yMin, yMax],
+                type: 'log',
+                showgrid: false,
+                zeroline: true,
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                showticklabels: true,
+                ticks: 'outside'
+            }
+        };
+
+        Plotly.newPlot('plot2', traces, layout);
+    }
+
+    function updatePlot3() {
+        const { xMin, xMax, yMin, yMax } = getAxisRanges('Plot3');
+
+        const traces = dataStore.map(({ currents, resistances, color }, index) => ({
+            x: currents,
+            y: resistances,
+            mode: 'lines',
+            marker: { color, size: 8 },
+            line: { color, width: 2 },
+            name: `File ${index + 1}`
+        }));
+
+        const layout = {
+            title: 'R(I)',
+            xaxis: { 
+                title: 'Current (mA)',
+                range: [xMin, xMax],
+                type: 'log',
+                showgrid: false,
+                zeroline: true,
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                showticklabels: true,
+                ticks: 'outside'
+            },
+            yaxis: { 
+                title: 'Resistance (Ohm)',
+                range: [yMin, yMax],
+                type: 'log',
+                showgrid: false,
+                zeroline: true,
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                showticklabels: true,
+                ticks: 'outside'
+            }
+        };
+
+        Plotly.newPlot('plot3', traces, layout);
+    }
+
+    function updatePlot4() {
+        const { xMin, xMax, yMin, yMax } = getAxisRanges('Plot4');
+
+        const traces = dataStore.map(({ currents, resistances, color }, index) => ({
+            x: currents,
+            y: resistances.map(r => 1 / r * 1e3),  // Convert to mS
+            mode: 'lines',
+            marker: { color, size: 8 },
+            line: { color, width: 2 },
+            name: `File ${index + 1}`
+        }));
+
+        const layout = {
+            title: 'Conductance vs Current',
+            xaxis: { 
+                title: 'Current (mA)',
+                range: [xMin, xMax],
+                type: 'log',
+                showgrid: false,
+                zeroline: true,
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                showticklabels: true,
+                ticks: 'outside'
+            },
+            yaxis: { 
+                title: 'Conductance (mS)', 
+                range: [yMin, yMax],
+                type: 'log',
+                showgrid: false,
+                zeroline: true,
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                showticklabels: true,
+                ticks: 'outside'
+            }
+        };
+
+        Plotly.newPlot('plot4', traces, layout);
+    }
+
+    function updatePlot5() {
+        const { xMin, xMax, yMin, yMax } = getAxisRanges('Plot5');
+
+        const traces = dataStore.map(({ currents, resistances, color }, index) => ({
+            x: resistances.map(r => r * r * currents[resistances.indexOf(r)] * 1e-3),  // Power in mW
+            y: currents,
+            mode: 'lines',
+            marker: { color, size: 8 },
+            line: { color, width: 2 },
+            name: `File ${index + 1}`
+        }));
+
+        const layout = {
+            title: 'Current vs Power',
+            xaxis: { 
+                title: 'Power (mW)',
+                range: [xMin, xMax],
+                showgrid: false,
+                type: 'log',
+                zeroline: true,
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                showticklabels: true,
+                ticks: 'outside'
+            },
+            yaxis: { 
+                title: 'Current (mA)',
+                range: [yMin, yMax],
+                type: 'log',
+                showgrid: false,
+                zeroline: true,
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                showticklabels: true,
+                ticks: 'outside'
+            }
+        };
+
+        Plotly.newPlot('plot5', traces, layout);
+    }
+
+    document.getElementById('updatePlot1').addEventListener('click', updatePlot1);
+    document.getElementById('updatePlot2').addEventListener('click', updatePlot2);
+    document.getElementById('updatePlot3').addEventListener('click', updatePlot3);
+    document.getElementById('updatePlot4').addEventListener('click', updatePlot4);
+    document.getElementById('updatePlot5').addEventListener('click', updatePlot5);
+</script>
+
+</body>
+</html>

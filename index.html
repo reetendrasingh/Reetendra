@@ -14,10 +14,10 @@
             margin: 0;
             padding: 0;
             text-align: center; /* Center align all text */
-            background-color: #f9f9f9; /* Set background color to very light gray */
+            background-color: #e0f7fa; /* Light cyan background for a calming effect */
         }
         header {
-            background-color: black; /* Set background color of the header to black */
+            background-color: #004d40; /* Dark teal for header background */
             padding: 20px 0; /* Add padding to the header */
             width: 100%; /* Make header full width */
             box-sizing: border-box; /* Ensure padding doesn't affect width */
@@ -25,20 +25,20 @@
         }
         h1, h2 {
             margin: 0;
-            color: white; /* Default color for h1 and h2 */
+            color: white; /* White text color */
         }
 
         article h2 {
-            color: black; /* Override color for h2 within article */
+            color: black; /* Dark teal for h2 within article */
         }
 
         article h3 {
             margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Set color for h3 elements */
+            color: black; /* Dark teal for h3 elements */
         }
 
         h2.AcademicTitle {
-            color: black; /* Override color for specific h2 element */
+            color: #004d40; /* Dark teal for specific h2 elements */
         }
         nav ul {
             list-style-type: none; /* Remove bullet points */
@@ -60,14 +60,14 @@
             transition: all 0.3s ease; /* Add transition effect */
         }
         nav ul li a:hover {
-            background-color: #333; /* Change background color on hover */
-            color: #fff; /* Keep text color on hover */
+            background-color: #00796b; /* Teal background on hover */
+            color: white; /* Keep text color on hover */
         }
         
-        aarticle {
+        article {
             width: 95%; /* Make article full width */
             margin: 0 auto;
-            text-align: left; /* Align text in article to the left */
+            text-align: center; /* Center align text in article */
         }
         
         article ul {
@@ -76,28 +76,28 @@
         }
         article h3 {
             margin-top: 20px; /* Add margin above the heading */
-            color: black; /* Set color for h3 elements */
+            color: black; /* Dark teal for h3 elements */
         }
         article h3:before {
             content: "•"; /* Add bullet point before heading */
             display: inline-block;
             margin-right: 5px; /* Add spacing between bullet point and text */
-            color: black; /* Set color for bullet point */
+            color: black; /* Dark teal for bullet point */
         }
         article h3 + ul {
             margin-top: 0; /* Remove margin between heading and list */
         }
         article li {
             margin-left: 20px; /* Add margin to align with heading */
-            color: black; /* Set color for list items */
+            color: #004d40; /* Dark teal for list items */
         }
         article p {
-            color: black; /* Set color for paragraphs */
+            color: black; /* Dark teal for paragraphs */
         }
         
         footer {
-            background-color: black; /* Set the background color to black */
-            color: white; /* Set the text color to white */
+            background-color: #004d40; /* Dark teal for footer background */
+            color: white; /* White text color */
             width: 100%; /* Make the footer full width */
             padding: 5px 0; /* Reduce padding to prevent cropping */
             bottom: 0; /* Align the footer to the bottom */
@@ -140,66 +140,73 @@
 
         /* Image responsiveness */
         img.responsive {
-            width: 100%; /* Image will take up the full width of its container */
+            display: block; /* Make the image a block-level element */
+            margin: 0 auto; /* Center the image horizontally */
+            width: 100%; /* Ensure the image does not exceed the container width */
             height: auto; /* Maintain aspect ratio */
             max-width: 1350px; /* Set a max width for larger screens */
-            transform: translateY(0.5cm); /* Move the image 0.5 cm downward */
+            transform: translateY(0.3cm); /* Move the image 0.5 cm downward */
+        }
+
+        /* Mobile-Specific Styles */
+        @media only screen and (max-width: 768px) {
+            img.responsive {
+                max-width: 100%; /* Ensure the image does not exceed the container width on mobile screens */
+                transform: translateY(0.25cm) translateX(-0.25cm); /* Remove any downward translation for mobile screens */
+            }
         }
     </style>
 
-     <!-- JavaScript to remove .html extension from URLs -->
-     <script>
-     if (window.location.pathname.endsWith(".html")) {
-         window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
-     }
-
-document.addEventListener("DOMContentLoaded", function() {
-    const texts = [
-        "I am Reetendra, a dedicated Material Science Researcher with over 7 years of experience in advancing the field. With more than 4 years focused on the growth of thin films and nanomaterials, my work spans 2D materials and oxide materials, aiming for breakthroughs in clean energy production and sensing applications. I am passionate about bridging the gap between lab research and industry applications, driving innovations that can be readily adopted. ",
-        "Recently, my curiosity has expanded to quantum materials, exploring their potential for neuromorphic device applications.",
-        "My journey has been profoundly shaped by the invaluable guidance of my mentors and seniors, who have inspired me to persevere through every challenge.",
-        "Beyond my academic pursuits, I am actively enhancing my expertise in data analytics and data science to further contribute to interdisciplinary advancements."
-    ];
-
-    let currentTextIndex = 0;
-    let currentCharIndex = 0;
-
-    function typeWriterEffect() {
-        if (currentTextIndex < texts.length) {
-            const currentText = texts[currentTextIndex];
-            const typingTextElement = document.getElementById("typing-text");
-
-            if (currentCharIndex === 0) {
-                // Start a new line aligned to the left
-                const newLine = document.createElement("div");
-                newLine.classList.add("typing-line");
-                newLine.style.textAlign = "left"; // Ensure alignment is left
-                typingTextElement.appendChild(newLine);
-            }
-
-            const partialText = currentText.slice(0, currentCharIndex + 1);
-            typingTextElement.lastChild.innerHTML = partialText;
-
-            currentCharIndex++;
-
-            if (currentCharIndex < currentText.length) {
-                // Continue typing the current line
-                setTimeout(typeWriterEffect, 5); // Set typing speed
-            } else {
-                // Finished typing the current line, move to next line after a short pause
-                currentTextIndex++;
-                currentCharIndex = 0;
-                setTimeout(typeWriterEffect, 10); // Pause before typing the next line
-            }
+    <!-- JavaScript to remove .html extension from URLs -->
+    <script>
+        if (window.location.pathname.endsWith(".html")) {
+            window.history.replaceState(null, "", window.location.pathname.replace(".html", "/"));
         }
-    }
 
-    typeWriterEffect();
-});
+        document.addEventListener("DOMContentLoaded", function() {
+            const texts = [
+                "I am Reetendra, a dedicated Material Science Researcher with over 7 years of experience in advancing the field. With more than 4 years focused on the growth of thin films and nanomaterials, my work spans 2D materials and oxide materials, aiming for breakthroughs in clean energy production and sensing applications. I am passionate about bridging the gap between lab research and industry applications, driving innovations that can be readily adopted. ",
+                "Recently, my curiosity has expanded to quantum materials, exploring their potential for neuromorphic device applications.",
+                "My journey has been profoundly shaped by the invaluable guidance of my mentors and seniors, who have inspired me to persevere through every challenge.",
+                "Beyond my academic pursuits, I am actively enhancing my expertise in data analytics and data science to further contribute to interdisciplinary advancements."
+            ];
 
+            let currentTextIndex = 0;
+            let currentCharIndex = 0;
 
- </script>
+            function typeWriterEffect() {
+                if (currentTextIndex < texts.length) {
+                    const currentText = texts[currentTextIndex];
+                    const typingTextElement = document.getElementById("typing-text");
 
+                    if (currentCharIndex === 0) {
+                        // Start a new line aligned to the left
+                        const newLine = document.createElement("div");
+                        newLine.classList.add("typing-line");
+                        newLine.style.textAlign = "left"; // Ensure alignment is left
+                        typingTextElement.appendChild(newLine);
+                    }
+
+                    const partialText = currentText.slice(0, currentCharIndex + 1);
+                    typingTextElement.lastChild.innerHTML = partialText;
+
+                    currentCharIndex++;
+
+                    if (currentCharIndex < currentText.length) {
+                        // Continue typing the current line
+                        setTimeout(typeWriterEffect, 5); // Set typing speed
+                    } else {
+                        // Finished typing the current line, move to next line after a short pause
+                        currentTextIndex++;
+                        currentCharIndex = 0;
+                        setTimeout(typeWriterEffect, 10); // Pause before typing the next line
+                    }
+                }
+            }
+
+            typeWriterEffect();
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -218,12 +225,11 @@ document.addEventListener("DOMContentLoaded", function() {
     </header>
     
     <section>
-    <article>
-        <img src="reetendra.webp" alt="Reetendra Singh Photo" class="responsive">
-        <p>Dr. Reetendra Singh</p>
-    </article>
-</section>
-
+        <article>
+            <img src="reetendra.webp" alt="Reetendra Singh Photo" class="responsive">
+            <p>Dr. Reetendra Singh</p>
+        </article>
+    </section>
 
     <section>
         <article>

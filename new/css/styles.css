@@ -1,0 +1,150 @@
+/* Import Roboto Slab from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
+
+/* Add your CSS styles here */
+body {
+    font-family: 'Roboto Slab', serif; /* Set font to Roboto Slab */
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center align all text */
+    background-color: #e0f7fa; /* Light cyan background for a calming effect */
+}
+header {
+    background-color: #004d40; /* Dark teal for header background */
+    padding: 20px 0; /* Add padding to the header */
+    width: 100%; /* Make header full width */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    margin-bottom: 20px; /* Add space below the header */
+}
+h1, h2 {
+    margin: 0;
+    color: white; /* White text color */
+}
+
+article h2 {
+    color: black; /* Dark teal for h2 within article */
+}
+
+article h3 {
+    margin-top: 20px; /* Add margin above the heading */
+    color: black; /* Dark teal for h3 elements */
+}
+
+h2.AcademicTitle {
+    color: #004d40; /* Dark teal for specific h2 elements */
+}
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 20px 0 0 0; /* Remove margin at the top of the list */
+    display: flex;
+    justify-content: center; /* Align links horizontally */
+}
+nav ul li {
+    margin-right: 8px; /* Adjust margin between navigation links */
+}
+nav ul li a {
+    font-size: 13px; /* Adjust font size for navigation links */
+    text-decoration: none; /* Remove underline */
+    padding: 5px 10px; /* Adjust padding */
+    border-radius: 5px; /* Add border radius */
+    color: white; /* Set text color */
+    background-color: transparent; /* Keep background transparent */
+    transition: all 0.3s ease; /* Add transition effect */
+}
+nav ul li a:hover {
+    background-color: #00796b; /* Teal background on hover */
+    color: white; /* Keep text color on hover */
+}
+
+article {
+    width: 95%; /* Make article full width */
+    margin: 0 auto;
+    text-align: center; /* Center align text in article */
+}
+
+article ul {
+    list-style-type: none; /* Remove default list style */
+    padding-left: 0; /* Remove default padding */
+}
+article h3 {
+    margin-top: 20px; /* Add margin above the heading */
+    color: black; /* Dark teal for h3 elements */
+}
+article h3:before {
+    content: "•"; /* Add bullet point before heading */
+    display: inline-block;
+    margin-right: 5px; /* Add spacing between bullet point and text */
+    color: black; /* Dark teal for bullet point */
+}
+article h3 + ul {
+    margin-top: 0; /* Remove margin between heading and list */
+}
+article li {
+    margin-left: 20px; /* Add margin to align with heading */
+    color: #004d40; /* Dark teal for list items */
+}
+article p {
+    color: black; /* Dark teal for paragraphs */
+}
+
+footer {
+    background-color: #004d40; /* Dark teal for footer background */
+    color: white; /* White text color */
+    width: 100%; /* Make the footer full width */
+    padding: 5px 0; /* Reduce padding to prevent cropping */
+    bottom: 0; /* Align the footer to the bottom */
+    left: 0; /* Ensure the footer starts from the left edge */
+    text-align: center; /* Center the text in the footer */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    line-height: 1.2; /* Reduce line height to save space */
+    font-size: 12px; /* Reduce font size slightly to prevent cropping */
+}
+
+footer a {
+    color: white; /* Set the link color to white */
+    text-decoration: none; /* Remove underline from links */
+    margin: 0 8px; /* Reduce spacing between the links */
+    font-size: 12px; /* Ensure link font size matches the footer text */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    header {
+        margin: 0 auto; /* Adjust margin for smaller screens */
+        max-width: 100%; /* Adjust max-width for smaller screens */
+    }
+    nav ul li {
+        margin-right: 4px; /* Further reduce margin between navigation links */
+    }
+    nav ul li a {
+        font-size: 10px; /* Further reduce font size for navigation links */
+        padding: 2px 4px; /* Further adjust padding */
+    }
+    article {
+        margin-left: 5%; /* Adjust margin-left for smaller screens */
+        margin-right: 5%; /* Adjust margin-right for smaller screens */
+    }
+}
+
+/* Image responsiveness */
+img.responsive {
+    display: block; /* Make the image a block-level element */
+    margin: 0 auto; /* Center the image horizontally */
+    width: 100%; /* Ensure the image does not exceed the container width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 1350px; /* Set a max width for larger screens */
+    transform: translateY(0.3cm); /* Move the image 0.5 cm downward */
+}
+
+/* Mobile-Specific Styles */
+@media only screen and (max-width: 768px) {
+    img.responsive {
+        max-width: 100%; /* Ensure the image does not exceed the container width on mobile screens */
+        transform: translateY(0.25cm) translateX(-0.25cm); /* Remove any downward translation for mobile screens */
+    }
+}
